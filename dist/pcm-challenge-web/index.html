@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
   <meta charset="utf-8">
   <title>PCM Challenge</title>
-  <base href="/">
+  <base id="baseHref" href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -15,4 +15,19 @@
   <app-root>Cargando el app...</app-root>
 
 
+
+<script>
+  (function() {
+    var selectorBaseHREF = document.getElementById('baseHref');
+    
+    if (selectorBaseHREF.href === "https://preview.c9users.io/") {
+      selectorBaseHREF.href = "/chrisfs313/pcm-challenge/pcm-challenge-web/dist/pcm-challenge-web/"
+    }
+    else {
+      selectorBaseHREF.href = "/";
+    }
+    
+    console.log("selectorBaseHREF.href", selectorBaseHREF.href);
+  })();
+</script>
 <script type="text/javascript" src="runtime.js"></script><script type="text/javascript" src="polyfills.js"></script><script type="text/javascript" src="styles.js"></script><script type="text/javascript" src="vendor.js"></script><script type="text/javascript" src="main.js"></script></body></html>
