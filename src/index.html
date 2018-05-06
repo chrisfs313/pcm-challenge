@@ -3,32 +3,23 @@
 <head>
   <meta charset="utf-8">
   <title>PCM Challenge</title>
-  <base id="baseHref" href="/">
+  <base id="baseHref" href="/chrisfs313/pcm-challenge/pcm-challenge-web/dist/pcm-challenge-web/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   
+  <!-- JQUERY -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   
+  <!-- BOOTSTRAP -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  
+  <!-- TOASTR -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
 <body>
-  <app-root>Cargando el app...</app-root>
+  <app-root>Cargando Restaurante...</app-root>
 </body>
 </html>
-
-<script>
-  (function() {
-    var selectorBaseHREF = document.getElementById('baseHref');
-    
-    if (selectorBaseHREF.href === "https://preview.c9users.io/") {
-      selectorBaseHREF.href = "/chrisfs313/pcm-challenge/pcm-challenge-web/dist/pcm-challenge-web/"
-    }
-    else {
-      selectorBaseHREF.href = "/";
-    }
-    
-    console.log("selectorBaseHREF.href", selectorBaseHREF.href);
-  })();
-</script>

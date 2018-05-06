@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { AuthGuardService } from './services/auth-guard.services';
 import { LoaderService } from './services/loader.services';
 import { UserClaimService } from './services/user-claim.services';
+import { BackendService } from './services/backend.services';
+
 import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
@@ -26,7 +28,8 @@ import { HomeComponent } from './pages/home/home.component';
   providers: [
     AuthGuardService,
     UserClaimService,
-    LoaderService
+    LoaderService,
+    BackendService
   ],
   bootstrap: [AppComponent]
 })
