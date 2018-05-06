@@ -483,7 +483,6 @@ var BackendService = /** @class */ (function () {
         var observer = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"](function (observer) {
             _this._http.get(url).subscribe(function (data) {
                 var result = _models_mappers_consumerTableMapper__WEBPACK_IMPORTED_MODULE_6__["ConsumerTableMapper"].IConsumerTableArrayTo(data);
-                console.log("listActivesByBusiness", result);
                 observer.next(result);
                 observer.complete();
             }, function (err) {
