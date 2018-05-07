@@ -1,0 +1,56 @@
+.wrapper {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+}    
+
+#content {
+    width: 100%;
+}
+
+#sidebar {
+    min-width: 300px;
+    max-width: 300px;
+    display: block;
+}
+
+#sidebar.active {
+    margin-left: -300px;
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -300px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+}
+
+.table-td-menuImage {
+    max-width: 40px;
+    max-height: 40px;
+}
+
+.img-menuImage {
+    width: 100%;
+}
+
+.table-td-menuName {
+    font-size: 13px;
+}
+
+.table-td-menuPrice {
+    font-size: 13px;
+}
+
+.table-td-totalPrice {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#table-menu-orders {
+    overflow-y: auto;
+    height: 280px;
+}

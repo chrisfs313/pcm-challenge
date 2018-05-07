@@ -79,7 +79,7 @@ var routingComponents = [
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".loader_parent {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n}\n\n.loader_background {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    z-index: 9000;\n    background-color: #00000066;\n}\n\n.loader_img_parent {\n    width:100%;\n    height:100%;\n    z-index: 10000;\n    position: absolute;\n}\n\n.loader_img {\n    width: 200px;\n    height: 200px;\n    position: absolute;\n\n    left: 50%;\n    top: 50%;\n    margin: -100px 0 0 -100px;\n}"
+module.exports = ".loader_parent {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n}\n\n.loader_background {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    z-index: 9000;\n    background-color: #00000066;\n}\n\n.loader_img_parent {\n    width:100%;\n    height:100%;\n    z-index: 100000000;\n    position: absolute;\n}\n\n.loader_img {\n    width: 200px;\n    height: 200px;\n    position: absolute;\n\n    left: 50%;\n    top: 50%;\n    margin: -100px 0 0 -100px;\n}"
 
 /***/ }),
 
@@ -90,7 +90,7 @@ module.exports = ".loader_parent {\n    width: 100%;\n    height: 100%;\n    pos
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"loader_parent\" *ngIf=\"loaderService.canShowLoader\">\n    <div class=\"loader_background\"></div>\n\n    <div class=\"loader_img_parent\">\n        <img class=\"loader_img\" src=\"assets/loader.gif\" />\n    </div>\n</div>\n\n<div class=\"container\">\n\n    <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n        <a class=\"navbar-brand\" href=\"#\">Money Exchange</a>\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n        </button>\n        <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n            <ul class=\"navbar-nav\">\n                <li class=\"nav-item\">\n                  <a class=\"nav-link\" routerLink=\"/home\">Home</a>\n                </li>\n              \n                <!--<li class=\"nav-item\" *ngIf=\"!userClaimsService.isAuthenticated\">-->\n                <!--    <a class=\"nav-link\" routerLink=\"/login\">Login</a>-->\n                <!--</li>-->\n                <!--<li class=\"nav-item\" *ngIf=\"userClaimsService.isAuthenticated\">-->\n                <!--    <a class=\"nav-link\" href=\"\" ng-click=\"logout()\">Logout</a>-->\n                <!--</li>-->\n                <!--<li class=\"nav-item\" *ngIf=\"userClaimsService.isAuthenticated\">-->\n                <!--    <a class=\"nav-link\" routerLink=\"/home\">Home</a>-->\n                <!--</li>-->\n                <!--<li class=\"nav-item\" *ngIf=\"userClaimsService.isAuthenticated\">-->\n                <!--    <a class=\"nav-link\" routerLink=\"/about\">About</a>-->\n                <!--</li>-->\n            </ul>\n        </div>\n    </nav>\n\n    <router-outlet></router-outlet>\n    \n</div>\n"
+module.exports = "<div class=\"loader_parent\" *ngIf=\"loaderService.canShowLoader\">\n    <div class=\"loader_background\"></div>\n\n    <div class=\"loader_img_parent\">\n        <img class=\"loader_img\" src=\"assets/loader.gif\" />\n    </div>\n</div>\n\n<div class=\"container\">\n\n    <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n        <a class=\"navbar-brand\" href=\"#\">Restaurante: Pidalo con Rima</a>\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n        </button>\n        <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n            <ul class=\"navbar-nav\">\n                <li class=\"nav-item\">\n                  <a class=\"nav-link\" routerLink=\"/home\">Administración Mesas</a>\n                </li>\n              \n                <!--<li class=\"nav-item\" *ngIf=\"!userClaimsService.isAuthenticated\">-->\n                <!--    <a class=\"nav-link\" routerLink=\"/login\">Login</a>-->\n                <!--</li>-->\n                <!--<li class=\"nav-item\" *ngIf=\"userClaimsService.isAuthenticated\">-->\n                <!--    <a class=\"nav-link\" href=\"\" ng-click=\"logout()\">Logout</a>-->\n                <!--</li>-->\n                <!--<li class=\"nav-item\" *ngIf=\"userClaimsService.isAuthenticated\">-->\n                <!--    <a class=\"nav-link\" routerLink=\"/home\">Home</a>-->\n                <!--</li>-->\n                <!--<li class=\"nav-item\" *ngIf=\"userClaimsService.isAuthenticated\">-->\n                <!--    <a class=\"nav-link\" routerLink=\"/about\">About</a>-->\n                <!--</li>-->\n            </ul>\n        </div>\n    </nav>\n\n    <router-outlet></router-outlet>\n    \n</div>\n"
 
 /***/ }),
 
@@ -155,13 +155,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _services_auth_guard_services__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./services/auth-guard.services */ "./src/app/services/auth-guard.services.ts");
-/* harmony import */ var _services_loader_services__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./services/loader.services */ "./src/app/services/loader.services.ts");
-/* harmony import */ var _services_user_claim_services__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/user-claim.services */ "./src/app/services/user-claim.services.ts");
-/* harmony import */ var _services_backend_services__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./services/backend.services */ "./src/app/services/backend.services.ts");
-/* harmony import */ var _pages_home_home_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/home/home.component */ "./src/app/pages/home/home.component.ts");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _services_auth_guard_services__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./services/auth-guard.services */ "./src/app/services/auth-guard.services.ts");
+/* harmony import */ var _services_loader_services__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/loader.services */ "./src/app/services/loader.services.ts");
+/* harmony import */ var _services_user_claim_services__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./services/user-claim.services */ "./src/app/services/user-claim.services.ts");
+/* harmony import */ var _services_backend_services__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./services/backend.services */ "./src/app/services/backend.services.ts");
+/* harmony import */ var _pages_home_home_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/home/home.component */ "./src/app/pages/home/home.component.ts");
+/* harmony import */ var _pages_modal_modal_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pages/modal/modal.component */ "./src/app/pages/modal/modal.component.ts");
+/* harmony import */ var _pages_modal_menus_modal_menus__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pages/modal/menus/modal.menus */ "./src/app/pages/modal/menus/modal.menus.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -179,29 +182,36 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["routingComponents"],
-                _pages_home_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["routingComponents"],
+                _pages_home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"],
+                _pages_modal_modal_component__WEBPACK_IMPORTED_MODULE_12__["NgbdModalComponent"],
+                _pages_modal_menus_modal_menus__WEBPACK_IMPORTED_MODULE_13__["ModalMenus"]
             ],
             imports: [
+                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModule"].forRoot(),
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"]
             ],
             providers: [
-                _services_auth_guard_services__WEBPACK_IMPORTED_MODULE_6__["AuthGuardService"],
-                _services_user_claim_services__WEBPACK_IMPORTED_MODULE_8__["UserClaimService"],
-                _services_loader_services__WEBPACK_IMPORTED_MODULE_7__["LoaderService"],
-                _services_backend_services__WEBPACK_IMPORTED_MODULE_9__["BackendService"]
+                _services_auth_guard_services__WEBPACK_IMPORTED_MODULE_7__["AuthGuardService"],
+                _services_user_claim_services__WEBPACK_IMPORTED_MODULE_9__["UserClaimService"],
+                _services_loader_services__WEBPACK_IMPORTED_MODULE_8__["LoaderService"],
+                _services_backend_services__WEBPACK_IMPORTED_MODULE_10__["BackendService"]
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
+            entryComponents: [_pages_modal_menus_modal_menus__WEBPACK_IMPORTED_MODULE_13__["ModalMenus"]],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -215,26 +225,163 @@ var AppModule = /** @class */ (function () {
 /*!*************************************!*\
   !*** ./src/app/common/constants.ts ***!
   \*************************************/
-/*! exports provided: ConsumerTableBackend, Constants */
+/*! exports provided: ConsumerTableBackend, MenuDishBackend, MenuCategoryBackend, Constants */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConsumerTableBackend", function() { return ConsumerTableBackend; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuDishBackend", function() { return MenuDishBackend; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuCategoryBackend", function() { return MenuCategoryBackend; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Constants", function() { return Constants; });
 var ConsumerTableBackend = /** @class */ (function () {
     function ConsumerTableBackend() {
         this.ListActivesByBusiness = "/consumerTable/listActivesByBusiness/";
+        this.GetOrdersByTable = "/consumerTable/getOrdersByTable/";
     }
     return ConsumerTableBackend;
+}());
+
+var MenuDishBackend = /** @class */ (function () {
+    function MenuDishBackend() {
+        this.GetMenuList = "/menuDish/list/";
+    }
+    return MenuDishBackend;
+}());
+
+var MenuCategoryBackend = /** @class */ (function () {
+    function MenuCategoryBackend() {
+        this.GetMenuCategories = "/menuCategory/list";
+    }
+    return MenuCategoryBackend;
 }());
 
 var Constants = /** @class */ (function () {
     function Constants() {
     }
+    Constants.DefaultIdBusiness = "5a59398eba92390014228220";
+    // Base URL for REST services
     Constants.WS_BASE_PATH = "https://ws-pcm-challenge.herokuapp.com";
+    // Backend of all services:
     Constants.REST_ConsumerTable = new ConsumerTableBackend();
+    Constants.REST_MenuDish = new MenuDishBackend();
+    Constants.REST_MenuCategory = new MenuCategoryBackend();
+    // Modals
+    Constants.Modal_Menus = "menus";
     return Constants;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/common/utils.ts":
+/*!*********************************!*\
+  !*** ./src/app/common/utils.ts ***!
+  \*********************************/
+/*! exports provided: Utils */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Utils", function() { return Utils; });
+var Utils = /** @class */ (function () {
+    function Utils() {
+    }
+    Utils.hitTestByPoint = function (x, y, sizeX, sizeY, pointX, pointY) {
+        var result = x < pointX && (x + sizeX) > pointX &&
+            y < pointY && (y + sizeY) > pointY;
+        return result;
+    };
+    Utils.getMousePos = function (canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+            x: evt.clientX - rect.left,
+            y: evt.clientY - rect.top
+        };
+    };
+    Utils.deepClone = function (item) {
+        return JSON.parse(JSON.stringify(item));
+    };
+    return Utils;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/consumerMenuVM.ts":
+/*!******************************************!*\
+  !*** ./src/app/models/consumerMenuVM.ts ***!
+  \******************************************/
+/*! exports provided: ConsumerMenuVM, IConsumerMenu */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConsumerMenuVM", function() { return ConsumerMenuVM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IConsumerMenu", function() { return IConsumerMenu; });
+var ConsumerMenuVM = /** @class */ (function () {
+    function ConsumerMenuVM(_id, name, price, imageUrl) {
+        this._id = _id;
+        this.name = name;
+        this.price = price;
+        this.imageUrl = imageUrl;
+    }
+    return ConsumerMenuVM;
+}());
+
+var IConsumerMenu = /** @class */ (function () {
+    function IConsumerMenu() {
+    }
+    return IConsumerMenu;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/consumerTableOrdersVM.ts":
+/*!*************************************************!*\
+  !*** ./src/app/models/consumerTableOrdersVM.ts ***!
+  \*************************************************/
+/*! exports provided: ConsumerTableOrdersVM, IConsumerTableOrders, WaiterTableVM, IWaiterTable */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConsumerTableOrdersVM", function() { return ConsumerTableOrdersVM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IConsumerTableOrders", function() { return IConsumerTableOrders; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WaiterTableVM", function() { return WaiterTableVM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IWaiterTable", function() { return IWaiterTable; });
+var ConsumerTableOrdersVM = /** @class */ (function () {
+    function ConsumerTableOrdersVM(_id, name, waiterTable, consumerMenus) {
+        this._id = _id;
+        this.name = name;
+        this.waiterTable = waiterTable;
+        this.consumerMenus = consumerMenus;
+    }
+    return ConsumerTableOrdersVM;
+}());
+
+var IConsumerTableOrders = /** @class */ (function () {
+    function IConsumerTableOrders() {
+    }
+    return IConsumerTableOrders;
+}());
+
+var WaiterTableVM = /** @class */ (function () {
+    function WaiterTableVM(_id, fullName) {
+        this._id = _id;
+        this.fullName = fullName;
+    }
+    return WaiterTableVM;
+}());
+
+var IWaiterTable = /** @class */ (function () {
+    function IWaiterTable() {
+    }
+    return IWaiterTable;
 }());
 
 
@@ -274,6 +421,39 @@ var IConsumerTable = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/models/mappers/consumerMenuMapper.ts":
+/*!******************************************************!*\
+  !*** ./src/app/models/mappers/consumerMenuMapper.ts ***!
+  \******************************************************/
+/*! exports provided: ConsumerMenuMapper */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConsumerMenuMapper", function() { return ConsumerMenuMapper; });
+/* harmony import */ var _consumerMenuVM__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../consumerMenuVM */ "./src/app/models/consumerMenuVM.ts");
+
+var ConsumerMenuMapper = /** @class */ (function () {
+    function ConsumerMenuMapper() {
+    }
+    ConsumerMenuMapper.IConsumerMenuArrayTo = function (fromArray) {
+        var result = [];
+        for (var i = 0; i < fromArray.length; i++) {
+            result.push(ConsumerMenuMapper.IConsumerMenuTo(fromArray[i]));
+        }
+        return result;
+    };
+    ConsumerMenuMapper.IConsumerMenuTo = function (fromObj) {
+        var result = new _consumerMenuVM__WEBPACK_IMPORTED_MODULE_0__["ConsumerMenuVM"](fromObj._id, fromObj.name, fromObj.price, fromObj.imageUrl);
+        return result;
+    };
+    return ConsumerMenuMapper;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/models/mappers/consumerTableMapper.ts":
 /*!*******************************************************!*\
   !*** ./src/app/models/mappers/consumerTableMapper.ts ***!
@@ -307,6 +487,166 @@ var ConsumerTableMapper = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/models/mappers/consumerTableOrdersMapper.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/models/mappers/consumerTableOrdersMapper.ts ***!
+  \*************************************************************/
+/*! exports provided: ConsumerTableOrdersMapper */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConsumerTableOrdersMapper", function() { return ConsumerTableOrdersMapper; });
+/* harmony import */ var _consumerTableOrdersVM__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../consumerTableOrdersVM */ "./src/app/models/consumerTableOrdersVM.ts");
+/* harmony import */ var _consumerMenuMapper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./consumerMenuMapper */ "./src/app/models/mappers/consumerMenuMapper.ts");
+
+
+var ConsumerTableOrdersMapper = /** @class */ (function () {
+    function ConsumerTableOrdersMapper() {
+    }
+    ConsumerTableOrdersMapper.IConsumerTableOrdersTo = function (fromObj) {
+        var result = new _consumerTableOrdersVM__WEBPACK_IMPORTED_MODULE_0__["ConsumerTableOrdersVM"](fromObj._id, fromObj.name, ConsumerTableOrdersMapper.IWaiterTableTo(fromObj.waiter), _consumerMenuMapper__WEBPACK_IMPORTED_MODULE_1__["ConsumerMenuMapper"].IConsumerMenuArrayTo(fromObj.consumerMenus));
+        return result;
+    };
+    ConsumerTableOrdersMapper.IWaiterTableTo = function (fromObj) {
+        var result = new _consumerTableOrdersVM__WEBPACK_IMPORTED_MODULE_0__["WaiterTableVM"](fromObj._id, fromObj.fullName);
+        return result;
+    };
+    return ConsumerTableOrdersMapper;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/mappers/menuCategoryMapper.ts":
+/*!******************************************************!*\
+  !*** ./src/app/models/mappers/menuCategoryMapper.ts ***!
+  \******************************************************/
+/*! exports provided: MenuCategoryMapper */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuCategoryMapper", function() { return MenuCategoryMapper; });
+/* harmony import */ var _menuCategoryVM__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../menuCategoryVM */ "./src/app/models/menuCategoryVM.ts");
+
+var MenuCategoryMapper = /** @class */ (function () {
+    function MenuCategoryMapper() {
+    }
+    MenuCategoryMapper.IMenuCategoryArrayTo = function (fromArray) {
+        var result = [];
+        for (var i = 0; i < fromArray.length; i++) {
+            result.push(MenuCategoryMapper.IMenuCategoryTo(fromArray[i]));
+        }
+        return result;
+    };
+    MenuCategoryMapper.IMenuCategoryTo = function (fromObj) {
+        var result = new _menuCategoryVM__WEBPACK_IMPORTED_MODULE_0__["MenuCategoryVM"](fromObj._id, fromObj.name);
+        return result;
+    };
+    return MenuCategoryMapper;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/mappers/menuDishMapper.ts":
+/*!**************************************************!*\
+  !*** ./src/app/models/mappers/menuDishMapper.ts ***!
+  \**************************************************/
+/*! exports provided: MenuDishMapper */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuDishMapper", function() { return MenuDishMapper; });
+/* harmony import */ var _menuDishVM__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../menuDishVM */ "./src/app/models/menuDishVM.ts");
+
+var MenuDishMapper = /** @class */ (function () {
+    function MenuDishMapper() {
+    }
+    MenuDishMapper.IMenuDishArrayTo = function (fromArray) {
+        var result = [];
+        for (var i = 0; i < fromArray.length; i++) {
+            result.push(MenuDishMapper.IMenuDishTo(fromArray[i]));
+        }
+        return result;
+    };
+    MenuDishMapper.IMenuDishTo = function (fromObj) {
+        var result = new _menuDishVM__WEBPACK_IMPORTED_MODULE_0__["MenuDishVM"](fromObj._id, fromObj.name, fromObj.description, fromObj.price, fromObj.imageUrl, fromObj.idMenuCategory);
+        return result;
+    };
+    return MenuDishMapper;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/menuCategoryVM.ts":
+/*!******************************************!*\
+  !*** ./src/app/models/menuCategoryVM.ts ***!
+  \******************************************/
+/*! exports provided: MenuCategoryVM, IMenuCategory */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuCategoryVM", function() { return MenuCategoryVM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IMenuCategory", function() { return IMenuCategory; });
+var MenuCategoryVM = /** @class */ (function () {
+    function MenuCategoryVM(_id, name) {
+        this._id = _id;
+        this.name = name;
+    }
+    return MenuCategoryVM;
+}());
+
+var IMenuCategory = /** @class */ (function () {
+    function IMenuCategory() {
+    }
+    return IMenuCategory;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/menuDishVM.ts":
+/*!**************************************!*\
+  !*** ./src/app/models/menuDishVM.ts ***!
+  \**************************************/
+/*! exports provided: MenuDishVM, IMenuDish */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuDishVM", function() { return MenuDishVM; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IMenuDish", function() { return IMenuDish; });
+var MenuDishVM = /** @class */ (function () {
+    function MenuDishVM(_id, name, description, price, imageUrl, idMenuCategory) {
+        this._id = _id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imageUrl = imageUrl;
+        this.idMenuCategory = idMenuCategory;
+    }
+    return MenuDishVM;
+}());
+
+var IMenuDish = /** @class */ (function () {
+    function IMenuDish() {
+    }
+    return IMenuDish;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/pages/home/home.component.css":
 /*!***********************************************!*\
   !*** ./src/app/pages/home/home.component.css ***!
@@ -314,7 +654,7 @@ var ConsumerTableMapper = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".wrapper {\n    display: flex;\n    align-items: stretch;\n    width: 100%;\n}    \n\n#content {\n    width: 100%;\n}    \n\n#sidebar {\n    min-width: 300px;\n    max-width: 300px;\n    display: block;\n}    \n\n#sidebar.active {\n    margin-left: -300px;\n    display: none !important;\n}    \n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -300px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}    \n\n.table-td-menuImage {\n    max-width: 40px;\n    max-height: 40px;\n}    \n\n.img-menuImage {\n    width: 100%;\n}    \n\n.table-td-menuName {\n    font-size: 13px;\n}    \n\n.table-td-menuPrice {\n    font-size: 13px;\n}    \n\n.table-td-totalPrice {\n    font-size: 13px;\n    font-weight: bold;\n}    \n\n#table-menu-orders {\n    overflow-y: auto;\n    height: 280px;\n}"
 
 /***/ }),
 
@@ -325,7 +665,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n"
+module.exports = "<div>\n    <img id=\"imgChair\" src=\"assets/spChair.png\" style=\"display:none\" />\n    <img id=\"imgTables\" src=\"assets/spTables.png\" style=\"display:none\" />\n</div>\n\n<div class=\"wrapper\">\n\n    <!-- Sidebar -->\n    <nav id=\"sidebar\" class=\"active\">\n        <div id=\"parent-detail-canvas\">\n            <canvas id=\"canvas-detail-selector\" width=\"300\" height=\"100\">\n            </canvas>\n        </div>\n        \n        <!-- Controls for the Table -->\n        <div class=\"container\">\n        \n            <div class=\"row\">\n                <div class=\"col-sm-12\">\n                    <h4>Menus ordenados:</h4>\n                </div>\n            </div>\n            \n            <div id=\"table-menu-orders\" class=\"row\">\n                <table class=\"table\">\n                  <thead>\n                    <tr>\n                      <th scope=\"col\">#</th>\n                      <th scope=\"col\">Foto</th>\n                      <th scope=\"col\">Plato</th>\n                      <th scope=\"col\">Precio</th>\n                      <th scope=\"col\"></th>\n                    </tr>\n                  </thead>\n                  <tbody>\n                    <tr *ngFor=\"let menu of GetConsumerMenusFromDetails;  let i = index\">\n                        <th scope=\"row\">{{ (i + 1) }}</th>\n                            <td>\n                                <div class=\"table-td-menuImage\">\n                                    <img class=\"img-menuImage\" src=\"{{menu.imageUrl}}\" />\n                                </div>\n                            </td>\n                            <td class=\"table-td-menuName\">{{ menu.name }}</td>\n                            <td class=\"table-td-menuPrice\">S/ {{ menu.price.toFixed(2) }}</td>\n                            <td>\n                                <button type=\"button\" class=\"btn\" (click)=\"_tableDetailManager.removeMenu(menu._id)\">\n                                    <span class=\"glyphicon glyphicon-remove\"></span>X\n                                </button>\n                            </td>\n                    </tr>\n                  </tbody>\n                </table>\n            </div>\n            <div class=\"row\">\n                <table class=\"table\">\n                  <tbody>\n                    <tr>\n                        <td></td>\n                        <td></td>\n                        <td></td>\n                        <td class=\"table-td-totalPrice\">Total:</td>\n                        <td class=\"table-td-totalPrice\">S/ {{ GetConsumerMenusFromDetailsTotalPrice }}</td>\n                    </tr>\n                  </tbody>\n                </table>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-sm-12\">\n                    <ngbd-modal-component [modalType]=\"'menus'\"></ngbd-modal-component>\n                    <p></p>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn\" (click)=\"_tableDetailManager.cancel()\">\n                        <span class=\"glyphicon glyphicon-ban-circle\"></span>\n                        Cancelar\n                    </button>\n                </div>\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn btn-default\" (click)=\"_tableDetailManager.save()\">\n                        <span class=\"glyphicon glyphicon-floppy-disk\"></span>\n                        Guardar\n                    </button>\n                </div>\n            </div>\n        \n        </div>\n    </nav>\n\n    <!-- Page Content -->\n    <div id=\"content\">\n        <div id=\"parent-canvas\" (mousedown)=\"onMouseDown_TableCanvas($event)\">\n            <canvas id=\"canvas-selector\" width=\"400\" height=\"300\">\n            </canvas>\n        </div>\n    </div>\n</div>  "
 
 /***/ }),
 
@@ -342,6 +682,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_backend_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/backend.services */ "./src/app/services/backend.services.ts");
 /* harmony import */ var _services_loader_services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/loader.services */ "./src/app/services/loader.services.ts");
+/* harmony import */ var _common_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/constants */ "./src/app/common/constants.ts");
+/* harmony import */ var _tablesManager__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tablesManager */ "./src/app/pages/home/tablesManager.ts");
+/* harmony import */ var _tableDetailManager__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./tableDetailManager */ "./src/app/pages/home/tableDetailManager.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -354,30 +697,583 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
+
+
 var HomeComponent = /** @class */ (function () {
     function HomeComponent(_backendService, _loaderService) {
         var _this = this;
         this._backendService = _backendService;
         this._loaderService = _loaderService;
+        this._initialized = false;
         this._loaderService.showLoader();
-        this._backendService.listActivesByBusiness("5a59398eba92390014228220")
+        this._backendService.listActivesTablesByBusiness(_common_constants__WEBPACK_IMPORTED_MODULE_3__["Constants"].DefaultIdBusiness)
             .subscribe(function (data) {
+            _this._consumerTables = data;
+            _this.onResizeWindow(null);
             _this._loaderService.hideLoader();
         });
-        ;
     }
+    Object.defineProperty(HomeComponent.prototype, "GetConsumerTables", {
+        get: function () { return this._consumerTables; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(HomeComponent.prototype, "IsInitialized", {
+        get: function () { return this._initialized; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(HomeComponent.prototype, "GetHTMLImage_Chair", {
+        get: function () { return this._imgChair; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(HomeComponent.prototype, "GetHTMLImage_Tables", {
+        get: function () { return this._imgTables; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(HomeComponent.prototype, "GetBackendService", {
+        get: function () { return this._backendService; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(HomeComponent.prototype, "GetLoaderService", {
+        get: function () { return this._loaderService; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(HomeComponent.prototype, "GetConsumerMenusFromDetails", {
+        get: function () {
+            var result = null;
+            result = this._tableDetailManager.consumerTableOrdersTEMP != null
+                ? this._tableDetailManager.consumerTableOrdersTEMP.consumerMenus
+                : null;
+            return result == null ? [] : result;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(HomeComponent.prototype, "GetConsumerMenusFromDetailsTotalPrice", {
+        get: function () {
+            var result = null;
+            var resultTotalPrice = 0;
+            result = this._tableDetailManager.consumerTableOrdersTEMP != null
+                ? this._tableDetailManager.consumerTableOrdersTEMP.consumerMenus
+                : null;
+            result = result == null ? [] : result;
+            for (var i = 0; i < result.length; i++) {
+                resultTotalPrice += result[i].price;
+            }
+            return resultTotalPrice.toFixed(2);
+        },
+        enumerable: true,
+        configurable: true
+    });
     HomeComponent.prototype.ngOnInit = function () {
+        this._initialized = true;
+        //this._canvasChildSelector = $('#canvas-child-selector');
+        this._imgChair = $("#imgChair")[0];
+        this._imgTables = $("#imgTables")[0];
+        // Initialize Table Manager
+        this._tablesManager = new _tablesManager__WEBPACK_IMPORTED_MODULE_4__["TablesManager"](this);
+        this._tablesManager.Initialize('#parent-canvas', '#canvas-selector');
+        // Initialize Table Detail Manager
+        this._tableDetailManager = new _tableDetailManager__WEBPACK_IMPORTED_MODULE_5__["TableDetailManager"](this);
+        this._tableDetailManager.Initialize('#parent-detail-canvas', '#canvas-detail-selector');
+        this.onResizeWindow(null);
+    };
+    HomeComponent.prototype.onMouseDown_TableCanvas = function (event) {
+        this._tablesManager.OnMouseDown(event);
+    };
+    HomeComponent.prototype.onResizeWindow = function (event) {
+        if (this._tablesManager)
+            this._tablesManager.OnResizeWindow();
+    };
+    HomeComponent.prototype.ShowTableDetails = function (table) {
+        // Now process Table Details
+        this._tableDetailManager.ShowTableDetails(table);
+    };
+    HomeComponent.prototype.showModal = function () {
+    };
+    HomeComponent.HideSideBar = function () {
+        $('#sidebar').addClass('active');
+    };
+    HomeComponent.ShowSideBar = function () {
+        $('#sidebar').removeClass('active');
     };
     HomeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-home',
             template: __webpack_require__(/*! ./home.component.html */ "./src/app/pages/home/home.component.html"),
-            styles: [__webpack_require__(/*! ./home.component.css */ "./src/app/pages/home/home.component.css")]
+            styles: [__webpack_require__(/*! ./home.component.css */ "./src/app/pages/home/home.component.css")],
+            host: {
+                '(window:resize)': 'onResizeWindow($event)'
+            }
         }),
         __metadata("design:paramtypes", [_services_backend_services__WEBPACK_IMPORTED_MODULE_1__["BackendService"],
             _services_loader_services__WEBPACK_IMPORTED_MODULE_2__["LoaderService"]])
     ], HomeComponent);
     return HomeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/home/tableDetailManager.ts":
+/*!**************************************************!*\
+  !*** ./src/app/pages/home/tableDetailManager.ts ***!
+  \**************************************************/
+/*! exports provided: TableDetailManager */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TableDetailManager", function() { return TableDetailManager; });
+/* harmony import */ var _home_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home.component */ "./src/app/pages/home/home.component.ts");
+/* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../common/utils */ "./src/app/common/utils.ts");
+
+
+var TableDetailManager = /** @class */ (function () {
+    function TableDetailManager(_homeComponent) {
+        this._homeComponent = _homeComponent;
+        this._width = 300;
+        this._height = 600;
+        this._consumerTable = null;
+        this.consumerTableOrders = null;
+        this.consumerTableOrdersTEMP = null;
+    }
+    TableDetailManager.prototype.Initialize = function (parentId, canvasId) {
+        this._parentSelector = $(parentId);
+        this._canvasSelector = $(canvasId);
+        this._ctx = this._canvasSelector[0].getContext("2d");
+    };
+    TableDetailManager.prototype.removeMenu = function (idMenu) {
+        var data = this.consumerTableOrdersTEMP.consumerMenus;
+        for (var i = 0; i < data.length; i++) {
+            if (data[i]._id === idMenu) {
+                data.splice(i, 1);
+                break;
+            }
+        }
+    };
+    TableDetailManager.prototype.addMenu = function () {
+    };
+    TableDetailManager.prototype.cancel = function () {
+        this.consumerTableOrdersTEMP = _common_utils__WEBPACK_IMPORTED_MODULE_1__["Utils"].deepClone(this.consumerTableOrders);
+    };
+    TableDetailManager.prototype.save = function () {
+    };
+    TableDetailManager.prototype.ShowTableDetails = function (table) {
+        var _this = this;
+        this._consumerTable = table;
+        this._homeComponent.GetLoaderService.showLoader();
+        this._homeComponent.GetBackendService.getOrdersByTable(table._id)
+            .subscribe(function (data) {
+            _this.consumerTableOrders = data;
+            _this.consumerTableOrdersTEMP = _common_utils__WEBPACK_IMPORTED_MODULE_1__["Utils"].deepClone(data);
+            // Hide loader and show SideBar for Details
+            _this._homeComponent.GetLoaderService.hideLoader();
+            _home_component__WEBPACK_IMPORTED_MODULE_0__["HomeComponent"].ShowSideBar();
+        });
+        this.drawTable();
+    };
+    TableDetailManager.prototype.drawTable = function () {
+        var ctx = this._ctx;
+        var imgHTML_tables = this._homeComponent.GetHTMLImage_Tables;
+        var imgHTML_chair = this._homeComponent.GetHTMLImage_Chair;
+        // vars
+        var ix = 120;
+        var iy = 30;
+        var offsetX = 15;
+        var offsetY = 16;
+        var radius = 35;
+        var tableSize = this._consumerTable.size;
+        var angleFraction = (Math.PI * 2) / tableSize;
+        // Clean canvas
+        ctx.clearRect(0, 0, this._width, this._height);
+        // Background
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillRect(0, 0, this._width, this._height);
+        // Draw table
+        ctx.globalAlpha = 1;
+        ctx.drawImage(imgHTML_tables, ix, iy);
+        // Draw table name
+        ctx.font = "bold 20px Arial";
+        ctx.textAlign = "center";
+        ctx.strokeText(this._consumerTable.name, ix + imgHTML_tables.width * 0.5, (iy + imgHTML_tables.height * 0.5) + 6);
+        for (var j = 0; j < tableSize; j++) {
+            var cx = (ix + offsetX) + Math.cos(angleFraction * j) * radius;
+            var cy = (iy + offsetY) + Math.sin(angleFraction * j) * radius;
+            // Draw chair: If chair is occupied then make it alpha...
+            if (j < this._consumerTable.consumerCount)
+                ctx.globalAlpha = 0.25;
+            ctx.drawImage(imgHTML_chair, cx, cy);
+            ctx.globalAlpha = 1;
+        }
+    };
+    return TableDetailManager;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/home/tablesManager.ts":
+/*!*********************************************!*\
+  !*** ./src/app/pages/home/tablesManager.ts ***!
+  \*********************************************/
+/*! exports provided: TablesManager */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TablesManager", function() { return TablesManager; });
+/* harmony import */ var _home_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home.component */ "./src/app/pages/home/home.component.ts");
+/* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../common/utils */ "./src/app/common/utils.ts");
+
+
+var TablesManager = /** @class */ (function () {
+    function TablesManager(_homeComponent) {
+        this._homeComponent = _homeComponent;
+        this._height = 400;
+    }
+    TablesManager.prototype.Initialize = function (parentId, canvasId) {
+        this._parentSelector = $(parentId);
+        this._canvasSelector = $(canvasId);
+        this._ctx = this._canvasSelector[0].getContext("2d");
+    };
+    TablesManager.prototype.OnResizeWindow = function () {
+        // Update size dynamically
+        this._width = this._parentSelector.width();
+        var ctx = this._ctx;
+        this._canvasSelector.attr('width', this._width);
+        this._canvasSelector.attr('height', this._height);
+        // Clean
+        ctx.clearRect(0, 0, this._width, this._height);
+        // Background
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillRect(0, 0, this._width, this._height);
+        // Draw Tables
+        this.onDrawTables();
+    };
+    TablesManager.prototype.OnMouseDown = function (e) {
+        var mousePos = _common_utils__WEBPACK_IMPORTED_MODULE_1__["Utils"].getMousePos(this._parentSelector[0], e);
+        var tableSelected = false;
+        if (this._homeComponent.IsInitialized && this._homeComponent.GetConsumerTables != null) {
+            var imgHTML_tables = this._homeComponent.GetHTMLImage_Tables;
+            var imgHTML_chair = this._homeComponent.GetHTMLImage_Chair;
+            var ix = 30;
+            var iy = 30;
+            var offsetX = 15;
+            var offsetY = 16;
+            var indexX = 0;
+            var indexY = 0;
+            var indexOffset = 0;
+            var tableAreaWidth = (imgHTML_tables.width + (imgHTML_chair.width * 2)) + offsetX;
+            var tableAreaHeight = (imgHTML_tables.height + (imgHTML_chair.height * 2)) + offsetY;
+            var maxTables = Math.floor(this._width / tableAreaWidth) - 1;
+            var consumerTables = this._homeComponent.GetConsumerTables;
+            for (var i = 0; i < consumerTables.length; i++) {
+                var ct = consumerTables[i];
+                if ((i - indexOffset) > maxTables) {
+                    indexOffset += maxTables;
+                    indexOffset++;
+                    indexY++;
+                }
+                indexX = i - indexOffset;
+                var tx = (indexX * (imgHTML_tables.width + (imgHTML_chair.width * 2)) + (offsetX * indexX));
+                var ty = indexY * tableAreaHeight;
+                var hitted = _common_utils__WEBPACK_IMPORTED_MODULE_1__["Utils"].hitTestByPoint(tx, ty, tableAreaWidth, tableAreaHeight, mousePos.x, mousePos.y);
+                if (hitted) {
+                    tableSelected = true;
+                    this._homeComponent.ShowTableDetails(ct);
+                    break;
+                }
+            }
+            if (!tableSelected) {
+                _home_component__WEBPACK_IMPORTED_MODULE_0__["HomeComponent"].HideSideBar();
+            }
+        }
+    };
+    TablesManager.prototype.onDrawTables = function () {
+        if (this._homeComponent.IsInitialized && this._homeComponent.GetConsumerTables != null) {
+            var ctx = this._ctx;
+            var imgHTML_tables = this._homeComponent.GetHTMLImage_Tables;
+            var imgHTML_chair = this._homeComponent.GetHTMLImage_Chair;
+            var consumerTables = this._homeComponent.GetConsumerTables;
+            var ix = 30;
+            var iy = 30;
+            var offsetX = 15;
+            var offsetY = 16;
+            var radius = 35;
+            var tableAreaWidth = (imgHTML_tables.width + (imgHTML_chair.width * 2)) + offsetX;
+            var tableAreaHeight = (imgHTML_tables.height + (imgHTML_chair.height * 2)) + offsetY;
+            var maxTables = Math.floor(this._width / tableAreaWidth) - 1;
+            var indexX = 0;
+            var indexY = 0;
+            var indexOffset = 0;
+            for (var i = 0; i < consumerTables.length; i++) {
+                var ct = consumerTables[i];
+                var tableSize = ct.size;
+                var consumers = ct.consumerCount;
+                var angleFraction = (Math.PI * 2) / tableSize;
+                if ((i - indexOffset) > maxTables) {
+                    indexOffset += maxTables;
+                    indexOffset++;
+                    indexY++;
+                }
+                indexX = i - indexOffset;
+                var tx = ix + (indexX * (imgHTML_tables.width + (imgHTML_chair.width * 2)) + (offsetX * indexX));
+                var ty = iy + indexY * tableAreaHeight;
+                // Draw table
+                if (ct.isOccupied)
+                    ctx.globalAlpha = 0.25; // if the table is occupied then make it alpha
+                ctx.drawImage(imgHTML_tables, tx, ty);
+                ctx.globalAlpha = 1;
+                // Draw table name
+                ctx.font = "bold 20px Arial";
+                ctx.textAlign = "center";
+                ctx.strokeText(ct.name, tx + imgHTML_tables.width * 0.5, (ty + imgHTML_tables.height * 0.5) + 6);
+                for (var j = 0; j < tableSize; j++) {
+                    var cx = (tx + offsetX) + Math.cos(angleFraction * j) * radius;
+                    var cy = (ty + offsetY) + Math.sin(angleFraction * j) * radius;
+                    // Draw chair
+                    if (j < ct.consumerCount)
+                        ctx.globalAlpha = 0.25; // if chair is occupied then make it alpha
+                    ctx.drawImage(imgHTML_chair, cx, cy);
+                    ctx.globalAlpha = 1;
+                }
+            }
+        }
+    };
+    return TablesManager;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/modal/menus/modal.menus.html":
+/*!****************************************************!*\
+  !*** ./src/app/pages/modal/menus/modal.menus.html ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"modal-header\">\n  <h4 class=\"modal-title\">Escoger Platillo</h4>\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"activeModal.dismiss('Cross click')\">\n    <span aria-hidden=\"true\">&times;</span>\n  </button>\n</div>\n<div class=\"modal-body\">\n  \n  <div id=\"menu-container-dynamic\" class=\"container\">\n  </div>\n</div>\n<div class=\"modal-footer\">\n  <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"activeModal.close('Close click')\">Cerrar</button>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/pages/modal/menus/modal.menus.ts":
+/*!**************************************************!*\
+  !*** ./src/app/pages/modal/menus/modal.menus.ts ***!
+  \**************************************************/
+/*! exports provided: ModalMenus */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalMenus", function() { return ModalMenus; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var _services_backend_services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/backend.services */ "./src/app/services/backend.services.ts");
+/* harmony import */ var _services_loader_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/loader.services */ "./src/app/services/loader.services.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var ModalMenus = /** @class */ (function () {
+    function ModalMenus(activeModal, _backendService, _loaderService) {
+        var _this = this;
+        this.activeModal = activeModal;
+        this._backendService = _backendService;
+        this._loaderService = _loaderService;
+        this._menuDishes = null;
+        this._menuCategories = null;
+        this._isCompleted = false;
+        this._loaderService.showLoader();
+        this._backendService.getMenuCategories()
+            .subscribe(function (data) {
+            _this._menuCategories = data;
+            _this._isCompleted = _this._menuCategories != null && _this._menuDishes != null;
+            if (_this._isCompleted) {
+                _this.onCompletedREST();
+            }
+        });
+        this._backendService.getMenuList()
+            .subscribe(function (data) {
+            _this._menuDishes = data;
+            _this._isCompleted = _this._menuCategories != null && _this._menuDishes != null;
+            if (_this._isCompleted) {
+                _this.onCompletedREST();
+            }
+        });
+    }
+    ModalMenus.prototype.onCompletedREST = function () {
+        this._loaderService.hideLoader();
+        var htmlData = "";
+        var menuSelector = $('#menu-container-dynamic');
+        menuSelector.parent().parent().parent().width(700);
+        for (var i = 0; i < this._menuCategories.length; i++) {
+            var menuCategory = this._menuCategories[i];
+            htmlData += "<div class='row'>";
+            htmlData += "  <div class='col-sm-12'>";
+            htmlData += "    <h4>" + menuCategory.name + "</h4>";
+            htmlData += "  </div>";
+            htmlData += "</div>";
+            var k = 0;
+            var colCount = 0;
+            var createRow = true;
+            while (k < this._menuDishes.length) {
+                var menuDish = this._menuDishes[k];
+                if (menuDish.idMenuCategory === menuCategory._id) {
+                    if (createRow) {
+                        htmlData += "<div class='row'>";
+                    }
+                    htmlData += "  <div class='col-sm-3'>";
+                    htmlData += "   <div style='height: 60px;'>";
+                    htmlData += "     " + menuDish.name;
+                    htmlData += "   </div>";
+                    htmlData += "   <div style='width: 124px;height: 124px;'>";
+                    htmlData += "     <img src='" + menuDish.imageUrl + "' width='120' height='120'/>";
+                    htmlData += "   </div>";
+                    htmlData += "   <div style='height: 120px;'>";
+                    htmlData += "     " + menuDish.description;
+                    htmlData += "   </div>";
+                    htmlData += "   <div>";
+                    htmlData += "     <button style='margin: auto;width: 100%;' type='button' data-menu-dish-id='" + menuDish._id +
+                        "' class='choose-menu-dish btn btn-outline-dark'>Escoger</button>";
+                    htmlData += "   </div>";
+                    htmlData += "  </div>";
+                    if (colCount >= 2) {
+                        colCount = 0;
+                        createRow = true;
+                        // finished the row tag
+                        htmlData += "</div>";
+                    }
+                    else {
+                        createRow = false;
+                        colCount++;
+                    }
+                }
+                k++;
+            }
+            if (!createRow) {
+                htmlData += "</div>";
+            }
+        }
+        // now append the HTML composed
+        menuSelector.html(htmlData);
+        // Now bind events of the dynamic buttons
+        this.bindEvents();
+    };
+    ModalMenus.prototype.bindEvents = function () {
+        $(document).on('click', '.choose-menu-dish', function (e) {
+            console.log("clicked menu:", $(this).data('menu-dish-id'));
+        });
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], ModalMenus.prototype, "name", void 0);
+    ModalMenus = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'ngbd-modal-content',
+            template: __webpack_require__(/*! ./modal.menus.html */ "./src/app/pages/modal/menus/modal.menus.html")
+        }),
+        __metadata("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NgbActiveModal"],
+            _services_backend_services__WEBPACK_IMPORTED_MODULE_2__["BackendService"],
+            _services_loader_services__WEBPACK_IMPORTED_MODULE_3__["LoaderService"]])
+    ], ModalMenus);
+    return ModalMenus;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/modal/modal.component.html":
+/*!**************************************************!*\
+  !*** ./src/app/pages/modal/modal.component.html ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<button type=\"button\" class=\"btn\" (click)=\"openModal()\">\n    <span class=\"glyphicon\"></span>\n    {{ _buttonLabel }}\n</button>"
+
+/***/ }),
+
+/***/ "./src/app/pages/modal/modal.component.ts":
+/*!************************************************!*\
+  !*** ./src/app/pages/modal/modal.component.ts ***!
+  \************************************************/
+/*! exports provided: NgbdModalComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NgbdModalComponent", function() { return NgbdModalComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var _menus_modal_menus__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./menus/modal.menus */ "./src/app/pages/modal/menus/modal.menus.ts");
+/* harmony import */ var _common_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/constants */ "./src/app/common/constants.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var NgbdModalComponent = /** @class */ (function () {
+    function NgbdModalComponent(modalService) {
+        this.modalService = modalService;
+        this._buttonLabel = "";
+    }
+    NgbdModalComponent.prototype.ngOnInit = function () {
+        switch (this.modalType) {
+            case _common_constants__WEBPACK_IMPORTED_MODULE_3__["Constants"].Modal_Menus:
+                this._buttonLabel = "Agregar Platillo";
+                break;
+        }
+    };
+    NgbdModalComponent.prototype.openModal = function () {
+        switch (this.modalType) {
+            case _common_constants__WEBPACK_IMPORTED_MODULE_3__["Constants"].Modal_Menus:
+                var modalRef = this.modalService.open(_menus_modal_menus__WEBPACK_IMPORTED_MODULE_2__["ModalMenus"]);
+                modalRef.componentInstance.name = 'World';
+                break;
+        }
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], NgbdModalComponent.prototype, "modalType", void 0);
+    NgbdModalComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'ngbd-modal-component',
+            template: __webpack_require__(/*! ./modal.component.html */ "./src/app/pages/modal/modal.component.html")
+        }),
+        __metadata("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NgbModal"]])
+    ], NgbdModalComponent);
+    return NgbdModalComponent;
 }());
 
 
@@ -453,6 +1349,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/constants */ "./src/app/common/constants.ts");
 /* harmony import */ var _user_claim_services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./user-claim.services */ "./src/app/services/user-claim.services.ts");
 /* harmony import */ var _models_mappers_consumerTableMapper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../models/mappers/consumerTableMapper */ "./src/app/models/mappers/consumerTableMapper.ts");
+/* harmony import */ var _models_mappers_consumerTableOrdersMapper__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../models/mappers/consumerTableOrdersMapper */ "./src/app/models/mappers/consumerTableOrdersMapper.ts");
+/* harmony import */ var _models_mappers_menuCategoryMapper__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../models/mappers/menuCategoryMapper */ "./src/app/models/mappers/menuCategoryMapper.ts");
+/* harmony import */ var _models_mappers_menuDishMapper__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../models/mappers/menuDishMapper */ "./src/app/models/mappers/menuDishMapper.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -470,13 +1369,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 // Mappers
 
+
+
+
 var BackendService = /** @class */ (function () {
     function BackendService(_router, _http, _userClaims) {
         this._router = _router;
         this._http = _http;
         this._userClaims = _userClaims;
     }
-    BackendService.prototype.listActivesByBusiness = function (idBusiness) {
+    BackendService.prototype.listActivesTablesByBusiness = function (idBusiness) {
         var _this = this;
         var url = _common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].WS_BASE_PATH + _common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].REST_ConsumerTable.ListActivesByBusiness +
             idBusiness;
@@ -487,7 +1389,58 @@ var BackendService = /** @class */ (function () {
                 observer.complete();
             }, function (err) {
                 console.error("Error", err);
-                toastr.error('Paso un error inesperado.', 'Error de Servicio!');
+                toastr.error('Paso un error inesperado en la carga de Mesas.', 'Error de Servicio!');
+            });
+        });
+        return observer;
+    };
+    BackendService.prototype.getOrdersByTable = function (idTable) {
+        var _this = this;
+        var url = _common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].WS_BASE_PATH + _common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].REST_ConsumerTable.GetOrdersByTable +
+            idTable;
+        var observer = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"](function (observer) {
+            _this._http.get(url).subscribe(function (data) {
+                if (data.length > 0) {
+                    var result = _models_mappers_consumerTableOrdersMapper__WEBPACK_IMPORTED_MODULE_7__["ConsumerTableOrdersMapper"].IConsumerTableOrdersTo(data[0]);
+                    observer.next(result);
+                }
+                else {
+                    observer.next(null);
+                }
+                observer.complete();
+            }, function (err) {
+                console.error("Error", err);
+                toastr.error('Paso un error inesperado en la carga de Menus.', 'Error de Servicio!');
+            });
+        });
+        return observer;
+    };
+    BackendService.prototype.getMenuCategories = function () {
+        var _this = this;
+        var url = _common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].WS_BASE_PATH + _common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].REST_MenuCategory.GetMenuCategories;
+        var observer = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"](function (observer) {
+            _this._http.get(url).subscribe(function (data) {
+                var result = _models_mappers_menuCategoryMapper__WEBPACK_IMPORTED_MODULE_8__["MenuCategoryMapper"].IMenuCategoryArrayTo(data);
+                observer.next(result);
+                observer.complete();
+            }, function (err) {
+                console.error("Error", err);
+                toastr.error('Paso un error inesperado en la carga de Categorias de Menus.', 'Error de Servicio!');
+            });
+        });
+        return observer;
+    };
+    BackendService.prototype.getMenuList = function () {
+        var _this = this;
+        var url = _common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].WS_BASE_PATH + _common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].REST_MenuDish.GetMenuList;
+        var observer = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"](function (observer) {
+            _this._http.get(url).subscribe(function (data) {
+                var result = _models_mappers_menuDishMapper__WEBPACK_IMPORTED_MODULE_9__["MenuDishMapper"].IMenuDishArrayTo(data);
+                observer.next(result);
+                observer.complete();
+            }, function (err) {
+                console.error("Error", err);
+                toastr.error('Paso un error inesperado en la carga de Categorias de Menus.', 'Error de Servicio!');
             });
         });
         return observer;

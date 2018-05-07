@@ -1,1 +1,98 @@
+<div>
+    <img id="imgChair" src="assets/spChair.png" style="display:none" />
+    <img id="imgTables" src="assets/spTables.png" style="display:none" />
+</div>
 
+<div class="wrapper">
+
+    <!-- Sidebar -->
+    <nav id="sidebar" class="active">
+        <div id="parent-detail-canvas">
+            <canvas id="canvas-detail-selector" width="300" height="100">
+            </canvas>
+        </div>
+        
+        <!-- Controls for the Table -->
+        <div class="container">
+        
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>Menus ordenados:</h4>
+                </div>
+            </div>
+            
+            <div id="table-menu-orders" class="row">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Foto</th>
+                      <th scope="col">Plato</th>
+                      <th scope="col">Precio</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let menu of GetConsumerMenusFromDetails;  let i = index">
+                        <th scope="row">{{ (i + 1) }}</th>
+                            <td>
+                                <div class="table-td-menuImage">
+                                    <img class="img-menuImage" src="{{menu.imageUrl}}" />
+                                </div>
+                            </td>
+                            <td class="table-td-menuName">{{ menu.name }}</td>
+                            <td class="table-td-menuPrice">S/ {{ menu.price.toFixed(2) }}</td>
+                            <td>
+                                <button type="button" class="btn" (click)="_tableDetailManager.removeMenu(menu._id)">
+                                    <span class="glyphicon glyphicon-remove"></span>X
+                                </button>
+                            </td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="table-td-totalPrice">Total:</td>
+                        <td class="table-td-totalPrice">S/ {{ GetConsumerMenusFromDetailsTotalPrice }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <ngbd-modal-component [modalType]="'menus'"></ngbd-modal-component>
+                    <p></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <button type="button" class="btn" (click)="_tableDetailManager.cancel()">
+                        <span class="glyphicon glyphicon-ban-circle"></span>
+                        Cancelar
+                    </button>
+                </div>
+                <div class="col-sm-6">
+                    <button type="button" class="btn btn-default" (click)="_tableDetailManager.save()">
+                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div id="content">
+        <div id="parent-canvas" (mousedown)="onMouseDown_TableCanvas($event)">
+            <canvas id="canvas-selector" width="400" height="300">
+            </canvas>
+        </div>
+    </div>
+</div>  
