@@ -6,6 +6,8 @@ export class ConsumerTableBackend {
 
 export class MenuDishBackend {
     public readonly GetMenuList: string = "/menuDish/list/";
+    public readonly Remove: string = "/menuDish/remove/";
+    public readonly Save: string = "/menuDish/save";
 }
 
 export class MenuCategoryBackend {
@@ -25,4 +27,5 @@ export class Constants {
 
     // Modals
     public static readonly Modal_Menus: string = "menus";
+    public static readonly Modal_ManageMenu: string = "manage-menu";
 }

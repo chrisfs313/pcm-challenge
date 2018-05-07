@@ -37,6 +37,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _pages_home_home_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/home/home.component */ "./src/app/pages/home/home.component.ts");
+/* harmony import */ var _pages_menu_menu_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/menu/menu.component */ "./src/app/pages/menu/menu.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -47,10 +48,11 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 //import { NotFoundComponent } from './pages/not-found/not-found.component';
 
+
 var routes = [
     { path: 'home', component: _pages_home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"] },
-    //{ path: 'about', component: AboutComponent, canActivate: [AuthGuardService] },
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'menu', component: _pages_menu_menu_component__WEBPACK_IMPORTED_MODULE_3__["MenuComponent"] },
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -65,7 +67,8 @@ var AppRoutingModule = /** @class */ (function () {
 }());
 
 var routingComponents = [
-    _pages_home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"]
+    _pages_home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"],
+    _pages_menu_menu_component__WEBPACK_IMPORTED_MODULE_3__["MenuComponent"]
     //,NotFoundComponent
 ];
 
@@ -90,7 +93,7 @@ module.exports = ".loader_parent {\n    width: 100%;\n    height: 100%;\n    pos
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"loader_parent\" *ngIf=\"loaderService.canShowLoader\">\n    <div class=\"loader_background\"></div>\n\n    <div class=\"loader_img_parent\">\n        <img class=\"loader_img\" src=\"assets/loader.gif\" />\n    </div>\n</div>\n\n<div class=\"container\">\n\n    <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n        <a class=\"navbar-brand\" href=\"#\">Restaurante: Pidalo con Rima</a>\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n        </button>\n        <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n            <ul class=\"navbar-nav\">\n                <li class=\"nav-item\">\n                  <a class=\"nav-link\" routerLink=\"/home\">Administración Mesas</a>\n                </li>\n              \n                <!--<li class=\"nav-item\" *ngIf=\"!userClaimsService.isAuthenticated\">-->\n                <!--    <a class=\"nav-link\" routerLink=\"/login\">Login</a>-->\n                <!--</li>-->\n                <!--<li class=\"nav-item\" *ngIf=\"userClaimsService.isAuthenticated\">-->\n                <!--    <a class=\"nav-link\" href=\"\" ng-click=\"logout()\">Logout</a>-->\n                <!--</li>-->\n                <!--<li class=\"nav-item\" *ngIf=\"userClaimsService.isAuthenticated\">-->\n                <!--    <a class=\"nav-link\" routerLink=\"/home\">Home</a>-->\n                <!--</li>-->\n                <!--<li class=\"nav-item\" *ngIf=\"userClaimsService.isAuthenticated\">-->\n                <!--    <a class=\"nav-link\" routerLink=\"/about\">About</a>-->\n                <!--</li>-->\n            </ul>\n        </div>\n    </nav>\n\n    <router-outlet></router-outlet>\n    \n</div>\n"
+module.exports = "<div class=\"loader_parent\" *ngIf=\"loaderService.canShowLoader\">\n    <div class=\"loader_background\"></div>\n\n    <div class=\"loader_img_parent\">\n        <img class=\"loader_img\" src=\"assets/loader.gif\" />\n    </div>\n</div>\n\n<div class=\"container\">\n\n    <nav class=\"navbar navbar-expand-lg navbar-light bg-light\">\n        <a class=\"navbar-brand\" href=\"#\">Restaurante: Pidalo con Rima</a>\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n        </button>\n        <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n            <ul class=\"navbar-nav\">\n                <li class=\"nav-item\">\n                  <a class=\"nav-link\" routerLink=\"/home\">Administración Mesas</a>\n                </li>\n                <li class=\"nav-item\">\n                  <a class=\"nav-link\" routerLink=\"/menu\">Administración Menu</a>\n                </li>\n              \n                <!--<li class=\"nav-item\" *ngIf=\"!userClaimsService.isAuthenticated\">-->\n                <!--    <a class=\"nav-link\" routerLink=\"/login\">Login</a>-->\n                <!--</li>-->\n                <!--<li class=\"nav-item\" *ngIf=\"userClaimsService.isAuthenticated\">-->\n                <!--    <a class=\"nav-link\" href=\"\" ng-click=\"logout()\">Logout</a>-->\n                <!--</li>-->\n                <!--<li class=\"nav-item\" *ngIf=\"userClaimsService.isAuthenticated\">-->\n                <!--    <a class=\"nav-link\" routerLink=\"/home\">Home</a>-->\n                <!--</li>-->\n                <!--<li class=\"nav-item\" *ngIf=\"userClaimsService.isAuthenticated\">-->\n                <!--    <a class=\"nav-link\" routerLink=\"/about\">About</a>-->\n                <!--</li>-->\n            </ul>\n        </div>\n    </nav>\n\n    <router-outlet></router-outlet>\n    \n</div>\n"
 
 /***/ }),
 
@@ -163,14 +166,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_user_claim_services__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./services/user-claim.services */ "./src/app/services/user-claim.services.ts");
 /* harmony import */ var _services_backend_services__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./services/backend.services */ "./src/app/services/backend.services.ts");
 /* harmony import */ var _pages_home_home_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/home/home.component */ "./src/app/pages/home/home.component.ts");
-/* harmony import */ var _pages_modal_modal_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pages/modal/modal.component */ "./src/app/pages/modal/modal.component.ts");
-/* harmony import */ var _pages_modal_menus_modal_menus__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pages/modal/menus/modal.menus */ "./src/app/pages/modal/menus/modal.menus.ts");
+/* harmony import */ var _pages_menu_menu_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pages/menu/menu.component */ "./src/app/pages/menu/menu.component.ts");
+/* harmony import */ var _pages_modal_modal_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pages/modal/modal.component */ "./src/app/pages/modal/modal.component.ts");
+/* harmony import */ var _pages_modal_menus_modal_menus__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./pages/modal/menus/modal.menus */ "./src/app/pages/modal/menus/modal.menus.ts");
+/* harmony import */ var _pages_modal_manage_menu_modal_manage_menu__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./pages/modal/manage-menu/modal.manage-menu */ "./src/app/pages/modal/manage-menu/modal.manage-menu.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -194,8 +201,10 @@ var AppModule = /** @class */ (function () {
                 _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["routingComponents"],
                 _pages_home_home_component__WEBPACK_IMPORTED_MODULE_11__["HomeComponent"],
-                _pages_modal_modal_component__WEBPACK_IMPORTED_MODULE_12__["NgbdModalComponent"],
-                _pages_modal_menus_modal_menus__WEBPACK_IMPORTED_MODULE_13__["ModalMenus"]
+                _pages_modal_modal_component__WEBPACK_IMPORTED_MODULE_13__["NgbdModalComponent"],
+                _pages_modal_menus_modal_menus__WEBPACK_IMPORTED_MODULE_14__["ModalMenus"],
+                _pages_modal_manage_menu_modal_manage_menu__WEBPACK_IMPORTED_MODULE_15__["ModalManageMenu"],
+                _pages_menu_menu_component__WEBPACK_IMPORTED_MODULE_12__["MenuComponent"]
             ],
             imports: [
                 _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModule"].forRoot(),
@@ -210,7 +219,7 @@ var AppModule = /** @class */ (function () {
                 _services_loader_services__WEBPACK_IMPORTED_MODULE_8__["LoaderService"],
                 _services_backend_services__WEBPACK_IMPORTED_MODULE_10__["BackendService"]
             ],
-            entryComponents: [_pages_modal_menus_modal_menus__WEBPACK_IMPORTED_MODULE_13__["ModalMenus"]],
+            entryComponents: [_pages_modal_menus_modal_menus__WEBPACK_IMPORTED_MODULE_14__["ModalMenus"], _pages_modal_manage_menu_modal_manage_menu__WEBPACK_IMPORTED_MODULE_15__["ModalManageMenu"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
         })
     ], AppModule);
@@ -246,6 +255,8 @@ var ConsumerTableBackend = /** @class */ (function () {
 var MenuDishBackend = /** @class */ (function () {
     function MenuDishBackend() {
         this.GetMenuList = "/menuDish/list/";
+        this.Remove = "/menuDish/remove/";
+        this.Save = "/menuDish/save";
     }
     return MenuDishBackend;
 }());
@@ -269,6 +280,7 @@ var Constants = /** @class */ (function () {
     Constants.REST_MenuCategory = new MenuCategoryBackend();
     // Modals
     Constants.Modal_Menus = "menus";
+    Constants.Modal_ManageMenu = "manage-menu";
     return Constants;
 }());
 
@@ -639,13 +651,16 @@ var IMenuCategory = /** @class */ (function () {
 /*!**************************************!*\
   !*** ./src/app/models/menuDishVM.ts ***!
   \**************************************/
-/*! exports provided: MenuDishVM, IMenuDish */
+/*! exports provided: MenuDishVM, IMenuDish, IMenuDishSave, IMenuDishRemoveResponse, IMenuDishSaveResponse */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuDishVM", function() { return MenuDishVM; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IMenuDish", function() { return IMenuDish; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IMenuDishSave", function() { return IMenuDishSave; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IMenuDishRemoveResponse", function() { return IMenuDishRemoveResponse; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IMenuDishSaveResponse", function() { return IMenuDishSaveResponse; });
 var MenuDishVM = /** @class */ (function () {
     function MenuDishVM(_id, name, description, price, imageUrl, idMenuCategory) {
         this._id = _id;
@@ -662,6 +677,24 @@ var IMenuDish = /** @class */ (function () {
     function IMenuDish() {
     }
     return IMenuDish;
+}());
+
+var IMenuDishSave = /** @class */ (function () {
+    function IMenuDishSave() {
+    }
+    return IMenuDishSave;
+}());
+
+var IMenuDishRemoveResponse = /** @class */ (function () {
+    function IMenuDishRemoveResponse() {
+    }
+    return IMenuDishRemoveResponse;
+}());
+
+var IMenuDishSaveResponse = /** @class */ (function () {
+    function IMenuDishSaveResponse() {
+    }
+    return IMenuDishSaveResponse;
 }());
 
 
@@ -897,8 +930,7 @@ var TableDetailManager = /** @class */ (function () {
             _this._homeComponent.onResizeWindow(null);
             _this._homeComponent.GetLoaderService.hideLoader();
             // Send toast of confirmation
-            toastr.success('Se libero la mesa #' +
-                _this._consumerTableTEMP.name, 'Servicio!');
+            toastr.success('Se libero la mesa #' + _this._consumerTableTEMP.name, 'Mozo');
         });
     };
     TableDetailManager.prototype.removeMenu = function (idMenu) {
@@ -945,7 +977,7 @@ var TableDetailManager = /** @class */ (function () {
             _this._homeComponent.GetLoaderService.hideLoader();
             // Send toast of confirmation
             toastr.success('Se actualizo correctamente la mesa #' +
-                _this._consumerTableTEMP.name, 'Servicio!');
+                _this._consumerTableTEMP.name, 'Mozo');
         });
     };
     TableDetailManager.prototype.ShowTableDetails = function (table) {
@@ -1151,6 +1183,319 @@ var TablesManager = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/pages/menu/menu.component.css":
+/*!***********************************************!*\
+  !*** ./src/app/pages/menu/menu.component.css ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/pages/menu/menu.component.html":
+/*!************************************************!*\
+  !*** ./src/app/pages/menu/menu.component.html ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<h4>Administrar Menus</h4>\n\n<div class=\"container\">\n    <ngbd-modal-component \n        [modalType]=\"'manage-menu'\" \n        [onCallback]=\"addMenu\">\n    </ngbd-modal-component>\n    <p></p>\n    \n    <div id=\"menu-container-dynamic\" class=\"container\">\n    </div>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/pages/menu/menu.component.ts":
+/*!**********************************************!*\
+  !*** ./src/app/pages/menu/menu.component.ts ***!
+  \**********************************************/
+/*! exports provided: MenuComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MenuComponent", function() { return MenuComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_backend_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/backend.services */ "./src/app/services/backend.services.ts");
+/* harmony import */ var _services_loader_services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/loader.services */ "./src/app/services/loader.services.ts");
+/* harmony import */ var _models_menuDishVM__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../models/menuDishVM */ "./src/app/models/menuDishVM.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var MenuComponent = /** @class */ (function () {
+    function MenuComponent(_backendService, _loaderService) {
+        var _this = this;
+        this._backendService = _backendService;
+        this._loaderService = _loaderService;
+        this._menuDishes = null;
+        this._menuCategories = null;
+        this._isCompleted = false;
+        MenuComponent_1.Instance = this;
+        this._loaderService.showLoader();
+        this._backendService.getMenuCategories()
+            .subscribe(function (data) {
+            _this._menuCategories = data;
+            _this._isCompleted = _this._menuCategories != null && _this._menuDishes != null;
+            if (_this._isCompleted) {
+                _this.onCompletedREST();
+            }
+        });
+        this._backendService.getMenuList()
+            .subscribe(function (data) {
+            _this._menuDishes = data;
+            _this._isCompleted = _this._menuCategories != null && _this._menuDishes != null;
+            if (_this._isCompleted) {
+                _this.onCompletedREST();
+            }
+        });
+    }
+    MenuComponent_1 = MenuComponent;
+    Object.defineProperty(MenuComponent.prototype, "GetMenuDishes", {
+        get: function () { return this._menuDishes; },
+        enumerable: true,
+        configurable: true
+    });
+    MenuComponent.prototype.ngOnInit = function () {
+    };
+    MenuComponent.prototype.onCompletedREST = function () {
+        this._loaderService.hideLoader();
+        var htmlData = "";
+        var menuSelector = $('#menu-container-dynamic');
+        menuSelector.parent().parent().parent().width(700);
+        for (var i = 0; i < this._menuCategories.length; i++) {
+            var menuCategory = this._menuCategories[i];
+            htmlData += "<div class='row'>";
+            htmlData += "  <div class='col-sm-12'>";
+            htmlData += "    <h4>" + menuCategory.name + "</h4>";
+            htmlData += "  </div>";
+            htmlData += "</div>";
+            var k = 0;
+            var colCount = 0;
+            var createRow = true;
+            while (k < this._menuDishes.length) {
+                var menuDish = this._menuDishes[k];
+                if (menuDish.idMenuCategory === menuCategory._id) {
+                    if (createRow) {
+                        htmlData += "<div class='row'>";
+                    }
+                    htmlData += "  <div class='col-sm-3'>";
+                    htmlData += "   <div style='height: 60px;'>";
+                    htmlData += "     " + menuDish.name;
+                    htmlData += "   </div>";
+                    htmlData += "   <div style='width: 124px;height: 124px;'>";
+                    htmlData += "     <img src='" + menuDish.imageUrl + "' width='120' height='120'/>";
+                    htmlData += "   </div>";
+                    htmlData += "   <div style='height: 120px;'>";
+                    htmlData += "     " + menuDish.description;
+                    htmlData += "   </div>";
+                    htmlData += "   <div>";
+                    htmlData += "     <button style='margin: auto;width: 100%;' type='button' data-menu-dish-id='" + menuDish._id +
+                        "' class='remove-menu-dish btn btn-outline-dark'>Borrar</button>";
+                    htmlData += "   </div>";
+                    htmlData += "  </div>";
+                    if (colCount >= 2) {
+                        colCount = 0;
+                        createRow = true;
+                        // finished the row tag
+                        htmlData += "</div>";
+                    }
+                    else {
+                        createRow = false;
+                        colCount++;
+                    }
+                }
+                k++;
+            }
+            if (!createRow) {
+                htmlData += "</div>";
+            }
+        }
+        // now append the HTML composed
+        menuSelector.html(htmlData);
+        // Now bind events of the dynamic buttons
+        this.bindEvents();
+    };
+    MenuComponent.prototype.bindEvents = function () {
+        var self = this;
+        $(document).off().on('click', '.remove-menu-dish', function (e) {
+            var idMenuDish = $(this).data('menu-dish-id');
+            var menuVM_removed = null;
+            self._loaderService.showLoader();
+            self._backendService.removeMenu(idMenuDish)
+                .subscribe(function (data) {
+                // Now manually remove the Menu from the list object
+                for (var i = 0; i < self.GetMenuDishes.length; i++) {
+                    var menuDish = self.GetMenuDishes[i];
+                    if (menuDish._id === idMenuDish) {
+                        menuVM_removed = self.GetMenuDishes[i];
+                        self.GetMenuDishes.splice(i, 1);
+                        break;
+                    }
+                }
+                self._loaderService.hideLoader();
+                // update HTML
+                self.onCompletedREST();
+                // Send toast of confirmation
+                toastr.success('Se removio el menu: ' + menuVM_removed.name, 'Cocinero');
+            });
+        });
+    };
+    MenuComponent.prototype.removeBinds = function () {
+        $(document).off('click', '.remove-menu-dish');
+    };
+    MenuComponent.prototype.addMenu = function (menuDish) {
+        var self = MenuComponent_1.Instance;
+        self._loaderService.showLoader();
+        self._backendService.saveMenu(menuDish).subscribe(function (data) {
+            if (data) {
+                // Manually add the MenuDish
+                var menuDishVM = new _models_menuDishVM__WEBPACK_IMPORTED_MODULE_3__["MenuDishVM"](data._id, data.name, data.description, data.price, data.imageUrl, data.idMenuCategory);
+                self._menuDishes.push(menuDishVM);
+                // update HTML
+                self.onCompletedREST();
+                self._loaderService.hideLoader();
+                // Send toast of confirmation
+                toastr.success('Se guardo el menu: ' + menuDish.name, 'Cocinero');
+            }
+        });
+    };
+    MenuComponent = MenuComponent_1 = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-menu',
+            template: __webpack_require__(/*! ./menu.component.html */ "./src/app/pages/menu/menu.component.html"),
+            styles: [__webpack_require__(/*! ./menu.component.css */ "./src/app/pages/menu/menu.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_backend_services__WEBPACK_IMPORTED_MODULE_1__["BackendService"],
+            _services_loader_services__WEBPACK_IMPORTED_MODULE_2__["LoaderService"]])
+    ], MenuComponent);
+    return MenuComponent;
+    var MenuComponent_1;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/modal/manage-menu/modal.manage-menu.html":
+/*!****************************************************************!*\
+  !*** ./src/app/pages/modal/manage-menu/modal.manage-menu.html ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"modal-header\">\n  <h4 class=\"modal-title\">Agregar Plato</h4>\n  <button type=\"button\" class=\"close\" aria-label=\"Close\" (click)=\"activeModal.dismiss('Cross click')\">\n    <span aria-hidden=\"true\">&times;</span>\n  </button>\n</div>\n<div class=\"modal-body\">\n  \n  <div id=\"menu-manage-form\" class=\"container\">\n    <div class=\"row\">\n        <div class=\"col-sm-4\">\n            Nombre:\n        </div>\n        <div class=\"col-sm-8\">\n            <input type=\"text\" [(ngModel)]=\"_menuModel.name\" />\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-sm-4\">\n            Descripción:\n        </div>\n        <div class=\"col-sm-8\">\n            <input type=\"text\" [(ngModel)]=\"_menuModel.description\" />\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-sm-4\">\n            Precio:\n        </div>\n        <div class=\"col-sm-8\">\n            <input type=\"text\" [(ngModel)]=\"_menuModel.price\" />\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-sm-4\">\n            Tipo de Plato:\n        </div>\n        <div class=\"col-sm-8\">\n            <select [(ngModel)]=\"_menuModel.idMenuCategory\">\n              <option *ngFor=\"let category of _menuCategories\" [ngValue]=\"category._id\">{{ category.name }}</option>\n            </select>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-sm-4\">\n            Imagen:\n        </div>\n        <div class=\"col-sm-8\">\n            <input type=\"file\" accept=\"image/*\" (change)=\"handleFileInput($event.target.files)\">\n        </div>\n    </div>\n</div>\n<div class=\"modal-footer\">\n    <button type='button' class='btn btn-primary' (click)=\"saveMenu()\">Agregar Plato</button>\n    <button type=\"button\" class=\"btn btn-outline-dark\" (click)=\"activeModal.close('Close click')\">Cerrar</button>\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/pages/modal/manage-menu/modal.manage-menu.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/pages/modal/manage-menu/modal.manage-menu.ts ***!
+  \**************************************************************/
+/*! exports provided: ModalManageMenu */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalManageMenu", function() { return ModalManageMenu; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
+/* harmony import */ var _models_menuDishVM__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../models/menuDishVM */ "./src/app/models/menuDishVM.ts");
+/* harmony import */ var _services_backend_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/backend.services */ "./src/app/services/backend.services.ts");
+/* harmony import */ var _services_loader_services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../services/loader.services */ "./src/app/services/loader.services.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var ModalManageMenu = /** @class */ (function () {
+    function ModalManageMenu(activeModal, _backendService, _loaderService) {
+        var _this = this;
+        this.activeModal = activeModal;
+        this._backendService = _backendService;
+        this._loaderService = _loaderService;
+        this._menuDishes = null;
+        this._menuCategories = null;
+        this._isCompleted = false;
+        this._menuModel = new _models_menuDishVM__WEBPACK_IMPORTED_MODULE_2__["IMenuDishSave"]();
+        this._loaderService.showLoader();
+        this._backendService.getMenuCategories()
+            .subscribe(function (data) {
+            _this._menuCategories = data;
+            _this._isCompleted = _this._menuCategories != null && _this._menuDishes != null;
+            if (_this._isCompleted) {
+                _this.onCompletedREST();
+            }
+        });
+        this._backendService.getMenuList()
+            .subscribe(function (data) {
+            _this._menuDishes = data;
+            _this._isCompleted = _this._menuCategories != null && _this._menuDishes != null;
+            if (_this._isCompleted) {
+                _this.onCompletedREST();
+            }
+        });
+    }
+    ModalManageMenu.prototype.onCompletedREST = function () {
+        var menuManageForm = $('#menu-manage-form');
+        menuManageForm.parent().parent().parent().width(600);
+        this._loaderService.hideLoader();
+    };
+    ModalManageMenu.prototype.handleFileInput = function (files) {
+        var reader = new FileReader();
+        reader["Instance"] = this;
+        reader.onload = function (event) {
+            // Process the data
+            var rawDataCode = reader.result;
+            var base64Data = rawDataCode.substring(rawDataCode.indexOf("base64,") + 7);
+            var mimeType = rawDataCode.substring(rawDataCode.indexOf(':') + 1, rawDataCode.indexOf(';'));
+            reader["Instance"]._menuModel.imageMimeType = mimeType;
+            reader["Instance"]._menuModel.imageData = base64Data;
+        };
+        reader.readAsDataURL(files.item(0));
+    };
+    ModalManageMenu.prototype.saveMenu = function () {
+        this.onManageMenuCallback(this._menuModel);
+        this.activeModal.close('');
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], ModalManageMenu.prototype, "onManageMenuCallback", void 0);
+    ModalManageMenu = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'ngbd-modal-content-manage-menu',
+            template: __webpack_require__(/*! ./modal.manage-menu.html */ "./src/app/pages/modal/manage-menu/modal.manage-menu.html")
+        }),
+        __metadata("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NgbActiveModal"],
+            _services_backend_services__WEBPACK_IMPORTED_MODULE_3__["BackendService"],
+            _services_loader_services__WEBPACK_IMPORTED_MODULE_4__["LoaderService"]])
+    ], ModalManageMenu);
+    return ModalManageMenu;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/pages/modal/menus/modal.menus.html":
 /*!****************************************************!*\
   !*** ./src/app/pages/modal/menus/modal.menus.html ***!
@@ -1198,7 +1543,6 @@ var ModalMenus = /** @class */ (function () {
         this._menuDishes = null;
         this._menuCategories = null;
         this._isCompleted = false;
-        this._self = this;
         this._loaderService.showLoader();
         this._backendService.getMenuCategories()
             .subscribe(function (data) {
@@ -1337,7 +1681,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/index.js");
 /* harmony import */ var _menus_modal_menus__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./menus/modal.menus */ "./src/app/pages/modal/menus/modal.menus.ts");
-/* harmony import */ var _common_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/constants */ "./src/app/common/constants.ts");
+/* harmony import */ var _manage_menu_modal_manage_menu__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./manage-menu/modal.manage-menu */ "./src/app/pages/modal/manage-menu/modal.manage-menu.ts");
+/* harmony import */ var _common_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/constants */ "./src/app/common/constants.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1351,6 +1696,7 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var NgbdModalComponent = /** @class */ (function () {
     function NgbdModalComponent(modalService) {
         this.modalService = modalService;
@@ -1358,16 +1704,23 @@ var NgbdModalComponent = /** @class */ (function () {
     }
     NgbdModalComponent.prototype.ngOnInit = function () {
         switch (this.modalType) {
-            case _common_constants__WEBPACK_IMPORTED_MODULE_3__["Constants"].Modal_Menus:
-                this._buttonLabel = "Agregar Platillo";
+            case _common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].Modal_Menus:
+                this._buttonLabel = "Agregar Plato";
+                break;
+            case _common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].Modal_ManageMenu:
+                this._buttonLabel = "Agregar Plato";
                 break;
         }
     };
     NgbdModalComponent.prototype.openModal = function () {
         switch (this.modalType) {
-            case _common_constants__WEBPACK_IMPORTED_MODULE_3__["Constants"].Modal_Menus:
-                var modalRef = this.modalService.open(_menus_modal_menus__WEBPACK_IMPORTED_MODULE_2__["ModalMenus"]);
-                modalRef.componentInstance.onChooseMenuDishCallback = this.onCallback;
+            case _common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].Modal_Menus:
+                var modalRef_Menus = this.modalService.open(_menus_modal_menus__WEBPACK_IMPORTED_MODULE_2__["ModalMenus"]);
+                modalRef_Menus.componentInstance.onChooseMenuDishCallback = this.onCallback;
+                break;
+            case _common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].Modal_ManageMenu:
+                var modalRef_ManageMenu = this.modalService.open(_manage_menu_modal_manage_menu__WEBPACK_IMPORTED_MODULE_3__["ModalManageMenu"]);
+                modalRef_ManageMenu.componentInstance.onManageMenuCallback = this.onCallback;
                 break;
         }
     };
@@ -1590,6 +1943,39 @@ var BackendService = /** @class */ (function () {
             }, function (err) {
                 console.error("Error", err);
                 toastr.error('Paso un error inesperado en la actualizacion de la Mesa.', 'Error de Servicio!');
+                observer.next(null);
+                observer.complete();
+            });
+        });
+        return observer;
+    };
+    BackendService.prototype.removeMenu = function (idMenu) {
+        var _this = this;
+        var url = _common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].WS_BASE_PATH + _common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].REST_MenuDish.Remove +
+            idMenu;
+        var observer = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"](function (observer) {
+            _this._http.post(url, {}).subscribe(function (data) {
+                observer.next(data);
+                observer.complete();
+            }, function (err) {
+                console.error("Error", err);
+                toastr.error('Paso un error inesperado al borrar el Menu.', 'Error de Servicio!');
+                observer.next(null);
+                observer.complete();
+            });
+        });
+        return observer;
+    };
+    BackendService.prototype.saveMenu = function (menu) {
+        var _this = this;
+        var url = _common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].WS_BASE_PATH + _common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].REST_MenuDish.Save;
+        var observer = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"](function (observer) {
+            _this._http.post(url, menu).subscribe(function (data) {
+                observer.next(data);
+                observer.complete();
+            }, function (err) {
+                console.error("Error", err);
+                toastr.error('Paso un error inesperado al guardar el Menu.', 'Error de Servicio!');
                 observer.next(null);
                 observer.complete();
             });

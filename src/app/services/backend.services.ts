@@ -17,7 +17,13 @@ import {
 
 import { ConsumerTableOrdersVM, IConsumerTableOrders } from '../models/consumerTableOrdersVM';
 import { MenuCategoryVM, IMenuCategory } from '../models/menuCategoryVM';
-import { MenuDishVM, IMenuDish } from '../models/menuDishVM';
+import { 
+    MenuDishVM, 
+    IMenuDish, 
+    IMenuDishRemoveResponse, 
+    IMenuDishSave,
+    IMenuDishSaveResponse 
+} from '../models/menuDishVM';
 
 // Mappers
 import { ConsumerTableMapper } from '../models/mappers/consumerTableMapper';
@@ -163,6 +169,49 @@ export class BackendService {
                 err => {
                     console.error("Error", err);
                     toastr.error('Paso un error inesperado en la actualizacion de la Mesa.', 'Error de Servicio!');
+                    
+                    observer.next(null);
+                    observer.complete();
+                });
+        });
+        
+        return observer;
+    }
+    
+    public removeMenu(idMenu: string): Observable<IMenuDishRemoveResponse> {
+        let url: string = Constants.WS_BASE_PATH + Constants.REST_MenuDish.Remove +
+            idMenu;
+            
+        var observer = new Observable<IMenuDishRemoveResponse>(observer => {
+            this._http.post<IMenuDishRemoveResponse>(url, {}).subscribe(
+                data => {
+                    observer.next(data);
+                    observer.complete();
+                },
+                err => {
+                    console.error("Error", err);
+                    toastr.error('Paso un error inesperado al borrar el Menu.', 'Error de Servicio!');
+                    
+                    observer.next(null);
+                    observer.complete();
+                });
+        });
+        
+        return observer;
+    }
+    
+    public saveMenu(menu: IMenuDishSave): Observable<IMenuDishSaveResponse> {
+        let url: string = Constants.WS_BASE_PATH + Constants.REST_MenuDish.Save;
+            
+        var observer = new Observable<IMenuDishSaveResponse>(observer => {
+            this._http.post<IMenuDishSaveResponse>(url, menu).subscribe(
+                data => {
+                    observer.next(data);
+                    observer.complete();
+                },
+                err => {
+                    console.error("Error", err);
+                    toastr.error('Paso un error inesperado al guardar el Menu.', 'Error de Servicio!');
                     
                     observer.next(null);
                     observer.complete();

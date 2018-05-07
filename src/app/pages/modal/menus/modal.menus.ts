@@ -21,14 +21,11 @@ export class ModalMenus {
   private _menuCategories: MenuCategoryVM[] = null;
   private _isCompleted:boolean = false;
   
-  private _self: any;
-
   constructor(
     public activeModal: NgbActiveModal,
     private _backendService: BackendService,
     private _loaderService: LoaderService) {
       
-      this._self = this;
       this._loaderService.showLoader();
       
       this._backendService.getMenuCategories()

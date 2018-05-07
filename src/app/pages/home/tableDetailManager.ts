@@ -66,7 +66,7 @@ export class TableDetailManager {
               this._homeComponent.GetLoaderService.hideLoader();
               
                 // Send toast of confirmation
-                toastr.success('Se libero la mesa #' + this._consumerTableTEMP.name, 'Administracion')
+                toastr.success('Se libero la mesa #' + this._consumerTableTEMP.name, 'Mozo')
           });
     }
     
@@ -131,7 +131,7 @@ export class TableDetailManager {
                 
                 // Send toast of confirmation
                 toastr.success('Se actualizo correctamente la mesa #' + 
-                    this._consumerTableTEMP.name, 'Administracion')
+                    this._consumerTableTEMP.name, 'Mozo')
           });
     }
     

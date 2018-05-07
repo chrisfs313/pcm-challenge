@@ -1,4 +1,5 @@
 export class MenuDishVM {
+    
     constructor(
         public _id: string,
         public name: string,
@@ -9,6 +10,29 @@ export class MenuDishVM {
 }
 
 export class IMenuDish {
+    _id: string;
+    name: string;
+    description: string;
+    price: number;
+    imageUrl: string;
+    idMenuCategory: string;
+}
+
+export class IMenuDishSave {
+    name: string;
+    description: string;
+    price: number;
+    imageUrl: string;
+    idMenuCategory: string;
+    imageData: string;
+    imageMimeType: string;
+}
+
+export class IMenuDishRemoveResponse {
+    ok: number;
+}
+
+export class IMenuDishSaveResponse {
     _id: string;
     name: string;
     description: string;

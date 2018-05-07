@@ -2,6 +2,7 @@ import {Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalMenus } from './menus/modal.menus';
+import { ModalManageMenu } from './manage-menu/modal.manage-menu';
 import { Constants } from "../../common/constants";
 
 @Component({
@@ -21,7 +22,10 @@ export class NgbdModalComponent {
   ngOnInit() {
     switch(this.modalType) {
       case Constants.Modal_Menus:
-        this._buttonLabel = "Agregar Platillo";
+        this._buttonLabel = "Agregar Plato";
+        break;
+      case Constants.Modal_ManageMenu:
+        this._buttonLabel = "Agregar Plato";
         break;
     }
   }
@@ -29,8 +33,12 @@ export class NgbdModalComponent {
   openModal() {
     switch(this.modalType) {
       case Constants.Modal_Menus:
-        const modalRef = this.modalService.open(ModalMenus);
-        modalRef.componentInstance.onChooseMenuDishCallback = this.onCallback;
+        const modalRef_Menus = this.modalService.open(ModalMenus);
+        modalRef_Menus.componentInstance.onChooseMenuDishCallback = this.onCallback;
+        break;
+      case Constants.Modal_ManageMenu:
+        const modalRef_ManageMenu = this.modalService.open(ModalManageMenu);
+        modalRef_ManageMenu.componentInstance.onManageMenuCallback = this.onCallback;
         break;
     }
   }
