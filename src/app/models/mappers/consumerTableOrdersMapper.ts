@@ -13,16 +13,23 @@ export class ConsumerTableOrdersMapper {
         let result: ConsumerTableOrdersVM = new ConsumerTableOrdersVM(
             fromObj._id,
             fromObj.name,
-            ConsumerTableOrdersMapper.IWaiterTableTo(fromObj.waiter),
+            ConsumerTableOrdersMapper.IWaiterTableTo(fromObj.idWaiterUser),
             ConsumerMenuMapper.IConsumerMenuArrayTo(fromObj.consumerMenus));
 
         return result;
     }
     
     public static IWaiterTableTo(fromObj: IWaiterTable): WaiterTableVM {
-        let result: WaiterTableVM = new WaiterTableVM(
-            fromObj._id,
-            fromObj.fullName);
+        let result: WaiterTableVM = null;
+        
+        if (fromObj != null) {
+            result = new WaiterTableVM(
+                fromObj._id,
+                fromObj.name + " " + fromObj.lastName);
+        }
+        else {
+            result = new WaiterTableVM("", "");
+        }
         
         return result;
     }

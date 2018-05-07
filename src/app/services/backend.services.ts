@@ -63,10 +63,10 @@ export class BackendService {
             idTable;
         
         var observer = new Observable<ConsumerTableOrdersVM>(observer => {
-            this._http.get<IConsumerTableOrders[]>(url).subscribe(
+            this._http.get<IConsumerTableOrders>(url).subscribe(
                 data => {
-                    if (data.length > 0) {
-                        let result: ConsumerTableOrdersVM = ConsumerTableOrdersMapper.IConsumerTableOrdersTo(data[0]);
+                    if (data) {
+                        let result: ConsumerTableOrdersVM = ConsumerTableOrdersMapper.IConsumerTableOrdersTo(data);
                         observer.next(result);
                     }
                     else {
@@ -125,21 +125,46 @@ export class BackendService {
     }
        
     public setTableOccupied(idConsumerTable: string, isOccupied: boolean, 
-        consumerCount: number, dataBody: ConsumerTableBodyVM): Observable<boolean> {
+        consumerCount: number, dataBody: ConsumerTableBodyVM): Observable<IConsumerTableResponse> {
         
-        let url: string = Constants.WS_BASE_PATH + Constants.REST_ConsumerTable.SetTableOccupied
+        let url: string = Constants.WS_BASE_PATH + Constants.REST_ConsumerTable.SetTableOccupied +
             idConsumerTable + "/" + (isOccupied === true ? "1" : "0") + "/" + consumerCount;
             
-        var observer = new Observable<IConsumerTableResponse[]>(observer => {
-            this._http.post<IConsumerTableResponse[]>(url, dataBody).subscribe(
+        var observer = new Observable<IConsumerTableResponse>(observer => {
+            this._http.post<IConsumerTableResponse>(url, dataBody).subscribe(
                 data => {
-                    console.log("setTableOccupied::data", data);
-                    observer.next(result);
+                    observer.next(data);
                     observer.complete();
                 },
                 err => {
                     console.error("Error", err);
-                    toastr.error('Paso un error inesperado en la actualizacion de la Mesa.', 'Error de Servicio!')
+                    toastr.error('Paso un error inesperado en la actualizacion de la Mesa.', 'Error de Servicio!');
+                    
+                    observer.next(null);
+                    observer.complete();
+                });
+        });
+        
+        return observer;
+    }
+    
+    public freeTable(idConsumerTable: string): Observable<IConsumerTableResponse> {
+        
+        let url: string = Constants.WS_BASE_PATH + Constants.REST_ConsumerTable.SetTableOccupied +
+            idConsumerTable + "/0/0";
+            
+        var observer = new Observable<IConsumerTableResponse>(observer => {
+            this._http.post<IConsumerTableResponse>(url).subscribe(
+                data => {
+                    observer.next(data);
+                    observer.complete();
+                },
+                err => {
+                    console.error("Error", err);
+                    toastr.error('Paso un error inesperado en la actualizacion de la Mesa.', 'Error de Servicio!');
+                    
+                    observer.next(null);
+                    observer.complete();
                 });
         });
         

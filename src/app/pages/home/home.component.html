@@ -65,12 +65,18 @@
                 </table>
             </div>
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-6">
                     <ngbd-modal-component 
                         [modalType]="'menus'" 
                         [onCallback]="_tableDetailManager.onChooseMenuDish">
                     </ngbd-modal-component>
                     <p></p>
+                </div>
+                <div class="col-sm-6">
+                    <button type="button" class="btn" (click)="_tableDetailManager.freeTable()">
+                        <span class="glyphicon glyphicon-ban-circle"></span>
+                        Liberar
+                    </button>
                 </div>
             </div>
             <div class="row">

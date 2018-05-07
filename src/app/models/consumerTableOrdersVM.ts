@@ -12,7 +12,7 @@ export class IConsumerTableOrders {
     _id: string;
     name: string;
     consumerMenus: IConsumerMenu[];
-    waiter: IWaiterTable;
+    idWaiterUser: IWaiterTable;
 }
 
 export class WaiterTableVM {
@@ -23,5 +23,6 @@ export class WaiterTableVM {
 
 export class IWaiterTable {
     _id: string;
-    fullName: string;
+    name: string;
+    lastName: string;
 }

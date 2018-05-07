@@ -24,7 +24,6 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit {
 
-  private _canvasChildSelector: any;
   private _imgChair: any;
   private _imgTables: any;
   
@@ -89,7 +88,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this._initialized = true;
     
-    //this._canvasChildSelector = $('#canvas-child-selector');
     this._imgChair = $("#imgChair")[0];
     this._imgTables = $("#imgTables")[0];
     

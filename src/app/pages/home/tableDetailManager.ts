@@ -38,6 +38,28 @@ export class TableDetailManager {
         this._ctx = this._canvasSelector[0].getContext("2d");
     }
     
+    public freeTable(): void {
+        let idConsumerTable: string = this.consumerTableOrdersTEMP._id;
+        
+        this._homeComponent.GetBackendService.freeTable(idConsumerTable)
+            .subscribe(data => {
+              
+              // Now update consumer table on Home
+              let consumerTables:ConsumerTableVM[] = this._homeComponent.GetConsumerTables;
+              
+              for (var i = 0; i < consumerTables.length; i++) {
+                  if (consumerTables[i]._id === idConsumerTable) {
+                      consumerTables[i].isOccupied = 0;
+                      consumerTables[i].consumerCount = 0;
+                      break;
+                  }
+              }
+              
+              HomeComponent.HideSideBar(); // remove side bar
+              this._homeComponent.GetLoaderService.hideLoader();
+          });
+    }
+    
     public removeMenu(idMenu:string): void {
         var data = this.consumerTableOrdersTEMP.consumerMenus;
         
@@ -70,15 +92,31 @@ export class TableDetailManager {
         this._homeComponent.GetLoaderService.showLoader();
         
         let idConsumerTable: string = this.consumerTableOrdersTEMP._id;
-        let dataBody: ConsumerTableBodyVM = new ConsumerTableBodyVM(
-            "5a58e033fbdc960014d4b223", []);
+        let dataBody: ConsumerTableBodyVM = new ConsumerTableBodyVM();
+        dataBody.idWaiterUser = "5a58e033fbdc960014d4b223";
+        dataBody.consumerMenus = [];
             
         for (var i = 0; i < this.consumerTableOrdersTEMP.consumerMenus.length; i++) {
             dataBody.consumerMenus.push(this.consumerTableOrdersTEMP.consumerMenus[i]._id);
         }
             
         this._homeComponent.GetBackendService.setTableOccupied(
-            idConsumerTable, true, 4, dataBody);
+            idConsumerTable, true, 4, dataBody)
+            .subscribe(data => {
+              
+              // Now update consumer table on Home
+              let consumerTables:ConsumerTableVM[] = this._homeComponent.GetConsumerTables;
+              
+              for (var i = 0; i < consumerTables.length; i++) {
+                  if (consumerTables[i]._id === idConsumerTable) {
+                      consumerTables[i].isOccupied = 1;
+                      consumerTables[i].consumerCount = 4;
+                      break;
+                  }
+              }
+              
+              this._homeComponent.GetLoaderService.hideLoader();
+          });
     }
     
     public ShowTableDetails(table: ConsumerTableVM): void {
