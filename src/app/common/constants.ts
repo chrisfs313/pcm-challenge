@@ -1,6 +1,7 @@
 export class ConsumerTableBackend {
     public readonly ListActivesByBusiness: string = "/consumerTable/listActivesByBusiness/";
     public readonly GetOrdersByTable: string = "/consumerTable/getOrdersByTable/";
+    public readonly SetTableOccupied: string = "/consumerTable/setTableOccupied/";
 }
 
 export class MenuDishBackend {

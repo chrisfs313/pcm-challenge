@@ -3,7 +3,7 @@ import { Utils } from "../../common/utils";
 
 import { MenuDishVM } from '../../models/menuDishVM';
 import { ConsumerMenuVM } from "../../models/consumerMenuVM";
-import { ConsumerTableVM } from "../../models/consumerTableVM";
+import { ConsumerTableVM, ConsumerTableBodyVM } from "../../models/consumerTableVM";
 import { ConsumerTableOrdersVM } from "../../models/consumerTableOrdersVM";
 
 // Declaramos las variables para Toastr
@@ -67,7 +67,18 @@ export class TableDetailManager {
     }
     
     public save(): void {
+        this._homeComponent.GetLoaderService.showLoader();
         
+        let idConsumerTable: string = this.consumerTableOrdersTEMP._id;
+        let dataBody: ConsumerTableBodyVM = new ConsumerTableBodyVM(
+            "5a58e033fbdc960014d4b223", []);
+            
+        for (var i = 0; i < this.consumerTableOrdersTEMP.consumerMenus.length; i++) {
+            dataBody.consumerMenus.push(this.consumerTableOrdersTEMP.consumerMenus[i]._id);
+        }
+            
+        this._homeComponent.GetBackendService.setTableOccupied(
+            idConsumerTable, true, 4, dataBody);
     }
     
     public ShowTableDetails(table: ConsumerTableVM): void {

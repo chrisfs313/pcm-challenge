@@ -18,3 +18,19 @@ export class IConsumerTable {
     isOccupied: number;
     idWaiterUser: string;
 }
+
+export class ConsumerTableBodyVM {
+    idWaiterUser: string;
+    consumerMenus: string[];
+}
+
+export class IConsumerTableResponse {
+    _id: string;
+    name: string;
+    idBusiness: string;
+    idWaiterUser: string;
+    consumerCount: number;
+    size: number;
+    consumerMenus: string[];
+}
+

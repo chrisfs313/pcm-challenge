@@ -7,7 +7,14 @@ import { Constants } from '../common/constants';
 import { UserClaimService } from './user-claim.services';
 
 // Modelos para respuesta REST
-import { ConsumerTableVM, IConsumerTable } from '../models/consumerTableVM';
+import { 
+    ConsumerTableVM, 
+    IConsumerTable, 
+    IConsumerTableResponse,
+    ConsumerTableBodyVM 
+    
+} from '../models/consumerTableVM';
+
 import { ConsumerTableOrdersVM, IConsumerTableOrders } from '../models/consumerTableOrdersVM';
 import { MenuCategoryVM, IMenuCategory } from '../models/menuCategoryVM';
 import { MenuDishVM, IMenuDish } from '../models/menuDishVM';
@@ -117,6 +124,27 @@ export class BackendService {
         return observer;
     }
        
+    public setTableOccupied(idConsumerTable: string, isOccupied: boolean, 
+        consumerCount: number, dataBody: ConsumerTableBodyVM): Observable<boolean> {
+        
+        let url: string = Constants.WS_BASE_PATH + Constants.REST_ConsumerTable.SetTableOccupied
+            idConsumerTable + "/" + (isOccupied === true ? "1" : "0") + "/" + consumerCount;
+            
+        var observer = new Observable<IConsumerTableResponse[]>(observer => {
+            this._http.post<IConsumerTableResponse[]>(url, dataBody).subscribe(
+                data => {
+                    console.log("setTableOccupied::data", data);
+                    observer.next(result);
+                    observer.complete();
+                },
+                err => {
+                    console.error("Error", err);
+                    toastr.error('Paso un error inesperado en la actualizacion de la Mesa.', 'Error de Servicio!')
+                });
+        });
+        
+        return observer;
+    }
 
     public logout(): void {
         //this._userClaims.clear();
