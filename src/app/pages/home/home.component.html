@@ -8,8 +8,13 @@
     <!-- Sidebar -->
     <nav id="sidebar" class="active">
         <div id="parent-detail-canvas">
-            <canvas id="canvas-detail-selector" width="300" height="100">
+            <canvas id="canvas-detail-selector" width="150" height="100">
             </canvas>
+            <div id="spinner-parent">
+                <label># Clientes</label>
+                <p></p>
+                <input id="spinner-clients" name="value">
+            </div>
         </div>
         
         <!-- Controls for the Table -->
@@ -87,7 +92,7 @@
                     </button>
                 </div>
                 <div class="col-sm-6">
-                    <button type="button" class="btn btn-default" (click)="_tableDetailManager.save()">
+                    <button type="button" class="btn btn-primary" (click)="_tableDetailManager.save()">
                         <span class="glyphicon glyphicon-floppy-disk"></span>
                         Guardar
                     </button>
@@ -99,7 +104,7 @@
 
     <!-- Page Content -->
     <div id="content">
-        <h4> Escoga una Mesa</h4>
+        <h4> Escoja una Mesa</h4>
         
         <div id="parent-canvas" (mousedown)="onMouseDown_TableCanvas($event)">
             <canvas id="canvas-selector" width="400" height="300">

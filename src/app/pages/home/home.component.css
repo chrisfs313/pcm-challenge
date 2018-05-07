@@ -12,6 +12,8 @@
     min-width: 300px;
     max-width: 300px;
     display: block;
+    border-right: 1px solid #dee2e6;
+    height: 423px;
 }
 
 #sidebar.active {
@@ -54,4 +56,17 @@
     overflow-x: hidden;
     overflow-y: auto;
     height: 280px;
+}
+
+#canvas-detail-selector {
+    
+}
+
+#spinner-parent {
+    float:right;
+    padding-right: 20px;
+}
+
+#spinner-clients {
+    width: 50px;
 }

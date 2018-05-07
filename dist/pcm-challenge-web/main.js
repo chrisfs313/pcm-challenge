@@ -675,7 +675,7 @@ var IMenuDish = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".wrapper {\n    display: flex;\n    align-items: stretch;\n    width: 100%;\n}    \n\n#content {\n    width: 100%;\n}    \n\n#sidebar {\n    min-width: 300px;\n    max-width: 300px;\n    display: block;\n}    \n\n#sidebar.active {\n    margin-left: -300px;\n    display: none !important;\n}    \n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -300px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}    \n\n.table-td-menuImage {\n    max-width: 40px;\n    max-height: 40px;\n}    \n\n.img-menuImage {\n    width: 100%;\n}    \n\n.table-td-menuName {\n    font-size: 13px;\n}    \n\n.table-td-menuPrice {\n    font-size: 13px;\n}    \n\n.table-td-totalPrice {\n    font-size: 13px;\n    font-weight: bold;\n}    \n\n#table-menu-orders {\n    overflow-x: hidden;\n    overflow-y: auto;\n    height: 280px;\n}"
+module.exports = ".wrapper {\n    display: flex;\n    align-items: stretch;\n    width: 100%;\n}    \n\n#content {\n    width: 100%;\n}    \n\n#sidebar {\n    min-width: 300px;\n    max-width: 300px;\n    display: block;\n    border-right: 1px solid #dee2e6;\n    height: 423px;\n}    \n\n#sidebar.active {\n    margin-left: -300px;\n    display: none !important;\n}    \n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -300px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}    \n\n.table-td-menuImage {\n    max-width: 40px;\n    max-height: 40px;\n}    \n\n.img-menuImage {\n    width: 100%;\n}    \n\n.table-td-menuName {\n    font-size: 13px;\n}    \n\n.table-td-menuPrice {\n    font-size: 13px;\n}    \n\n.table-td-totalPrice {\n    font-size: 13px;\n    font-weight: bold;\n}    \n\n#table-menu-orders {\n    overflow-x: hidden;\n    overflow-y: auto;\n    height: 280px;\n}    \n\n#canvas-detail-selector {\n    \n}    \n\n#spinner-parent {\n    float:right;\n    padding-right: 20px;\n}    \n\n#spinner-clients {\n    width: 50px;\n}"
 
 /***/ }),
 
@@ -686,7 +686,7 @@ module.exports = ".wrapper {\n    display: flex;\n    align-items: stretch;\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <img id=\"imgChair\" src=\"assets/spChair.png\" style=\"display:none\" />\n    <img id=\"imgTables\" src=\"assets/spTables.png\" style=\"display:none\" />\n</div>\n\n<div class=\"wrapper\">\n\n    <!-- Sidebar -->\n    <nav id=\"sidebar\" class=\"active\">\n        <div id=\"parent-detail-canvas\">\n            <canvas id=\"canvas-detail-selector\" width=\"300\" height=\"100\">\n            </canvas>\n        </div>\n        \n        <!-- Controls for the Table -->\n        <div class=\"container\">\n        \n            <div class=\"row\">\n                <div class=\"col-sm-12\">\n                    <h4>Menus ordenados:</h4>\n                </div>\n            </div>\n            \n            <div id=\"table-menu-orders\" class=\"row\">\n                <table class=\"table\">\n                  <thead>\n                    <tr>\n                      <th scope=\"col\">#</th>\n                      <th scope=\"col\">Foto</th>\n                      <th scope=\"col\">Plato</th>\n                      <th scope=\"col\">Precio</th>\n                      <th scope=\"col\"></th>\n                    </tr>\n                  </thead>\n                  <tbody>\n                    <tr *ngFor=\"let menu of GetConsumerMenusFromDetails;  let i = index\">\n                        <th scope=\"row\">{{ (i + 1) }}</th>\n                            <td>\n                                <div class=\"table-td-menuImage\">\n                                    <img class=\"img-menuImage\" src=\"{{menu.imageUrl}}\" />\n                                </div>\n                            </td>\n                            <td class=\"table-td-menuName\">{{ menu.name }}</td>\n                            <td class=\"table-td-menuPrice\">S/ {{ menu.price.toFixed(2) }}</td>\n                            <td>\n                                <button type=\"button\" class=\"btn\" (click)=\"_tableDetailManager.removeMenu(menu._id)\">\n                                    <span class=\"glyphicon glyphicon-remove\"></span>X\n                                </button>\n                            </td>\n                    </tr>\n                  </tbody>\n                </table>\n            </div>\n            <div class=\"row\">\n                <table class=\"table\">\n                  <tbody>\n                    <tr>\n                        <td></td>\n                        <td></td>\n                        <td></td>\n                        <td class=\"table-td-totalPrice\">Total:</td>\n                        <td class=\"table-td-totalPrice\">S/ {{ GetConsumerMenusFromDetailsTotalPrice }}</td>\n                    </tr>\n                  </tbody>\n                </table>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-sm-6\">\n                    <ngbd-modal-component \n                        [modalType]=\"'menus'\" \n                        [onCallback]=\"_tableDetailManager.onChooseMenuDish\">\n                    </ngbd-modal-component>\n                    <p></p>\n                </div>\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn\" (click)=\"_tableDetailManager.freeTable()\">\n                        <span class=\"glyphicon glyphicon-ban-circle\"></span>\n                        Liberar\n                    </button>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn\" (click)=\"_tableDetailManager.cancel()\">\n                        <span class=\"glyphicon glyphicon-ban-circle\"></span>\n                        Cancelar\n                    </button>\n                </div>\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn btn-default\" (click)=\"_tableDetailManager.save()\">\n                        <span class=\"glyphicon glyphicon-floppy-disk\"></span>\n                        Guardar\n                    </button>\n                </div>\n            </div>\n        \n        </div>\n    </nav>\n\n    <!-- Page Content -->\n    <div id=\"content\">\n        <h4> Escoga una Mesa</h4>\n        \n        <div id=\"parent-canvas\" (mousedown)=\"onMouseDown_TableCanvas($event)\">\n            <canvas id=\"canvas-selector\" width=\"400\" height=\"300\">\n            </canvas>\n        </div>\n    </div>\n</div>  "
+module.exports = "<div>\n    <img id=\"imgChair\" src=\"assets/spChair.png\" style=\"display:none\" />\n    <img id=\"imgTables\" src=\"assets/spTables.png\" style=\"display:none\" />\n</div>\n\n<div class=\"wrapper\">\n\n    <!-- Sidebar -->\n    <nav id=\"sidebar\" class=\"active\">\n        <div id=\"parent-detail-canvas\">\n            <canvas id=\"canvas-detail-selector\" width=\"150\" height=\"100\">\n            </canvas>\n            <div id=\"spinner-parent\">\n                <label># Clientes</label>\n                <p></p>\n                <input id=\"spinner-clients\" name=\"value\">\n            </div>\n        </div>\n        \n        <!-- Controls for the Table -->\n        <div class=\"container\">\n        \n            <div class=\"row\">\n                <div class=\"col-sm-12\">\n                    <h4>Menus ordenados:</h4>\n                </div>\n            </div>\n            \n            <div id=\"table-menu-orders\" class=\"row\">\n                <table class=\"table\">\n                  <thead>\n                    <tr>\n                      <th scope=\"col\">#</th>\n                      <th scope=\"col\">Foto</th>\n                      <th scope=\"col\">Plato</th>\n                      <th scope=\"col\">Precio</th>\n                      <th scope=\"col\"></th>\n                    </tr>\n                  </thead>\n                  <tbody>\n                    <tr *ngFor=\"let menu of GetConsumerMenusFromDetails;  let i = index\">\n                        <th scope=\"row\">{{ (i + 1) }}</th>\n                            <td>\n                                <div class=\"table-td-menuImage\">\n                                    <img class=\"img-menuImage\" src=\"{{menu.imageUrl}}\" />\n                                </div>\n                            </td>\n                            <td class=\"table-td-menuName\">{{ menu.name }}</td>\n                            <td class=\"table-td-menuPrice\">S/ {{ menu.price.toFixed(2) }}</td>\n                            <td>\n                                <button type=\"button\" class=\"btn\" (click)=\"_tableDetailManager.removeMenu(menu._id)\">\n                                    <span class=\"glyphicon glyphicon-remove\"></span>X\n                                </button>\n                            </td>\n                    </tr>\n                  </tbody>\n                </table>\n            </div>\n            <div class=\"row\">\n                <table class=\"table\">\n                  <tbody>\n                    <tr>\n                        <td></td>\n                        <td></td>\n                        <td></td>\n                        <td class=\"table-td-totalPrice\">Total:</td>\n                        <td class=\"table-td-totalPrice\">S/ {{ GetConsumerMenusFromDetailsTotalPrice }}</td>\n                    </tr>\n                  </tbody>\n                </table>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-sm-6\">\n                    <ngbd-modal-component \n                        [modalType]=\"'menus'\" \n                        [onCallback]=\"_tableDetailManager.onChooseMenuDish\">\n                    </ngbd-modal-component>\n                    <p></p>\n                </div>\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn\" (click)=\"_tableDetailManager.freeTable()\">\n                        <span class=\"glyphicon glyphicon-ban-circle\"></span>\n                        Liberar\n                    </button>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn\" (click)=\"_tableDetailManager.cancel()\">\n                        <span class=\"glyphicon glyphicon-ban-circle\"></span>\n                        Cancelar\n                    </button>\n                </div>\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn btn-primary\" (click)=\"_tableDetailManager.save()\">\n                        <span class=\"glyphicon glyphicon-floppy-disk\"></span>\n                        Guardar\n                    </button>\n                </div>\n            </div>\n        \n        </div>\n    </nav>\n\n    <!-- Page Content -->\n    <div id=\"content\">\n        <h4> Escoja una Mesa</h4>\n        \n        <div id=\"parent-canvas\" (mousedown)=\"onMouseDown_TableCanvas($event)\">\n            <canvas id=\"canvas-selector\" width=\"400\" height=\"300\">\n            </canvas>\n        </div>\n    </div>\n</div>  "
 
 /***/ }),
 
@@ -803,6 +803,8 @@ var HomeComponent = /** @class */ (function () {
         this._tableDetailManager = new _tableDetailManager__WEBPACK_IMPORTED_MODULE_5__["TableDetailManager"](this);
         this._tableDetailManager.Initialize('#parent-detail-canvas', '#canvas-detail-selector');
         this.onResizeWindow(null);
+        setTimeout(function (component) { component.onResizeWindow(null); }, 750, this);
+        setTimeout(function (component) { component.onResizeWindow(null); }, 1500, this);
     };
     HomeComponent.prototype.onMouseDown_TableCanvas = function (event) {
         this._tablesManager.OnMouseDown(event);
@@ -866,6 +868,7 @@ var TableDetailManager = /** @class */ (function () {
         this._width = 300;
         this._height = 600;
         this._consumerTable = null;
+        this._consumerTableTEMP = null;
         this.consumerTableOrders = null;
         this.consumerTableOrdersTEMP = null;
         TableDetailManager.Instance = this;
@@ -893,6 +896,9 @@ var TableDetailManager = /** @class */ (function () {
             _home_component__WEBPACK_IMPORTED_MODULE_0__["HomeComponent"].HideSideBar(); // remove side bar
             _this._homeComponent.onResizeWindow(null);
             _this._homeComponent.GetLoaderService.hideLoader();
+            // Send toast of confirmation
+            toastr.success('Se libero la mesa #' +
+                _this._consumerTableTEMP.name, 'Servicio!');
         });
     };
     TableDetailManager.prototype.removeMenu = function (idMenu) {
@@ -912,6 +918,7 @@ var TableDetailManager = /** @class */ (function () {
     };
     TableDetailManager.prototype.cancel = function () {
         this.consumerTableOrdersTEMP = _common_utils__WEBPACK_IMPORTED_MODULE_1__["Utils"].deepClone(this.consumerTableOrders);
+        this._consumerTableTEMP = _common_utils__WEBPACK_IMPORTED_MODULE_1__["Utils"].deepClone(this._consumerTable);
     };
     TableDetailManager.prototype.save = function () {
         var _this = this;
@@ -923,24 +930,28 @@ var TableDetailManager = /** @class */ (function () {
         for (var i = 0; i < this.consumerTableOrdersTEMP.consumerMenus.length; i++) {
             dataBody.consumerMenus.push(this.consumerTableOrdersTEMP.consumerMenus[i]._id);
         }
-        this._homeComponent.GetBackendService.setTableOccupied(idConsumerTable, true, 4, dataBody)
+        this._homeComponent.GetBackendService.setTableOccupied(idConsumerTable, true, this._consumerTableTEMP.consumerCount, dataBody)
             .subscribe(function (data) {
             // Now update consumer table on Home
             var consumerTables = _this._homeComponent.GetConsumerTables;
             for (var i = 0; i < consumerTables.length; i++) {
                 if (consumerTables[i]._id === idConsumerTable) {
                     consumerTables[i].isOccupied = 1;
-                    consumerTables[i].consumerCount = 4;
+                    consumerTables[i].consumerCount = _this._consumerTableTEMP.consumerCount;
                     break;
                 }
             }
             _this._homeComponent.onResizeWindow(null);
             _this._homeComponent.GetLoaderService.hideLoader();
+            // Send toast of confirmation
+            toastr.success('Se actualizo correctamente la mesa #' +
+                _this._consumerTableTEMP.name, 'Servicio!');
         });
     };
     TableDetailManager.prototype.ShowTableDetails = function (table) {
         var _this = this;
         this._consumerTable = table;
+        this._consumerTableTEMP = _common_utils__WEBPACK_IMPORTED_MODULE_1__["Utils"].deepClone(table);
         this._homeComponent.GetLoaderService.showLoader();
         this._homeComponent.GetBackendService.getOrdersByTable(table._id)
             .subscribe(function (data) {
@@ -949,6 +960,17 @@ var TableDetailManager = /** @class */ (function () {
             // Hide loader and show SideBar for Details
             _this._homeComponent.GetLoaderService.hideLoader();
             _home_component__WEBPACK_IMPORTED_MODULE_0__["HomeComponent"].ShowSideBar();
+            // Configure spinner for clients
+            $("#spinner-clients").spinner({
+                min: 0,
+                max: _this._consumerTableTEMP.size,
+                stop: function (event, ui) {
+                    var self = TableDetailManager.Instance;
+                    self._consumerTableTEMP.consumerCount = Number($(this).val());
+                    self.drawTable();
+                }
+            });
+            $("#spinner-clients").spinner("value", _this._consumerTableTEMP.consumerCount);
         });
         this.drawTable();
     };
@@ -957,12 +979,12 @@ var TableDetailManager = /** @class */ (function () {
         var imgHTML_tables = this._homeComponent.GetHTMLImage_Tables;
         var imgHTML_chair = this._homeComponent.GetHTMLImage_Chair;
         // vars
-        var ix = 120;
+        var ix = 80;
         var iy = 30;
         var offsetX = 15;
         var offsetY = 16;
         var radius = 35;
-        var tableSize = this._consumerTable.size;
+        var tableSize = this._consumerTableTEMP.size;
         var angleFraction = (Math.PI * 2) / tableSize;
         // Clean canvas
         ctx.clearRect(0, 0, this._width, this._height);
@@ -975,12 +997,12 @@ var TableDetailManager = /** @class */ (function () {
         // Draw table name
         ctx.font = "bold 20px Arial";
         ctx.textAlign = "center";
-        ctx.strokeText(this._consumerTable.name, ix + imgHTML_tables.width * 0.5, (iy + imgHTML_tables.height * 0.5) + 6);
+        ctx.strokeText(this._consumerTableTEMP.name, ix + imgHTML_tables.width * 0.5, (iy + imgHTML_tables.height * 0.5) + 6);
         for (var j = 0; j < tableSize; j++) {
             var cx = (ix + offsetX) + Math.cos(angleFraction * j) * radius;
             var cy = (iy + offsetY) + Math.sin(angleFraction * j) * radius;
             // Draw chair: If chair is occupied then make it alpha...
-            if (j < this._consumerTable.consumerCount)
+            if (j < this._consumerTableTEMP.consumerCount)
                 ctx.globalAlpha = 0.25;
             ctx.drawImage(imgHTML_chair, cx, cy);
             ctx.globalAlpha = 1;

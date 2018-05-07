@@ -100,6 +100,9 @@ export class HomeComponent implements OnInit {
     this._tableDetailManager.Initialize('#parent-detail-canvas', '#canvas-detail-selector');
     
     this.onResizeWindow(null);
+    
+    setTimeout(function(component) { component.onResizeWindow(null); }, 750, this);
+    setTimeout(function(component) { component.onResizeWindow(null); }, 1500, this);
   }
   
   private onMouseDown_TableCanvas(event): void {

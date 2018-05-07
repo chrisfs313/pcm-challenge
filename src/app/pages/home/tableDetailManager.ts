@@ -8,6 +8,8 @@ import { ConsumerTableOrdersVM } from "../../models/consumerTableOrdersVM";
 
 // Declaramos las variables para Toastr
 declare var $: any;
+// Declaramos las variables para Toastr
+declare var toastr: any;
 
 export class TableDetailManager {
     
@@ -21,6 +23,7 @@ export class TableDetailManager {
     private _height: number = 600;
     
     private _consumerTable: ConsumerTableVM = null;
+    public _consumerTableTEMP: ConsumerTableVM = null;
     public consumerTableOrders: ConsumerTableOrdersVM = null;
     public consumerTableOrdersTEMP: ConsumerTableOrdersVM = null;
     
@@ -36,6 +39,7 @@ export class TableDetailManager {
         this._canvasSelector = $(canvasId);
         
         this._ctx = this._canvasSelector[0].getContext("2d");
+
     }
     
     public freeTable(): void {
@@ -60,6 +64,9 @@ export class TableDetailManager {
               HomeComponent.HideSideBar(); // remove side bar
               this._homeComponent.onResizeWindow(null);
               this._homeComponent.GetLoaderService.hideLoader();
+              
+                // Send toast of confirmation
+                toastr.success('Se libero la mesa #' + this._consumerTableTEMP.name, 'Administracion')
           });
     }
     
@@ -89,6 +96,7 @@ export class TableDetailManager {
     
     public cancel(): void {
         this.consumerTableOrdersTEMP = Utils.deepClone(this.consumerTableOrders);
+        this._consumerTableTEMP = Utils.deepClone(this._consumerTable);
     }
     
     public save(): void {
@@ -102,29 +110,34 @@ export class TableDetailManager {
         for (var i = 0; i < this.consumerTableOrdersTEMP.consumerMenus.length; i++) {
             dataBody.consumerMenus.push(this.consumerTableOrdersTEMP.consumerMenus[i]._id);
         }
-            
+        
         this._homeComponent.GetBackendService.setTableOccupied(
-            idConsumerTable, true, 4, dataBody)
+            idConsumerTable, true, this._consumerTableTEMP.consumerCount, dataBody)
             .subscribe(data => {
               
-              // Now update consumer table on Home
-              let consumerTables:ConsumerTableVM[] = this._homeComponent.GetConsumerTables;
+                // Now update consumer table on Home
+                let consumerTables:ConsumerTableVM[] = this._homeComponent.GetConsumerTables;
+                
+                for (var i = 0; i < consumerTables.length; i++) {
+                    if (consumerTables[i]._id === idConsumerTable) {
+                        consumerTables[i].isOccupied = 1;
+                        consumerTables[i].consumerCount = this._consumerTableTEMP.consumerCount;
+                        break;
+                    }
+                }
               
-              for (var i = 0; i < consumerTables.length; i++) {
-                  if (consumerTables[i]._id === idConsumerTable) {
-                      consumerTables[i].isOccupied = 1;
-                      consumerTables[i].consumerCount = 4;
-                      break;
-                  }
-              }
-              
-              this._homeComponent.onResizeWindow(null);
-              this._homeComponent.GetLoaderService.hideLoader();
+                this._homeComponent.onResizeWindow(null);
+                this._homeComponent.GetLoaderService.hideLoader();
+                
+                // Send toast of confirmation
+                toastr.success('Se actualizo correctamente la mesa #' + 
+                    this._consumerTableTEMP.name, 'Administracion')
           });
     }
     
     public ShowTableDetails(table: ConsumerTableVM): void {
         this._consumerTable = table;
+        this._consumerTableTEMP = Utils.deepClone(table);
         
         this._homeComponent.GetLoaderService.showLoader();
       
@@ -136,23 +149,35 @@ export class TableDetailManager {
                 // Hide loader and show SideBar for Details
                 this._homeComponent.GetLoaderService.hideLoader();
                 HomeComponent.ShowSideBar();
+                
+                // Configure spinner for clients
+                $("#spinner-clients").spinner({
+                    min: 0, 
+                    max: this._consumerTableTEMP.size,
+                    stop: function(event, ui) {
+                        var self = TableDetailManager.Instance;
+                        self._consumerTableTEMP.consumerCount = Number($(this).val());
+                        self.drawTable();
+                    }
+                });
+                $("#spinner-clients").spinner( "value", this._consumerTableTEMP.consumerCount);
             });
         
         this.drawTable();
     }
     
-    private drawTable(): void {
+    public drawTable(): void {
         var ctx = this._ctx;
         var imgHTML_tables = this._homeComponent.GetHTMLImage_Tables;
         var imgHTML_chair = this._homeComponent.GetHTMLImage_Chair;
         
         // vars
-        var ix = 120;
+        var ix = 80;
         var iy = 30;
         var offsetX = 15;
         var offsetY = 16;
         var radius = 35;
-        var tableSize = this._consumerTable.size;
+        var tableSize = this._consumerTableTEMP.size;
         var angleFraction = (Math.PI * 2) / tableSize;
         
         // Clean canvas
@@ -168,7 +193,7 @@ export class TableDetailManager {
         // Draw table name
         ctx.font = "bold 20px Arial";
         ctx.textAlign = "center"; 
-        ctx.strokeText(this._consumerTable.name, 
+        ctx.strokeText(this._consumerTableTEMP.name, 
             ix + imgHTML_tables.width * 0.5, 
             (iy + imgHTML_tables.height * 0.5) + 6);
         
@@ -177,7 +202,7 @@ export class TableDetailManager {
             var cy = (iy + offsetY) + Math.sin(angleFraction * j) * radius;
             
             // Draw chair: If chair is occupied then make it alpha...
-            if (j < this._consumerTable.consumerCount) ctx.globalAlpha = 0.25;
+            if (j < this._consumerTableTEMP.consumerCount) ctx.globalAlpha = 0.25;
             ctx.drawImage(imgHTML_chair, cx, cy);
             ctx.globalAlpha = 1;
         }
