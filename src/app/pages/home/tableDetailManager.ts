@@ -39,6 +39,8 @@ export class TableDetailManager {
     }
     
     public freeTable(): void {
+        this._homeComponent.GetLoaderService.showLoader();
+        
         let idConsumerTable: string = this.consumerTableOrdersTEMP._id;
         
         this._homeComponent.GetBackendService.freeTable(idConsumerTable)
@@ -56,6 +58,7 @@ export class TableDetailManager {
               }
               
               HomeComponent.HideSideBar(); // remove side bar
+              this._homeComponent.onResizeWindow(null);
               this._homeComponent.GetLoaderService.hideLoader();
           });
     }
@@ -115,6 +118,7 @@ export class TableDetailManager {
                   }
               }
               
+              this._homeComponent.onResizeWindow(null);
               this._homeComponent.GetLoaderService.hideLoader();
           });
     }

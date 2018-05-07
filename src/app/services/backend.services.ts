@@ -149,12 +149,13 @@ export class BackendService {
     }
     
     public freeTable(idConsumerTable: string): Observable<IConsumerTableResponse> {
+        let dataBody:ConsumerTableBodyVM = new ConsumerTableBodyVM();
         
         let url: string = Constants.WS_BASE_PATH + Constants.REST_ConsumerTable.SetTableOccupied +
             idConsumerTable + "/0/0";
             
         var observer = new Observable<IConsumerTableResponse>(observer => {
-            this._http.post<IConsumerTableResponse>(url).subscribe(
+            this._http.post<IConsumerTableResponse>(url, dataBody).subscribe(
                 data => {
                     observer.next(data);
                     observer.complete();

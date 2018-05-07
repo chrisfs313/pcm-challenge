@@ -106,7 +106,7 @@ export class HomeComponent implements OnInit {
     this._tablesManager.OnMouseDown(event);
   }
   
-  private onResizeWindow(event): void {
+  public onResizeWindow(event): void {
     if (this._tablesManager) this._tablesManager.OnResizeWindow();
   }
   
