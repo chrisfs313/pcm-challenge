@@ -51,6 +51,7 @@
 }
 
 #table-menu-orders {
+    overflow-x: hidden;
     overflow-y: auto;
     height: 280px;
 }

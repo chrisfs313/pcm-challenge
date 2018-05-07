@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalMenus } from './menus/modal.menus';
@@ -14,6 +14,8 @@ export class NgbdModalComponent {
   
   private _buttonLabel:string = "";
   
+  @Input() onCallback: Function;
+  
   constructor(private modalService: NgbModal) { }
   
   ngOnInit() {
@@ -28,7 +30,7 @@ export class NgbdModalComponent {
     switch(this.modalType) {
       case Constants.Modal_Menus:
         const modalRef = this.modalService.open(ModalMenus);
-        modalRef.componentInstance.name = 'World';
+        modalRef.componentInstance.onChooseMenuDishCallback = this.onCallback;
         break;
     }
   }

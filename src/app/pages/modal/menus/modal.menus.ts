@@ -15,17 +15,20 @@ declare var $: any;
   templateUrl: './modal.menus.html'
 })
 export class ModalMenus {
-  @Input() name;
+  @Input() onChooseMenuDishCallback;
 
   private _menuDishes: MenuDishVM[] = null;
   private _menuCategories: MenuCategoryVM[] = null;
   private _isCompleted:boolean = false;
+  
+  private _self: any;
 
   constructor(
     public activeModal: NgbActiveModal,
     private _backendService: BackendService,
     private _loaderService: LoaderService) {
       
+      this._self = this;
       this._loaderService.showLoader();
       
       this._backendService.getMenuCategories()
@@ -123,8 +126,25 @@ export class ModalMenus {
     }
     
     private bindEvents():void {
+      var self = this;
+      
       $(document).on('click', '.choose-menu-dish', function(e) {
-        console.log("clicked menu:", $(this).data('menu-dish-id'));
+        var idMenuDish = $(this).data('menu-dish-id');
+        
+        for (var i = 0; i < self._menuDishes.length; i++) {
+          var menuDishVM = self._menuDishes[i];
+          
+          if (menuDishVM._id === idMenuDish) {
+            self.onChooseMenuDishCallback(menuDishVM);
+            self.removeBinds();
+            self.activeModal.close('');
+            break;
+          }
+        }
       })
+    }
+    
+    private removeBinds():void {
+      $(document).off('click', '.choose-menu-dish');
     }
 }

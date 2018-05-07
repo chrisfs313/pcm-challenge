@@ -654,7 +654,7 @@ var IMenuDish = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".wrapper {\n    display: flex;\n    align-items: stretch;\n    width: 100%;\n}    \n\n#content {\n    width: 100%;\n}    \n\n#sidebar {\n    min-width: 300px;\n    max-width: 300px;\n    display: block;\n}    \n\n#sidebar.active {\n    margin-left: -300px;\n    display: none !important;\n}    \n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -300px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}    \n\n.table-td-menuImage {\n    max-width: 40px;\n    max-height: 40px;\n}    \n\n.img-menuImage {\n    width: 100%;\n}    \n\n.table-td-menuName {\n    font-size: 13px;\n}    \n\n.table-td-menuPrice {\n    font-size: 13px;\n}    \n\n.table-td-totalPrice {\n    font-size: 13px;\n    font-weight: bold;\n}    \n\n#table-menu-orders {\n    overflow-y: auto;\n    height: 280px;\n}"
+module.exports = ".wrapper {\n    display: flex;\n    align-items: stretch;\n    width: 100%;\n}    \n\n#content {\n    width: 100%;\n}    \n\n#sidebar {\n    min-width: 300px;\n    max-width: 300px;\n    display: block;\n}    \n\n#sidebar.active {\n    margin-left: -300px;\n    display: none !important;\n}    \n\n@media (max-width: 768px) {\n    #sidebar {\n        margin-left: -300px;\n    }\n    #sidebar.active {\n        margin-left: 0;\n    }\n}    \n\n.table-td-menuImage {\n    max-width: 40px;\n    max-height: 40px;\n}    \n\n.img-menuImage {\n    width: 100%;\n}    \n\n.table-td-menuName {\n    font-size: 13px;\n}    \n\n.table-td-menuPrice {\n    font-size: 13px;\n}    \n\n.table-td-totalPrice {\n    font-size: 13px;\n    font-weight: bold;\n}    \n\n#table-menu-orders {\n    overflow-x: hidden;\n    overflow-y: auto;\n    height: 280px;\n}"
 
 /***/ }),
 
@@ -665,7 +665,7 @@ module.exports = ".wrapper {\n    display: flex;\n    align-items: stretch;\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <img id=\"imgChair\" src=\"assets/spChair.png\" style=\"display:none\" />\n    <img id=\"imgTables\" src=\"assets/spTables.png\" style=\"display:none\" />\n</div>\n\n<div class=\"wrapper\">\n\n    <!-- Sidebar -->\n    <nav id=\"sidebar\" class=\"active\">\n        <div id=\"parent-detail-canvas\">\n            <canvas id=\"canvas-detail-selector\" width=\"300\" height=\"100\">\n            </canvas>\n        </div>\n        \n        <!-- Controls for the Table -->\n        <div class=\"container\">\n        \n            <div class=\"row\">\n                <div class=\"col-sm-12\">\n                    <h4>Menus ordenados:</h4>\n                </div>\n            </div>\n            \n            <div id=\"table-menu-orders\" class=\"row\">\n                <table class=\"table\">\n                  <thead>\n                    <tr>\n                      <th scope=\"col\">#</th>\n                      <th scope=\"col\">Foto</th>\n                      <th scope=\"col\">Plato</th>\n                      <th scope=\"col\">Precio</th>\n                      <th scope=\"col\"></th>\n                    </tr>\n                  </thead>\n                  <tbody>\n                    <tr *ngFor=\"let menu of GetConsumerMenusFromDetails;  let i = index\">\n                        <th scope=\"row\">{{ (i + 1) }}</th>\n                            <td>\n                                <div class=\"table-td-menuImage\">\n                                    <img class=\"img-menuImage\" src=\"{{menu.imageUrl}}\" />\n                                </div>\n                            </td>\n                            <td class=\"table-td-menuName\">{{ menu.name }}</td>\n                            <td class=\"table-td-menuPrice\">S/ {{ menu.price.toFixed(2) }}</td>\n                            <td>\n                                <button type=\"button\" class=\"btn\" (click)=\"_tableDetailManager.removeMenu(menu._id)\">\n                                    <span class=\"glyphicon glyphicon-remove\"></span>X\n                                </button>\n                            </td>\n                    </tr>\n                  </tbody>\n                </table>\n            </div>\n            <div class=\"row\">\n                <table class=\"table\">\n                  <tbody>\n                    <tr>\n                        <td></td>\n                        <td></td>\n                        <td></td>\n                        <td class=\"table-td-totalPrice\">Total:</td>\n                        <td class=\"table-td-totalPrice\">S/ {{ GetConsumerMenusFromDetailsTotalPrice }}</td>\n                    </tr>\n                  </tbody>\n                </table>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-sm-12\">\n                    <ngbd-modal-component [modalType]=\"'menus'\"></ngbd-modal-component>\n                    <p></p>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn\" (click)=\"_tableDetailManager.cancel()\">\n                        <span class=\"glyphicon glyphicon-ban-circle\"></span>\n                        Cancelar\n                    </button>\n                </div>\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn btn-default\" (click)=\"_tableDetailManager.save()\">\n                        <span class=\"glyphicon glyphicon-floppy-disk\"></span>\n                        Guardar\n                    </button>\n                </div>\n            </div>\n        \n        </div>\n    </nav>\n\n    <!-- Page Content -->\n    <div id=\"content\">\n        <div id=\"parent-canvas\" (mousedown)=\"onMouseDown_TableCanvas($event)\">\n            <canvas id=\"canvas-selector\" width=\"400\" height=\"300\">\n            </canvas>\n        </div>\n    </div>\n</div>  "
+module.exports = "<div>\n    <img id=\"imgChair\" src=\"assets/spChair.png\" style=\"display:none\" />\n    <img id=\"imgTables\" src=\"assets/spTables.png\" style=\"display:none\" />\n</div>\n\n<div class=\"wrapper\">\n\n    <!-- Sidebar -->\n    <nav id=\"sidebar\" class=\"active\">\n        <div id=\"parent-detail-canvas\">\n            <canvas id=\"canvas-detail-selector\" width=\"300\" height=\"100\">\n            </canvas>\n        </div>\n        \n        <!-- Controls for the Table -->\n        <div class=\"container\">\n        \n            <div class=\"row\">\n                <div class=\"col-sm-12\">\n                    <h4>Menus ordenados:</h4>\n                </div>\n            </div>\n            \n            <div id=\"table-menu-orders\" class=\"row\">\n                <table class=\"table\">\n                  <thead>\n                    <tr>\n                      <th scope=\"col\">#</th>\n                      <th scope=\"col\">Foto</th>\n                      <th scope=\"col\">Plato</th>\n                      <th scope=\"col\">Precio</th>\n                      <th scope=\"col\"></th>\n                    </tr>\n                  </thead>\n                  <tbody>\n                    <tr *ngFor=\"let menu of GetConsumerMenusFromDetails;  let i = index\">\n                        <th scope=\"row\">{{ (i + 1) }}</th>\n                            <td>\n                                <div class=\"table-td-menuImage\">\n                                    <img class=\"img-menuImage\" src=\"{{menu.imageUrl}}\" />\n                                </div>\n                            </td>\n                            <td class=\"table-td-menuName\">{{ menu.name }}</td>\n                            <td class=\"table-td-menuPrice\">S/ {{ menu.price.toFixed(2) }}</td>\n                            <td>\n                                <button type=\"button\" class=\"btn\" (click)=\"_tableDetailManager.removeMenu(menu._id)\">\n                                    <span class=\"glyphicon glyphicon-remove\"></span>X\n                                </button>\n                            </td>\n                    </tr>\n                  </tbody>\n                </table>\n            </div>\n            <div class=\"row\">\n                <table class=\"table\">\n                  <tbody>\n                    <tr>\n                        <td></td>\n                        <td></td>\n                        <td></td>\n                        <td class=\"table-td-totalPrice\">Total:</td>\n                        <td class=\"table-td-totalPrice\">S/ {{ GetConsumerMenusFromDetailsTotalPrice }}</td>\n                    </tr>\n                  </tbody>\n                </table>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-sm-12\">\n                    <ngbd-modal-component \n                        [modalType]=\"'menus'\" \n                        [onCallback]=\"_tableDetailManager.onChooseMenuDish\">\n                    </ngbd-modal-component>\n                    <p></p>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn\" (click)=\"_tableDetailManager.cancel()\">\n                        <span class=\"glyphicon glyphicon-ban-circle\"></span>\n                        Cancelar\n                    </button>\n                </div>\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn btn-default\" (click)=\"_tableDetailManager.save()\">\n                        <span class=\"glyphicon glyphicon-floppy-disk\"></span>\n                        Guardar\n                    </button>\n                </div>\n            </div>\n        \n        </div>\n    </nav>\n\n    <!-- Page Content -->\n    <div id=\"content\">\n        <h4> Escoga una Mesa</h4>\n        \n        <div id=\"parent-canvas\" (mousedown)=\"onMouseDown_TableCanvas($event)\">\n            <canvas id=\"canvas-selector\" width=\"400\" height=\"300\">\n            </canvas>\n        </div>\n    </div>\n</div>  "
 
 /***/ }),
 
@@ -834,6 +834,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TableDetailManager", function() { return TableDetailManager; });
 /* harmony import */ var _home_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./home.component */ "./src/app/pages/home/home.component.ts");
 /* harmony import */ var _common_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../common/utils */ "./src/app/common/utils.ts");
+/* harmony import */ var _models_consumerMenuVM__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../models/consumerMenuVM */ "./src/app/models/consumerMenuVM.ts");
+
 
 
 var TableDetailManager = /** @class */ (function () {
@@ -844,6 +846,7 @@ var TableDetailManager = /** @class */ (function () {
         this._consumerTable = null;
         this.consumerTableOrders = null;
         this.consumerTableOrdersTEMP = null;
+        TableDetailManager.Instance = this;
     }
     TableDetailManager.prototype.Initialize = function (parentId, canvasId) {
         this._parentSelector = $(parentId);
@@ -859,7 +862,11 @@ var TableDetailManager = /** @class */ (function () {
             }
         }
     };
-    TableDetailManager.prototype.addMenu = function () {
+    TableDetailManager.prototype.onChooseMenuDish = function (menuDish) {
+        var self = TableDetailManager.Instance;
+        var consumerMenus = self.consumerTableOrdersTEMP.consumerMenus;
+        var newMenu = new _models_consumerMenuVM__WEBPACK_IMPORTED_MODULE_2__["ConsumerMenuVM"](menuDish._id, menuDish.name, menuDish.price, menuDish.imageUrl);
+        consumerMenus.push(newMenu);
     };
     TableDetailManager.prototype.cancel = function () {
         this.consumerTableOrdersTEMP = _common_utils__WEBPACK_IMPORTED_MODULE_1__["Utils"].deepClone(this.consumerTableOrders);
@@ -914,6 +921,7 @@ var TableDetailManager = /** @class */ (function () {
             ctx.globalAlpha = 1;
         }
     };
+    TableDetailManager.Instance = null;
     return TableDetailManager;
 }());
 
@@ -1103,6 +1111,7 @@ var ModalMenus = /** @class */ (function () {
         this._menuDishes = null;
         this._menuCategories = null;
         this._isCompleted = false;
+        this._self = this;
         this._loaderService.showLoader();
         this._backendService.getMenuCategories()
             .subscribe(function (data) {
@@ -1180,14 +1189,27 @@ var ModalMenus = /** @class */ (function () {
         this.bindEvents();
     };
     ModalMenus.prototype.bindEvents = function () {
+        var self = this;
         $(document).on('click', '.choose-menu-dish', function (e) {
-            console.log("clicked menu:", $(this).data('menu-dish-id'));
+            var idMenuDish = $(this).data('menu-dish-id');
+            for (var i = 0; i < self._menuDishes.length; i++) {
+                var menuDishVM = self._menuDishes[i];
+                if (menuDishVM._id === idMenuDish) {
+                    self.onChooseMenuDishCallback(menuDishVM);
+                    self.removeBinds();
+                    self.activeModal.close('');
+                    break;
+                }
+            }
         });
+    };
+    ModalMenus.prototype.removeBinds = function () {
+        $(document).off('click', '.choose-menu-dish');
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
-    ], ModalMenus.prototype, "name", void 0);
+    ], ModalMenus.prototype, "onChooseMenuDishCallback", void 0);
     ModalMenus = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'ngbd-modal-content',
@@ -1258,7 +1280,7 @@ var NgbdModalComponent = /** @class */ (function () {
         switch (this.modalType) {
             case _common_constants__WEBPACK_IMPORTED_MODULE_3__["Constants"].Modal_Menus:
                 var modalRef = this.modalService.open(_menus_modal_menus__WEBPACK_IMPORTED_MODULE_2__["ModalMenus"]);
-                modalRef.componentInstance.name = 'World';
+                modalRef.componentInstance.onChooseMenuDishCallback = this.onCallback;
                 break;
         }
     };
@@ -1266,6 +1288,10 @@ var NgbdModalComponent = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
     ], NgbdModalComponent.prototype, "modalType", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Function)
+    ], NgbdModalComponent.prototype, "onCallback", void 0);
     NgbdModalComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'ngbd-modal-component',

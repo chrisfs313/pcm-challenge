@@ -1,5 +1,8 @@
 import { HomeComponent } from './home.component';
 import { Utils } from "../../common/utils";
+
+import { MenuDishVM } from '../../models/menuDishVM';
+import { ConsumerMenuVM } from "../../models/consumerMenuVM";
 import { ConsumerTableVM } from "../../models/consumerTableVM";
 import { ConsumerTableOrdersVM } from "../../models/consumerTableOrdersVM";
 
@@ -7,6 +10,8 @@ import { ConsumerTableOrdersVM } from "../../models/consumerTableOrdersVM";
 declare var $: any;
 
 export class TableDetailManager {
+    
+    public static Instance: TableDetailManager = null;
     
     private _ctx: any;
     private _parentSelector: any;
@@ -21,7 +26,10 @@ export class TableDetailManager {
     
     constructor(
       private _homeComponent: HomeComponent
-    ) { }
+    ) {
+        TableDetailManager.Instance = this;
+        
+    }
     
     public Initialize(parentId:String, canvasId:String): void {
         this._parentSelector = $(parentId);
@@ -41,8 +49,17 @@ export class TableDetailManager {
         }
     }
     
-    public addMenu(): void {
+    public onChooseMenuDish(menuDish: MenuDishVM): void {
+        var self = TableDetailManager.Instance;
         
+        let consumerMenus:ConsumerMenuVM[] = self.consumerTableOrdersTEMP.consumerMenus;
+        let newMenu: ConsumerMenuVM = new ConsumerMenuVM(
+            menuDish._id,
+            menuDish.name,
+            menuDish.price,
+            menuDish.imageUrl);
+        
+        consumerMenus.push(newMenu);
     }
     
     public cancel(): void {
