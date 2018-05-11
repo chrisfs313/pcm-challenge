@@ -28,3 +28,7 @@
     top: 50%;
     margin: -100px 0 0 -100px;
 }
+
+.logout {
+    cursor: pointer;
+}
