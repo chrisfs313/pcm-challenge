@@ -17,6 +17,7 @@ import {
 
 import { ConsumerTableOrdersVM, IConsumerTableOrders } from '../models/consumerTableOrdersVM';
 import { MenuCategoryVM, IMenuCategory } from '../models/menuCategoryVM';
+import { UserVM, IUser } from '../models/userVM';
 import { 
     MenuDishVM, 
     IMenuDish, 
@@ -30,6 +31,7 @@ import { ConsumerTableMapper } from '../models/mappers/consumerTableMapper';
 import { ConsumerTableOrdersMapper } from '../models/mappers/consumerTableOrdersMapper';
 import { MenuCategoryMapper } from '../models/mappers/menuCategoryMapper';
 import { MenuDishMapper } from '../models/mappers/menuDishMapper';
+import { UserMapper } from '../models/mappers/userMapper';
 
 // Declaramos las variables para Toastr
 declare var toastr: any;
@@ -215,6 +217,36 @@ export class BackendService {
                     
                     observer.next(null);
                     observer.complete();
+                });
+        });
+        
+        return observer;
+    }
+    
+    public login(dni: string, password: string): Observable<UserVM> {
+        let url: string = Constants.WS_BASE_PATH + Constants.REST_User.Login;
+        
+        var dataBody = {
+            "dni": dni,
+            "password": password
+        };
+        
+        var observer = new Observable<UserVM>(observer => {
+            this._http.post<IUser>(url, dataBody).subscribe(
+                data => {
+                    let result: UserVM = null;
+                    
+                    if (data.success === 1) {
+                        result = UserMapper.IUserTo(data);
+                    }
+                    
+                    observer.next(result);
+                    observer.complete();
+                },
+                err => {
+                    observer.next(null);
+                    console.error("Error", err);
+                    toastr.error('Paso un error inesperado en el login.', 'Error de Servicio!')
                 });
         });
         

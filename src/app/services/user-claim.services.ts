@@ -1,18 +1,30 @@
 import { Injectable } from "@angular/core"
 
+import { UserVM } from '../models/userVM';
+
 @Injectable()
 export class UserClaimService {
 
-    public userName: string;
+    public user: UserVM;
     public isAuthenticated: boolean;
 
     constructor() {
-        this.userName = "";
+        this.user = UserVM.Empty;
         this.isAuthenticated = false;
     }
 
     public clear(): void {
-        this.userName = "";
+        this.user = UserVM.Empty;
         this.isAuthenticated = false;
+    }
+    
+    public setUser(user: UserVM): void {
+        if (user && user.dni.length >= 8) {
+            this.user = user;
+            this.isAuthenticated = true;
+        }
+        else {
+            this.clear();
+        }
     }
 }

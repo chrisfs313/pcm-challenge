@@ -1,4 +1,4 @@
-<div class="loader_parent" *ngIf="loaderService.canShowLoader">
+<div class="loader_parent" *ngIf="_loaderService.canShowLoader">
     <div class="loader_background"></div>
 
     <div class="loader_img_parent">
@@ -8,7 +8,7 @@
 
 <div class="container">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" [hidden]="!_userClaimsService.isAuthenticated">
         <a class="navbar-brand" href="#">Restaurante: Pidalo con Rima</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -21,19 +21,9 @@
                 <li class="nav-item">
                   <a class="nav-link" routerLink="/menu">Administración Menu</a>
                 </li>
-              
-                <!--<li class="nav-item" *ngIf="!userClaimsService.isAuthenticated">-->
-                <!--    <a class="nav-link" routerLink="/login">Login</a>-->
-                <!--</li>-->
-                <!--<li class="nav-item" *ngIf="userClaimsService.isAuthenticated">-->
-                <!--    <a class="nav-link" href="" ng-click="logout()">Logout</a>-->
-                <!--</li>-->
-                <!--<li class="nav-item" *ngIf="userClaimsService.isAuthenticated">-->
-                <!--    <a class="nav-link" routerLink="/home">Home</a>-->
-                <!--</li>-->
-                <!--<li class="nav-item" *ngIf="userClaimsService.isAuthenticated">-->
-                <!--    <a class="nav-link" routerLink="/about">About</a>-->
-                <!--</li>-->
+                <li class="nav-item">
+                  <a class="nav-link" (click)="logout()">Cerrar Sesión</a>
+                </li>
             </ul>
         </div>
     </nav>

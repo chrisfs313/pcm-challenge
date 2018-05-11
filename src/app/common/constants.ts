@@ -14,6 +14,10 @@ export class MenuCategoryBackend {
     public readonly GetMenuCategories: string = "/menuCategory/list";
 }
 
+export class UserBackend {
+    public readonly Login: string = "/user/login";
+}
+
 export class Constants {
     public static readonly DefaultIdBusiness: string = "5a59398eba92390014228220";
     
@@ -24,6 +28,7 @@ export class Constants {
     public static readonly REST_ConsumerTable: ConsumerTableBackend = new ConsumerTableBackend();
     public static readonly REST_MenuDish: MenuDishBackend = new MenuDishBackend();
     public static readonly REST_MenuCategory: MenuCategoryBackend = new MenuCategoryBackend();
+    public static readonly REST_User: UserBackend = new UserBackend();
 
     // Modals
     public static readonly Modal_Menus: string = "menus";

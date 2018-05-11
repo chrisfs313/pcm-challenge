@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h4>Restaurante: Pidalo con Rima</h4>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-sm-6">
+            <label>Usuario:</label>
+        </div>
+        <div class="col-sm-6">
+            <input type="text" [(ngModel)]="_dni" />
+        </div>
+    </div>
+    <div class="row">
+        <p></p>
+        <div class="col-sm-6">
+            <label>Password:</label>
+        </div>
+        <div class="col-sm-6">
+            <input type="password" [(ngModel)]="_password" />
+        </div>
+    </div>
+    
+    <div class="row">
+        <p></p>
+        <p></p>
+        <div class="col-sm-12">
+            <input type="button" value="Ingresar" (click)="login()" />
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { LoaderService } from './services/loader.services';
 import { UserClaimService } from './services/user-claim.services';
@@ -11,8 +12,12 @@ import { UserClaimService } from './services/user-claim.services';
 export class AppComponent {
   
   constructor(
-        public userClaimsService: UserClaimService,
-        public loaderService: LoaderService) { }
+    private _router: Router,
+    private _userClaimsService: UserClaimService,
+    private _loaderService: LoaderService) { }
   
-  title = 'app';
+  private logout(): void {
+    this._userClaimsService.clear();
+    this._router.navigate(['/login']);
+  }
 }

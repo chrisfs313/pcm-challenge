@@ -14,6 +14,7 @@ import { BackendService } from './services/backend.services';
 
 import { HomeComponent } from './pages/home/home.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { LoginComponent } from './pages/login/login.component';
 
 import { NgbdModalComponent } from './pages/modal/modal.component';
 import { ModalMenus } from './pages/modal/menus/modal.menus';
@@ -27,7 +28,8 @@ import { ModalManageMenu } from './pages/modal/manage-menu/modal.manage-menu';
     NgbdModalComponent,
     ModalMenus,
     ModalManageMenu,
-    MenuComponent
+    MenuComponent,
+    LoginComponent
   ],
   imports: [
     NgbModule.forRoot(),
