@@ -99,7 +99,7 @@ module.exports = ".loader_parent {\n    width: 100%;\n    height: 100%;\n    pos
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"loader_parent\" *ngIf=\"_loaderService.canShowLoader\">\n    <div class=\"loader_background\"></div>\n\n    <div class=\"loader_img_parent\">\n        <img class=\"loader_img\" src=\"assets/loader.gif\" />\n    </div>\n</div>\n\n<div class=\"container\">\n\n    <nav class=\"navbar navbar-expand-lg navbar-light bg-light\" [hidden]=\"!_userClaimsService.isAuthenticated\">\n        <a class=\"navbar-brand\" href=\"#\">Restaurante: Pidalo con Rima</a>\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n        </button>\n        <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n            <ul class=\"navbar-nav\">\n                <li class=\"nav-item\">\n                  <a class=\"nav-link\" routerLink=\"/home\">Administración Mesas</a>\n                </li>\n                <li class=\"nav-item\">\n                  <a class=\"nav-link\" routerLink=\"/menu\">Administración Menu</a>\n                </li>\n                <li class=\"nav-item\">\n                  <a class=\"nav-link\" (click)=\"logout()\">Cerrar Sesión</a>\n                </li>\n            </ul>\n        </div>\n    </nav>\n\n    <router-outlet></router-outlet>\n    \n</div>\n"
+module.exports = "<div class=\"loader_parent\" *ngIf=\"_loaderService.canShowLoader\">\n    <div class=\"loader_background\"></div>\n\n    <div class=\"loader_img_parent\">\n        <img class=\"loader_img\" src=\"assets/loader.gif\" />\n    </div>\n</div>\n\n<div class=\"container\">\n\n    <nav class=\"navbar navbar-expand-lg navbar-light bg-light\" [hidden]=\"!_userClaimsService.isAuthenticated\">\n        <a class=\"navbar-brand\" href=\"#\">Restaurante: Pidalo con Rima</a>\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarNav\" aria-controls=\"navbarNav\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n            <span class=\"navbar-toggler-icon\"></span>\n        </button>\n        <div class=\"collapse navbar-collapse\" id=\"navbarNav\">\n            <ul class=\"navbar-nav\">\n                <li class=\"nav-item\">\n                  <a class=\"nav-link\" routerLink=\"/home\">Mesas</a>\n                </li>\n                <li class=\"nav-item\">\n                  <a class=\"nav-link\" routerLink=\"/menu\">Menu</a>\n                </li>\n                <li class=\"nav-item\">\n                  <a class=\"nav-link\" (click)=\"logout()\">Cerrar Sesión</a>\n                </li>\n            </ul>\n        </div>\n    </nav>\n\n    <router-outlet></router-outlet>\n    \n</div>\n"
 
 /***/ }),
 
@@ -344,6 +344,25 @@ var Utils = /** @class */ (function () {
     return Utils;
 }());
 
+
+
+/***/ }),
+
+/***/ "./src/app/enums/enumLaborType.ts":
+/*!****************************************!*\
+  !*** ./src/app/enums/enumLaborType.ts ***!
+  \****************************************/
+/*! exports provided: EnumLaborType */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EnumLaborType", function() { return EnumLaborType; });
+var EnumLaborType;
+(function (EnumLaborType) {
+    EnumLaborType["Waiter"] = "5a59398eba90390014228220";
+    EnumLaborType["Cooker"] = "5a59398eba90390014228221";
+})(EnumLaborType || (EnumLaborType = {}));
 
 
 /***/ }),
@@ -803,7 +822,7 @@ module.exports = ".wrapper {\n    display: flex;\n    align-items: stretch;\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n    <img id=\"imgChair\" src=\"assets/spChair.png\" style=\"display:none\" />\n    <img id=\"imgTables\" src=\"assets/spTables.png\" style=\"display:none\" />\n</div>\n\n<div class=\"wrapper\">\n\n    <!-- Sidebar -->\n    <nav id=\"sidebar\" class=\"active\">\n        <div id=\"parent-detail-canvas\">\n            <canvas id=\"canvas-detail-selector\" width=\"150\" height=\"100\">\n            </canvas>\n            <div id=\"spinner-parent\">\n                <label># Clientes</label>\n                <p></p>\n                <input id=\"spinner-clients\" name=\"value\">\n            </div>\n        </div>\n        \n        <!-- Controls for the Table -->\n        <div class=\"container\">\n        \n            <div class=\"row\">\n                <div class=\"col-sm-12\">\n                    <h4>Menus ordenados:</h4>\n                </div>\n            </div>\n            \n            <div id=\"table-menu-orders\" class=\"row\">\n                <table class=\"table\">\n                  <thead>\n                    <tr>\n                      <th scope=\"col\">#</th>\n                      <th scope=\"col\">Foto</th>\n                      <th scope=\"col\">Plato</th>\n                      <th scope=\"col\">Precio</th>\n                      <th scope=\"col\"></th>\n                    </tr>\n                  </thead>\n                  <tbody>\n                    <tr *ngFor=\"let menu of GetConsumerMenusFromDetails;  let i = index\">\n                        <th scope=\"row\">{{ (i + 1) }}</th>\n                            <td>\n                                <div class=\"table-td-menuImage\">\n                                    <img class=\"img-menuImage\" src=\"{{menu.imageUrl}}\" />\n                                </div>\n                            </td>\n                            <td class=\"table-td-menuName\">{{ menu.name }}</td>\n                            <td class=\"table-td-menuPrice\">S/ {{ menu.price.toFixed(2) }}</td>\n                            <td>\n                                <button type=\"button\" class=\"btn\" (click)=\"_tableDetailManager.removeMenu(menu._id)\">\n                                    <span class=\"glyphicon glyphicon-remove\"></span>X\n                                </button>\n                            </td>\n                    </tr>\n                  </tbody>\n                </table>\n            </div>\n            <div class=\"row\">\n                <table class=\"table\">\n                  <tbody>\n                    <tr>\n                        <td></td>\n                        <td></td>\n                        <td></td>\n                        <td class=\"table-td-totalPrice\">Total:</td>\n                        <td class=\"table-td-totalPrice\">S/ {{ GetConsumerMenusFromDetailsTotalPrice }}</td>\n                    </tr>\n                  </tbody>\n                </table>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-sm-6\">\n                    <ngbd-modal-component \n                        [modalType]=\"'menus'\" \n                        [onCallback]=\"_tableDetailManager.onChooseMenuDish\">\n                    </ngbd-modal-component>\n                    <p></p>\n                </div>\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn\" (click)=\"_tableDetailManager.freeTable()\">\n                        <span class=\"glyphicon glyphicon-ban-circle\"></span>\n                        Liberar\n                    </button>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn\" (click)=\"_tableDetailManager.cancel()\">\n                        <span class=\"glyphicon glyphicon-ban-circle\"></span>\n                        Cancelar\n                    </button>\n                </div>\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn btn-primary\" (click)=\"_tableDetailManager.save()\">\n                        <span class=\"glyphicon glyphicon-floppy-disk\"></span>\n                        Guardar\n                    </button>\n                </div>\n            </div>\n        \n        </div>\n    </nav>\n\n    <!-- Page Content -->\n    <div id=\"content\">\n        <h4> Escoja una Mesa</h4>\n        \n        <div id=\"parent-canvas\" (mousedown)=\"onMouseDown_TableCanvas($event)\">\n            <canvas id=\"canvas-selector\" width=\"400\" height=\"300\">\n            </canvas>\n        </div>\n    </div>\n</div>  "
+module.exports = "<div>\n    <img id=\"imgChair\" src=\"assets/spChair.png\" style=\"display:none\" />\n    <img id=\"imgTables\" src=\"assets/spTables.png\" style=\"display:none\" />\n</div>\n\n<div class=\"wrapper\">\n\n    <!-- Sidebar -->\n    <nav id=\"sidebar\" class=\"active\">\n        <div id=\"parent-detail-canvas\">\n            <canvas id=\"canvas-detail-selector\" width=\"150\" height=\"100\">\n            </canvas>\n            <div id=\"spinner-parent\">\n                <label># Clientes</label>\n                <p></p>\n                <input id=\"spinner-clients\" name=\"value\" [disabled]=\"_userClaimsService.isCooker\">\n            </div>\n        </div>\n        \n        <!-- Controls for the Table -->\n        <div class=\"container\">\n        \n            <div class=\"row\">\n                <div class=\"col-sm-12\">\n                    <h4>Menus ordenados:</h4>\n                </div>\n            </div>\n            \n            <div id=\"table-menu-orders\" class=\"row\">\n                <table class=\"table\">\n                  <thead>\n                    <tr>\n                      <th scope=\"col\">#</th>\n                      <th scope=\"col\">Foto</th>\n                      <th scope=\"col\">Plato</th>\n                      <th scope=\"col\">Precio</th>\n                      <th scope=\"col\"></th>\n                    </tr>\n                  </thead>\n                  <tbody>\n                    <tr *ngFor=\"let menu of GetConsumerMenusFromDetails;  let i = index\">\n                        <th scope=\"row\">{{ (i + 1) }}</th>\n                            <td>\n                                <div class=\"table-td-menuImage\">\n                                    <img class=\"img-menuImage\" src=\"{{menu.imageUrl}}\" />\n                                </div>\n                            </td>\n                            <td class=\"table-td-menuName\">{{ menu.name }}</td>\n                            <td class=\"table-td-menuPrice\">S/ {{ menu.price.toFixed(2) }}</td>\n                            <td>\n                                <button type=\"button\" class=\"btn\" \n                                    [hidden]=\"_userClaimsService.isCooker\"\n                                    (click)=\"_tableDetailManager.removeMenu(menu._id)\">\n                                    \n                                    <span class=\"glyphicon glyphicon-remove\"></span>X\n                                </button>\n                            </td>\n                    </tr>\n                  </tbody>\n                </table>\n            </div>\n            <div class=\"row\">\n                <table class=\"table\">\n                  <tbody>\n                    <tr>\n                        <td></td>\n                        <td></td>\n                        <td></td>\n                        <td class=\"table-td-totalPrice\">Total:</td>\n                        <td class=\"table-td-totalPrice\">S/ {{ GetConsumerMenusFromDetailsTotalPrice }}</td>\n                    </tr>\n                  </tbody>\n                </table>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-sm-6\">\n                    <ngbd-modal-component \n                        [hidden]=\"_userClaimsService.isCooker\"\n                        [modalType]=\"'menus'\" \n                        [onCallback]=\"_tableDetailManager.onChooseMenuDish\">\n                    </ngbd-modal-component>\n                    <p></p>\n                </div>\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn\" \n                        [hidden]=\"_userClaimsService.isCooker\"\n                        (click)=\"_tableDetailManager.freeTable()\">\n                        <span class=\"glyphicon glyphicon-ban-circle\"></span>\n                        Liberar\n                    </button>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn\" (click)=\"_tableDetailManager.cancel()\">\n                        <span class=\"glyphicon glyphicon-ban-circle\"></span>\n                        Cancelar\n                    </button>\n                </div>\n                <div class=\"col-sm-6\">\n                    <button type=\"button\" class=\"btn btn-primary\"\n                        (click)=\"_tableDetailManager.save()\">\n                        <span class=\"glyphicon glyphicon-floppy-disk\"></span>\n                        Guardar\n                    </button>\n                </div>\n            </div>\n        \n        </div>\n    </nav>\n\n    <!-- Page Content -->\n    <div id=\"content\">\n        <h4> Escoja una Mesa</h4>\n        \n        <div id=\"parent-canvas\" (mousedown)=\"onMouseDown_TableCanvas($event)\">\n            <canvas id=\"canvas-selector\" width=\"400\" height=\"300\">\n            </canvas>\n        </div>\n    </div>\n</div>  "
 
 /***/ }),
 
@@ -820,9 +839,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_backend_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/backend.services */ "./src/app/services/backend.services.ts");
 /* harmony import */ var _services_loader_services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/loader.services */ "./src/app/services/loader.services.ts");
-/* harmony import */ var _common_constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/constants */ "./src/app/common/constants.ts");
-/* harmony import */ var _tablesManager__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tablesManager */ "./src/app/pages/home/tablesManager.ts");
-/* harmony import */ var _tableDetailManager__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./tableDetailManager */ "./src/app/pages/home/tableDetailManager.ts");
+/* harmony import */ var _services_user_claim_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/user-claim.services */ "./src/app/services/user-claim.services.ts");
+/* harmony import */ var _common_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/constants */ "./src/app/common/constants.ts");
+/* harmony import */ var _tablesManager__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./tablesManager */ "./src/app/pages/home/tablesManager.ts");
+/* harmony import */ var _tableDetailManager__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./tableDetailManager */ "./src/app/pages/home/tableDetailManager.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -838,14 +858,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var HomeComponent = /** @class */ (function () {
-    function HomeComponent(_backendService, _loaderService) {
+    function HomeComponent(_userClaimsService, _backendService, _loaderService) {
         var _this = this;
+        this._userClaimsService = _userClaimsService;
         this._backendService = _backendService;
         this._loaderService = _loaderService;
         this._initialized = false;
         this._loaderService.showLoader();
-        this._backendService.listActivesTablesByBusiness(_common_constants__WEBPACK_IMPORTED_MODULE_3__["Constants"].DefaultIdBusiness)
+        this._backendService.listActivesTablesByBusiness(_common_constants__WEBPACK_IMPORTED_MODULE_4__["Constants"].DefaultIdBusiness)
             .subscribe(function (data) {
             _this._consumerTables = data;
             _this.onResizeWindow(null);
@@ -914,10 +936,10 @@ var HomeComponent = /** @class */ (function () {
         this._imgChair = $("#imgChair")[0];
         this._imgTables = $("#imgTables")[0];
         // Initialize Table Manager
-        this._tablesManager = new _tablesManager__WEBPACK_IMPORTED_MODULE_4__["TablesManager"](this);
+        this._tablesManager = new _tablesManager__WEBPACK_IMPORTED_MODULE_5__["TablesManager"](this);
         this._tablesManager.Initialize('#parent-canvas', '#canvas-selector');
         // Initialize Table Detail Manager
-        this._tableDetailManager = new _tableDetailManager__WEBPACK_IMPORTED_MODULE_5__["TableDetailManager"](this);
+        this._tableDetailManager = new _tableDetailManager__WEBPACK_IMPORTED_MODULE_6__["TableDetailManager"](this);
         this._tableDetailManager.Initialize('#parent-detail-canvas', '#canvas-detail-selector');
         this.onResizeWindow(null);
         setTimeout(function (component) { component.onResizeWindow(null); }, 750, this);
@@ -951,7 +973,8 @@ var HomeComponent = /** @class */ (function () {
                 '(window:resize)': 'onResizeWindow($event)'
             }
         }),
-        __metadata("design:paramtypes", [_services_backend_services__WEBPACK_IMPORTED_MODULE_1__["BackendService"],
+        __metadata("design:paramtypes", [_services_user_claim_services__WEBPACK_IMPORTED_MODULE_3__["UserClaimService"],
+            _services_backend_services__WEBPACK_IMPORTED_MODULE_1__["BackendService"],
             _services_loader_services__WEBPACK_IMPORTED_MODULE_2__["LoaderService"]])
     ], HomeComponent);
     return HomeComponent;
@@ -1392,7 +1415,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h4>Administrar Menus</h4>\n\n<div class=\"container\">\n    <ngbd-modal-component \n        [modalType]=\"'manage-menu'\" \n        [onCallback]=\"addMenu\">\n    </ngbd-modal-component>\n    <p></p>\n    \n    <div id=\"menu-container-dynamic\" class=\"container\">\n    </div>\n</div>"
+module.exports = "<h4>Administrar Menus</h4>\n\n<div class=\"container\">\n    <div [hidden]=\"_userClaimsService.isWaiter\">\n        <ngbd-modal-component \n            [modalType]=\"'manage-menu'\" \n            [onCallback]=\"addMenu\">\n        </ngbd-modal-component>\n        <p></p>\n    </div>\n    \n    <div id=\"menu-container-dynamic\" class=\"container\">\n    </div>\n</div>"
 
 /***/ }),
 
@@ -1409,7 +1432,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _services_backend_services__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/backend.services */ "./src/app/services/backend.services.ts");
 /* harmony import */ var _services_loader_services__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/loader.services */ "./src/app/services/loader.services.ts");
-/* harmony import */ var _models_menuDishVM__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../models/menuDishVM */ "./src/app/models/menuDishVM.ts");
+/* harmony import */ var _services_user_claim_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/user-claim.services */ "./src/app/services/user-claim.services.ts");
+/* harmony import */ var _models_menuDishVM__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../models/menuDishVM */ "./src/app/models/menuDishVM.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1423,9 +1447,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var MenuComponent = /** @class */ (function () {
-    function MenuComponent(_backendService, _loaderService) {
+    function MenuComponent(_userClaimsService, _backendService, _loaderService) {
         var _this = this;
+        this._userClaimsService = _userClaimsService;
         this._backendService = _backendService;
         this._loaderService = _loaderService;
         this._menuDishes = null;
@@ -1489,10 +1515,13 @@ var MenuComponent = /** @class */ (function () {
                     htmlData += "   <div style='height: 120px;'>";
                     htmlData += "     " + menuDish.description;
                     htmlData += "   </div>";
-                    htmlData += "   <div>";
-                    htmlData += "     <button style='margin: auto;width: 100%;' type='button' data-menu-dish-id='" + menuDish._id +
-                        "' class='remove-menu-dish btn btn-outline-dark'>Borrar</button>";
-                    htmlData += "   </div>";
+                    // Only if Cooker can add Menus
+                    if (this._userClaimsService.isCooker) {
+                        htmlData += "   <div>";
+                        htmlData += "     <button style='margin: auto;width: 100%;' type='button' data-menu-dish-id='" + menuDish._id +
+                            "' class='remove-menu-dish btn btn-outline-dark'>Borrar</button>";
+                        htmlData += "   </div>";
+                    }
                     htmlData += "  </div>";
                     if (colCount >= 2) {
                         colCount = 0;
@@ -1518,47 +1547,51 @@ var MenuComponent = /** @class */ (function () {
     };
     MenuComponent.prototype.bindEvents = function () {
         var self = this;
-        $(document).off().on('click', '.remove-menu-dish', function (e) {
-            var idMenuDish = $(this).data('menu-dish-id');
-            var menuVM_removed = null;
-            self._loaderService.showLoader();
-            self._backendService.removeMenu(idMenuDish)
-                .subscribe(function (data) {
-                // Now manually remove the Menu from the list object
-                for (var i = 0; i < self.GetMenuDishes.length; i++) {
-                    var menuDish = self.GetMenuDishes[i];
-                    if (menuDish._id === idMenuDish) {
-                        menuVM_removed = self.GetMenuDishes[i];
-                        self.GetMenuDishes.splice(i, 1);
-                        break;
+        if (this._userClaimsService.isCooker) {
+            $(document).off().on('click', '.remove-menu-dish', function (e) {
+                var idMenuDish = $(this).data('menu-dish-id');
+                var menuVM_removed = null;
+                self._loaderService.showLoader();
+                self._backendService.removeMenu(idMenuDish)
+                    .subscribe(function (data) {
+                    // Now manually remove the Menu from the list object
+                    for (var i = 0; i < self.GetMenuDishes.length; i++) {
+                        var menuDish = self.GetMenuDishes[i];
+                        if (menuDish._id === idMenuDish) {
+                            menuVM_removed = self.GetMenuDishes[i];
+                            self.GetMenuDishes.splice(i, 1);
+                            break;
+                        }
                     }
-                }
-                self._loaderService.hideLoader();
-                // update HTML
-                self.onCompletedREST();
-                // Send toast of confirmation
-                toastr.success('Se removio el menu: ' + menuVM_removed.name, 'Cocinero');
+                    self._loaderService.hideLoader();
+                    // update HTML
+                    self.onCompletedREST();
+                    // Send toast of confirmation
+                    toastr.success('Se removio el menu: ' + menuVM_removed.name, 'Cocinero');
+                });
             });
-        });
+        }
     };
     MenuComponent.prototype.removeBinds = function () {
         $(document).off('click', '.remove-menu-dish');
     };
     MenuComponent.prototype.addMenu = function (menuDish) {
-        var self = MenuComponent_1.Instance;
-        self._loaderService.showLoader();
-        self._backendService.saveMenu(menuDish).subscribe(function (data) {
-            if (data) {
-                // Manually add the MenuDish
-                var menuDishVM = new _models_menuDishVM__WEBPACK_IMPORTED_MODULE_3__["MenuDishVM"](data._id, data.name, data.description, data.price, data.imageUrl, data.idMenuCategory);
-                self._menuDishes.push(menuDishVM);
-                // update HTML
-                self.onCompletedREST();
-                self._loaderService.hideLoader();
-                // Send toast of confirmation
-                toastr.success('Se guardo el menu: ' + menuDish.name, 'Cocinero');
-            }
-        });
+        if (this._userClaimsService.isCooker) {
+            var self = MenuComponent_1.Instance;
+            self._loaderService.showLoader();
+            self._backendService.saveMenu(menuDish).subscribe(function (data) {
+                if (data) {
+                    // Manually add the MenuDish
+                    var menuDishVM = new _models_menuDishVM__WEBPACK_IMPORTED_MODULE_4__["MenuDishVM"](data._id, data.name, data.description, data.price, data.imageUrl, data.idMenuCategory);
+                    self._menuDishes.push(menuDishVM);
+                    // update HTML
+                    self.onCompletedREST();
+                    self._loaderService.hideLoader();
+                    // Send toast of confirmation
+                    toastr.success('Se guardo el menu: ' + menuDish.name, 'Cocinero');
+                }
+            });
+        }
     };
     MenuComponent = MenuComponent_1 = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1566,7 +1599,8 @@ var MenuComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./menu.component.html */ "./src/app/pages/menu/menu.component.html"),
             styles: [__webpack_require__(/*! ./menu.component.css */ "./src/app/pages/menu/menu.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_backend_services__WEBPACK_IMPORTED_MODULE_1__["BackendService"],
+        __metadata("design:paramtypes", [_services_user_claim_services__WEBPACK_IMPORTED_MODULE_3__["UserClaimService"],
+            _services_backend_services__WEBPACK_IMPORTED_MODULE_1__["BackendService"],
             _services_loader_services__WEBPACK_IMPORTED_MODULE_2__["LoaderService"]])
     ], MenuComponent);
     return MenuComponent;
@@ -2269,6 +2303,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserClaimService", function() { return UserClaimService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _models_userVM__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../models/userVM */ "./src/app/models/userVM.ts");
+/* harmony import */ var _enums_enumLaborType__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../enums/enumLaborType */ "./src/app/enums/enumLaborType.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2280,19 +2315,26 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var UserClaimService = /** @class */ (function () {
     function UserClaimService() {
+        this.isWaiter = false;
+        this.isCooker = false;
         this.user = _models_userVM__WEBPACK_IMPORTED_MODULE_1__["UserVM"].Empty;
         this.isAuthenticated = false;
     }
     UserClaimService.prototype.clear = function () {
         this.user = _models_userVM__WEBPACK_IMPORTED_MODULE_1__["UserVM"].Empty;
         this.isAuthenticated = false;
+        this.isWaiter = false;
+        this.isCooker = false;
     };
     UserClaimService.prototype.setUser = function (user) {
         if (user && user.dni.length >= 8) {
             this.user = user;
             this.isAuthenticated = true;
+            this.isWaiter = _enums_enumLaborType__WEBPACK_IMPORTED_MODULE_2__["EnumLaborType"].Waiter === user.idLaborType;
+            this.isCooker = _enums_enumLaborType__WEBPACK_IMPORTED_MODULE_2__["EnumLaborType"].Cooker === user.idLaborType;
         }
         else {
             this.clear();

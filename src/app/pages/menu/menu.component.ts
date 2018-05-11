@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { BackendService } from '../../services/backend.services';
 import { LoaderService } from '../../services/loader.services';
+import { UserClaimService } from '../../services/user-claim.services';
 
 import { MenuCategoryVM, IMenuCategory } from '../../models/menuCategoryVM';
 import { 
@@ -33,6 +34,7 @@ export class MenuComponent implements OnInit {
   public get GetMenuDishes():any { return this._menuDishes; }
   
   constructor(
+    private _userClaimsService: UserClaimService,
     public _backendService: BackendService,
     public _loaderService: LoaderService) { 
       
@@ -103,10 +105,14 @@ export class MenuComponent implements OnInit {
             htmlData += "     " + menuDish.description;
             htmlData += "   </div>";
             
-            htmlData += "   <div>"
-            htmlData += "     <button style='margin: auto;width: 100%;' type='button' data-menu-dish-id='" + menuDish._id + 
-              "' class='remove-menu-dish btn btn-outline-dark'>Borrar</button>";
-            htmlData += "   </div>"
+            // Only if Cooker can add Menus
+            if (this._userClaimsService.isCooker) {
+              htmlData += "   <div>"
+              htmlData += "     <button style='margin: auto;width: 100%;' type='button' data-menu-dish-id='" + menuDish._id + 
+                "' class='remove-menu-dish btn btn-outline-dark'>Borrar</button>";
+              htmlData += "   </div>"
+            }
+            
             htmlData += "  </div>";
             
             if (colCount >= 2) {
@@ -140,33 +146,35 @@ export class MenuComponent implements OnInit {
   private bindEvents():void {
       var self = this;
       
-      $(document).off().on('click', '.remove-menu-dish', function(e) {
-        var idMenuDish = $(this).data('menu-dish-id');
-        let menuVM_removed:MenuDishVM = null;
-        
-        self._loaderService.showLoader();
-        self._backendService.removeMenu(idMenuDish)
-          .subscribe(data => { 
-            
-            // Now manually remove the Menu from the list object
-            for (var i = 0; i < self.GetMenuDishes.length; i++) {
-              var menuDish = self.GetMenuDishes[i];
+      if (this._userClaimsService.isCooker) {
+        $(document).off().on('click', '.remove-menu-dish', function(e) {
+          var idMenuDish = $(this).data('menu-dish-id');
+          let menuVM_removed:MenuDishVM = null;
+          
+          self._loaderService.showLoader();
+          self._backendService.removeMenu(idMenuDish)
+            .subscribe(data => { 
               
-              if (menuDish._id === idMenuDish) {
-                menuVM_removed = self.GetMenuDishes[i];
-                self.GetMenuDishes.splice(i, 1);
-                break;
-              }
-            } 
-            
-            self._loaderService.hideLoader();
-            // update HTML
-            self.onCompletedREST();
-            
-            // Send toast of confirmation
-            toastr.success('Se removio el menu: ' + menuVM_removed.name, 'Cocinero');
-        });
-      })
+              // Now manually remove the Menu from the list object
+              for (var i = 0; i < self.GetMenuDishes.length; i++) {
+                var menuDish = self.GetMenuDishes[i];
+                
+                if (menuDish._id === idMenuDish) {
+                  menuVM_removed = self.GetMenuDishes[i];
+                  self.GetMenuDishes.splice(i, 1);
+                  break;
+                }
+              } 
+              
+              self._loaderService.hideLoader();
+              // update HTML
+              self.onCompletedREST();
+              
+              // Send toast of confirmation
+              toastr.success('Se removio el menu: ' + menuVM_removed.name, 'Cocinero');
+          });
+        })
+      }
     }
   
   private removeBinds():void {
@@ -174,29 +182,31 @@ export class MenuComponent implements OnInit {
     }
 
   private addMenu(menuDish: IMenuDishSave):void {
-    var self = MenuComponent.Instance;
-    self._loaderService.showLoader();
-    
-    self._backendService.saveMenu(menuDish).subscribe(data => {
-        if (data) {
-          // Manually add the MenuDish
-          let menuDishVM: MenuDishVM = new MenuDishVM(
-            data._id, 
-            data.name,
-            data.description,
-            data.price,
-            data.imageUrl,
-            data.idMenuCategory);
-          
-          self._menuDishes.push(menuDishVM);
-          
-          // update HTML
-          self.onCompletedREST();
-          self._loaderService.hideLoader();
-          
-          // Send toast of confirmation
-          toastr.success('Se guardo el menu: ' + menuDish.name, 'Cocinero');
-        }
-    });
+    if (this._userClaimsService.isCooker) {
+      var self = MenuComponent.Instance;
+      self._loaderService.showLoader();
+      
+      self._backendService.saveMenu(menuDish).subscribe(data => {
+          if (data) {
+            // Manually add the MenuDish
+            let menuDishVM: MenuDishVM = new MenuDishVM(
+              data._id, 
+              data.name,
+              data.description,
+              data.price,
+              data.imageUrl,
+              data.idMenuCategory);
+            
+            self._menuDishes.push(menuDishVM);
+            
+            // update HTML
+            self.onCompletedREST();
+            self._loaderService.hideLoader();
+            
+            // Send toast of confirmation
+            toastr.success('Se guardo el menu: ' + menuDish.name, 'Cocinero');
+          }
+      });
+    }
   }
 }

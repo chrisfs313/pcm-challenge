@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { BackendService } from '../../services/backend.services';
 import { LoaderService } from '../../services/loader.services';
+import { UserClaimService } from '../../services/user-claim.services';
 
 import { ConsumerTableVM } from "../../models/consumerTableVM";
 import { Constants } from "../../common/constants";
@@ -70,6 +71,7 @@ export class HomeComponent implements OnInit {
   }
 
   constructor(
+      private _userClaimsService: UserClaimService,
       private _backendService: BackendService,
       private _loaderService: LoaderService
     ) { 

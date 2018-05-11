@@ -13,7 +13,7 @@
             <div id="spinner-parent">
                 <label># Clientes</label>
                 <p></p>
-                <input id="spinner-clients" name="value">
+                <input id="spinner-clients" name="value" [disabled]="_userClaimsService.isCooker">
             </div>
         </div>
         
@@ -48,7 +48,10 @@
                             <td class="table-td-menuName">{{ menu.name }}</td>
                             <td class="table-td-menuPrice">S/ {{ menu.price.toFixed(2) }}</td>
                             <td>
-                                <button type="button" class="btn" (click)="_tableDetailManager.removeMenu(menu._id)">
+                                <button type="button" class="btn" 
+                                    [hidden]="_userClaimsService.isCooker"
+                                    (click)="_tableDetailManager.removeMenu(menu._id)">
+                                    
                                     <span class="glyphicon glyphicon-remove"></span>X
                                 </button>
                             </td>
@@ -72,13 +75,16 @@
             <div class="row">
                 <div class="col-sm-6">
                     <ngbd-modal-component 
+                        [hidden]="_userClaimsService.isCooker"
                         [modalType]="'menus'" 
                         [onCallback]="_tableDetailManager.onChooseMenuDish">
                     </ngbd-modal-component>
                     <p></p>
                 </div>
                 <div class="col-sm-6">
-                    <button type="button" class="btn" (click)="_tableDetailManager.freeTable()">
+                    <button type="button" class="btn" 
+                        [hidden]="_userClaimsService.isCooker"
+                        (click)="_tableDetailManager.freeTable()">
                         <span class="glyphicon glyphicon-ban-circle"></span>
                         Liberar
                     </button>
@@ -92,7 +98,8 @@
                     </button>
                 </div>
                 <div class="col-sm-6">
-                    <button type="button" class="btn btn-primary" (click)="_tableDetailManager.save()">
+                    <button type="button" class="btn btn-primary"
+                        (click)="_tableDetailManager.save()">
                         <span class="glyphicon glyphicon-floppy-disk"></span>
                         Guardar
                     </button>
