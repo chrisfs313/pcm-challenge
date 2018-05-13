@@ -22,7 +22,8 @@ export class Constants {
     public static readonly DefaultIdBusiness: string = "5a59398eba92390014228220";
     
     // Base URL for REST services
-    public static readonly WS_BASE_PATH: string = "https://ws-pcm-challenge.herokuapp.com";
+    //public static readonly WS_BASE_PATH: string = "https://ws-pcm-challenge.herokuapp.com";
+    public static readonly WS_BASE_PATH: string = "https://ws-pcm-challenge-chrisfs313.c9users.io";
     
     // Backend of all services:
     public static readonly REST_ConsumerTable: ConsumerTableBackend = new ConsumerTableBackend();

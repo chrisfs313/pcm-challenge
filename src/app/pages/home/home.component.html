@@ -18,7 +18,7 @@
         </div>
         
         <!-- Controls for the Table -->
-        <div class="container">
+        <div>
         
             <div class="row">
                 <div class="col-sm-12">
@@ -28,31 +28,42 @@
             
             <div id="table-menu-orders" class="row">
                 <table class="table">
-                  <thead>
+                  <thead class="table-menu-orders-header">
                     <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Foto</th>
-                      <th scope="col">Plato</th>
-                      <th scope="col">Precio</th>
-                      <th scope="col"></th>
+                      <th class="table-th-correlative-header" scope="col">#</th>
+                      <th class="table-th-image-header" scope="col">Foto</th>
+                      <th class="table-th-menu-header" scope="col">Plato</th>
+                      <th class="table-th-menuPrice-header" scope="col">Precio</th>
+                      <th scope="col">Cambiar a:</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr *ngFor="let menu of GetConsumerMenusFromDetails;  let i = index">
+                  <tbody class="table-menu-orders-body">
+                    <tr *ngFor="let menuOrder of GetConsumerMenusFromDetails;  let i = index">
                         <th scope="row">{{ (i + 1) }}</th>
                             <td>
                                 <div class="table-td-menuImage">
-                                    <img class="img-menuImage" src="{{menu.imageUrl}}" />
+                                    <img class="img-menuImage" src="{{menuOrder.consumerMenu.imageUrl}}" />
                                 </div>
                             </td>
-                            <td class="table-td-menuName">{{ menu.name }}</td>
-                            <td class="table-td-menuPrice">S/ {{ menu.price.toFixed(2) }}</td>
-                            <td>
-                                <button type="button" class="btn" 
-                                    [hidden]="_userClaimsService.isCooker"
-                                    (click)="_tableDetailManager.removeMenu(menu._id)">
-                                    
+                            <td class="table-td-menuName">
+                                <div>
+                                    {{ menuOrder.consumerMenu.name }}
+                                </div>
+                                <div class="tbody-menu-order-status">
+                                    <b>{{ convertOrderStatusToString(menuOrder.idOrderStatusType) }}</b>
+                                </div>
+                            </td>
+                            <td class="table-td-menuPrice">S/ {{ menuOrder.consumerMenu.price.toFixed(2) }}</td>
+                            
+                            <td [hidden]="_tableDetailManager.isHiddenRemoveButton(menuOrder.idOrderStatusType)">
+                                <button type="button" class="btn" (click)="_tableDetailManager.removeMenu(menuOrder._id)">
                                     <span class="glyphicon glyphicon-remove"></span>X
+                                </button>
+                            </td>
+                            
+                            <td [hidden]="_tableDetailManager.isHiddenStatusChangeButton(menuOrder.idOrderStatusType)">
+                                <button type="button" class="btn" (click)="_tableDetailManager.changeStatusTo(menuOrder)">
+                                    <img class="img-status-change" src="{{ _tableDetailManager.getChangeToStatusImgSrc(menuOrder.idOrderStatusType) }}" />
                                 </button>
                             </td>
                     </tr>
@@ -67,7 +78,14 @@
                         <td></td>
                         <td></td>
                         <td class="table-td-totalPrice">Total:</td>
-                        <td class="table-td-totalPrice">S/ {{ GetConsumerMenusFromDetailsTotalPrice }}</td>
+                        <td class="table-td-totalPrice">S/ {{ GetTableTotalPrice }}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="table-td-totalPrice">Debe:</td>
+                        <td class="table-td-totalPrice">S/ {{ GetTableDebt }}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -84,6 +102,7 @@
                 <div class="col-sm-6">
                     <button type="button" class="btn" 
                         [hidden]="_userClaimsService.isCooker"
+                        [disabled]="!AreAllOrderCanceled"
                         (click)="_tableDetailManager.freeTable()">
                         <span class="glyphicon glyphicon-ban-circle"></span>
                         Liberar

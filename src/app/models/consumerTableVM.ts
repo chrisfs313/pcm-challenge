@@ -21,7 +21,7 @@ export class IConsumerTable {
 
 export class ConsumerTableBodyVM {
     idWaiterUser: string;
-    consumerMenus: string[];
+    consumerMenus: IConsumerTableRequest[];
 }
 
 export class IConsumerTableResponse {
@@ -34,3 +34,8 @@ export class IConsumerTableResponse {
     consumerMenus: string[];
 }
 
+export class IConsumerTableRequest {
+    idConsumerOrder: string;
+    idConsumerMenu: string;
+    idOrderStatusType: string;
+}

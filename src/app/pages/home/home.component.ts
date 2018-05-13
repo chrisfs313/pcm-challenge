@@ -5,7 +5,10 @@ import { LoaderService } from '../../services/loader.services';
 import { UserClaimService } from '../../services/user-claim.services';
 
 import { ConsumerTableVM } from "../../models/consumerTableVM";
+import { ConsumerMenuOrderVM, ConsumerMenuVM } from "../../models/consumerMenuVM";
 import { Constants } from "../../common/constants";
+import { Utils } from "../../common/utils";
+import { EnumOrderStatusType } from "../../enums/enumOrderStatusType";
 
 import { TablesManager } from './tablesManager';
 import { TableDetailManager } from './tableDetailManager';
@@ -43,31 +46,84 @@ export class HomeComponent implements OnInit {
   
   public get GetBackendService():any { return this._backendService; }
   public get GetLoaderService():any { return this._loaderService; }
+  public get GetUserClaimsService():any { return this._userClaimsService; }
   
   public get GetConsumerMenusFromDetails():any { 
-    let result:any = null;
+    let result: any = null;
     
     result = this._tableDetailManager.consumerTableOrdersTEMP != null 
-      ? this._tableDetailManager.consumerTableOrdersTEMP.consumerMenus 
+      ? this._tableDetailManager.consumerTableOrdersTEMP.consumerMenuOrder 
       : null;
+    
+    if (result && result.length > 0) {
+      result = Utils.deepClone(result);
+      
+      for (var i = 0; i < result.length; i++) {
+        if (result[i].idOrderStatusType === EnumOrderStatusType.Borrado) {
+          result.splice(i, 1);
+          i--;
+        }
+      }
+    }
     
     return result == null ? [] : result; 
   }
   
-  public get GetConsumerMenusFromDetailsTotalPrice():string { 
+  public get GetTableTotalPrice():string { 
     let result:any = null;
     let resultTotalPrice: number = 0;
     
     result = this._tableDetailManager.consumerTableOrdersTEMP != null 
-      ? this._tableDetailManager.consumerTableOrdersTEMP.consumerMenus 
+      ? this._tableDetailManager.consumerTableOrdersTEMP.consumerMenuOrder 
       : null;
     result = result == null ? [] : result
     
     for (var i = 0; i < result.length; i++) {
-      resultTotalPrice += result[i].price;
+      if (result[i].idOrderStatusType !== EnumOrderStatusType.Borrado) {
+        resultTotalPrice += result[i].consumerMenu.price;
+      }
     }
     
     return resultTotalPrice.toFixed(2); 
+  }
+  
+  public get GetTableDebt():string { 
+    let result:any = null;
+    let resultTotalPrice: number = 0;
+    
+    result = this._tableDetailManager.consumerTableOrdersTEMP != null 
+      ? this._tableDetailManager.consumerTableOrdersTEMP.consumerMenuOrder 
+      : null;
+    result = result == null ? [] : result
+    
+    for (var i = 0; i < result.length; i++) {
+      if (result[i].idOrderStatusType !== EnumOrderStatusType.Borrado &&
+        result[i].idOrderStatusType !== EnumOrderStatusType.Cancelada) {
+        resultTotalPrice += result[i].consumerMenu.price;
+      }
+    }
+    
+    return resultTotalPrice.toFixed(2); 
+  }
+
+  public get AreAllOrderCanceled():boolean {
+    let allCanceled:boolean = false;
+    let result:any = null;
+    let count:number = 0;
+
+    result = this._tableDetailManager.consumerTableOrdersTEMP != null 
+      ? this._tableDetailManager.consumerTableOrdersTEMP.consumerMenuOrder 
+      : null;
+    result = result == null ? [] : result
+    
+    for (var i = 0, total = result.length; i < result.length; i++) {
+      if (result[i].idOrderStatusType === EnumOrderStatusType.Cancelada) {
+        allCanceled = ++count >= total;
+      }
+      else total++;
+    }
+    
+    return allCanceled;
   }
 
   constructor(
@@ -122,6 +178,30 @@ export class HomeComponent implements OnInit {
   
   private showModal(): void {
     
+  }
+  
+  private convertOrderStatusToString(idOrderStatusType: string):string {
+    let result:string = "";
+    
+    switch(idOrderStatusType) {
+      case EnumOrderStatusType.RecienPedido:
+        result = "(Recien Pedido)";
+        break;
+      case EnumOrderStatusType.Pendiente:
+        result = "(En cocina)";
+        break;
+      case EnumOrderStatusType.ParaEntregar:
+        result = "(Para Entregar)";
+        break;
+      case EnumOrderStatusType.Entregada:
+        result = "(En Mesa)";
+        break;
+      case EnumOrderStatusType.Cancelada:
+        result = "(Cobrado)";
+        break;
+    }
+    
+    return result;
   }
   
   public static HideSideBar():void {

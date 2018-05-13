@@ -1,9 +1,10 @@
 import { HomeComponent } from './home.component';
 import { Utils } from "../../common/utils";
+import { EnumOrderStatusType } from "../../enums/enumOrderStatusType";
 
 import { MenuDishVM } from '../../models/menuDishVM';
-import { ConsumerMenuVM } from "../../models/consumerMenuVM";
-import { ConsumerTableVM, ConsumerTableBodyVM } from "../../models/consumerTableVM";
+import { ConsumerMenuVM, ConsumerMenuOrderVM } from "../../models/consumerMenuVM";
+import { ConsumerTableVM, ConsumerTableBodyVM, IConsumerTableRequest } from "../../models/consumerTableVM";
 import { ConsumerTableOrdersVM } from "../../models/consumerTableOrdersVM";
 
 // Declaramos las variables para Toastr
@@ -19,7 +20,7 @@ export class TableDetailManager {
     private _parentSelector: any;
     private _canvasSelector: any;
     
-    private _width: number = 300;
+    private _width: number = 360;
     private _height: number = 600;
     
     private _consumerTable: ConsumerTableVM = null;
@@ -70,12 +71,109 @@ export class TableDetailManager {
           });
     }
     
-    public removeMenu(idMenu:string): void {
-        var data = this.consumerTableOrdersTEMP.consumerMenus;
+    public isHiddenRemoveButton(idOrderStatusType: string): boolean {
+        let isHidden: boolean = true;
         
-        for (var i = 0; i < data.length; i++) {
-            if (data[i]._id === idMenu) {
-                data.splice(i, 1);
+        if (!this._homeComponent.GetUserClaimsService.isCooker) {
+           switch(idOrderStatusType) {
+                case EnumOrderStatusType.RecienPedido:
+                    isHidden = false;
+                    break;
+            } 
+        }
+        
+        return isHidden;
+    }
+    
+    public isHiddenStatusChangeButton(idOrderStatusType: string): boolean {
+        let isHidden: boolean = true;
+        
+        if (this._homeComponent.GetUserClaimsService.isCooker) {
+            switch(idOrderStatusType) {
+                case EnumOrderStatusType.Pendiente:
+                    isHidden = false;
+                    break;
+            }
+        }
+        else if (this._homeComponent.GetUserClaimsService.isWaiter) {
+            switch(idOrderStatusType) {
+                case EnumOrderStatusType.ParaEntregar:
+                case EnumOrderStatusType.Entregada:
+                    isHidden = false;
+                    break;
+            }
+        }
+        
+        return isHidden;
+    }
+    
+    public getChangeToStatusImgSrc(idOrderStatusType: string): string {
+        let result: string = "";
+        
+        switch(idOrderStatusType) {
+            case EnumOrderStatusType.Pendiente:
+                result = "assets/icon_pick_food.png";
+                break;
+            case EnumOrderStatusType.ParaEntregar:
+                result = "assets/icon_on_table.png";
+                break;
+            case EnumOrderStatusType.Entregada:
+                result = "assets/icon_pay.png";
+                break;
+        } 
+        
+        return result;
+    }
+    
+    public changeStatusTo(menuOrder: ConsumerMenuOrderVM): void {
+        let consumerMenuOrders:ConsumerMenuOrderVM[] = this.consumerTableOrdersTEMP.consumerMenuOrder;
+        
+        switch(menuOrder.idOrderStatusType) {
+            case EnumOrderStatusType.Pendiente:
+                for (var i = 0; i < consumerMenuOrders.length; i++) {
+                    let consumerMenuOrder: ConsumerMenuOrderVM = consumerMenuOrders[i];
+                    
+                    if (consumerMenuOrder._id == menuOrder._id) {
+                        consumerMenuOrder.idOrderStatusType = EnumOrderStatusType.ParaEntregar; 
+                        break;
+                    }
+                }
+                break;
+            case EnumOrderStatusType.ParaEntregar:
+                for (var i = 0; i < consumerMenuOrders.length; i++) {
+                    let consumerMenuOrder: ConsumerMenuOrderVM = consumerMenuOrders[i];
+                    
+                    if (consumerMenuOrder._id == menuOrder._id) {
+                        consumerMenuOrder.idOrderStatusType = EnumOrderStatusType.Entregada; 
+                        break;
+                    }
+                }
+                break;
+            case EnumOrderStatusType.Entregada:
+                for (var i = 0; i < consumerMenuOrders.length; i++) {
+                    let consumerMenuOrder: ConsumerMenuOrderVM = consumerMenuOrders[i];
+                    
+                    if (consumerMenuOrder._id == menuOrder._id) {
+                        consumerMenuOrder.idOrderStatusType = EnumOrderStatusType.Cancelada; 
+                        break;
+                    }
+                }
+                break;
+        } 
+    }
+    
+    public removeMenu(idMenuOrder:string): void {
+        let consumerMenuOrders:ConsumerMenuOrderVM[] = this.consumerTableOrdersTEMP.consumerMenuOrder;
+        
+        for (var i = 0; i < consumerMenuOrders.length; i++) {
+            let consumerMenuOrder: ConsumerMenuOrderVM = consumerMenuOrders[i];
+            
+            if (consumerMenuOrder._id == idMenuOrder) {
+                switch(consumerMenuOrder.idOrderStatusType) {
+                    case EnumOrderStatusType.RecienPedido:
+                        consumerMenuOrders.splice(i, 1);
+                        break;
+                }
                 break;
             }
         }
@@ -84,14 +182,13 @@ export class TableDetailManager {
     public onChooseMenuDish(menuDish: MenuDishVM): void {
         var self = TableDetailManager.Instance;
         
-        let consumerMenus:ConsumerMenuVM[] = self.consumerTableOrdersTEMP.consumerMenus;
-        let newMenu: ConsumerMenuVM = new ConsumerMenuVM(
-            menuDish._id,
-            menuDish.name,
-            menuDish.price,
-            menuDish.imageUrl);
+        let consumerMenuOrders:ConsumerMenuOrderVM[] = self.consumerTableOrdersTEMP.consumerMenuOrder;
+        let consumerMenuOrder: ConsumerMenuOrderVM = new ConsumerMenuOrderVM(
+            "",
+            new ConsumerMenuVM(menuDish._id, menuDish.name, menuDish.price, menuDish.imageUrl),
+            EnumOrderStatusType.RecienPedido);
         
-        consumerMenus.push(newMenu);
+        consumerMenuOrders.push(consumerMenuOrder);
     }
     
     public cancel(): void {
@@ -104,11 +201,16 @@ export class TableDetailManager {
         
         let idConsumerTable: string = this.consumerTableOrdersTEMP._id;
         let dataBody: ConsumerTableBodyVM = new ConsumerTableBodyVM();
-        dataBody.idWaiterUser = "5a58e033fbdc960014d4b223";
+        dataBody.idWaiterUser = this._homeComponent.GetUserClaimsService.user._id; // set the ID of the current user log in
         dataBody.consumerMenus = [];
             
-        for (var i = 0; i < this.consumerTableOrdersTEMP.consumerMenus.length; i++) {
-            dataBody.consumerMenus.push(this.consumerTableOrdersTEMP.consumerMenus[i]._id);
+        for (var i = 0; i < this.consumerTableOrdersTEMP.consumerMenuOrder.length; i++) {
+            let reqData: IConsumerTableRequest = new IConsumerTableRequest();
+            reqData.idConsumerOrder = this.consumerTableOrdersTEMP.consumerMenuOrder[i]._id;
+            reqData.idConsumerMenu = this.consumerTableOrdersTEMP.consumerMenuOrder[i].consumerMenu._id;
+            reqData.idOrderStatusType = this.consumerTableOrdersTEMP.consumerMenuOrder[i].idOrderStatusType;
+            
+            dataBody.consumerMenus.push(reqData);
         }
         
         this._homeComponent.GetBackendService.setTableOccupied(

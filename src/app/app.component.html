@@ -6,11 +6,15 @@
     </div>
 </div>
 
-<div class="container">
-
+<div class="container-fluid" style="margin-right: 10px !important;margin-left: 10px !important;">
     <nav class="navbar navbar-expand-lg navbar-light bg-light" [hidden]="!_userClaimsService.isAuthenticated">
-        <a class="navbar-brand" href="#">Restaurante: Pidalo con Rima</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="navbar-brand">
+            Bienvenido {{ (_userClaimsService.isWaiter ? "mesero " : "cocinero: ") + ": " +
+                _userClaimsService.user.name + " " + _userClaimsService.user.lastName }} 
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#navbarNav" aria-controls="navbarNav" 
+            aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -27,7 +31,7 @@
             </ul>
         </div>
     </nav>
-.
+
     <router-outlet></router-outlet>
     
 </div>

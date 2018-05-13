@@ -9,21 +9,21 @@
 }
 
 #sidebar {
-    min-width: 300px;
-    max-width: 300px;
+    min-width: 410px;
+    max-width: 410px;
     display: block;
     border-right: 1px solid #dee2e6;
     height: 423px;
 }
 
 #sidebar.active {
-    margin-left: -300px;
+    margin-left: -410px;
     display: none !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1068px) {
     #sidebar {
-        margin-left: -300px;
+        margin-left: -410px;
     }
     #sidebar.active {
         margin-left: 0;
@@ -45,6 +45,7 @@
 
 .table-td-menuPrice {
     font-size: 13px;
+    width: 100px
 }
 
 .table-td-totalPrice {
@@ -52,10 +53,49 @@
     font-weight: bold;
 }
 
+.table-th-correlative-header {
+    width: 1px;
+}
+
+.table-th-image-header {
+    width: 40px;
+}
+
+.table-th-menu-header {
+    text-align: center;
+    width: 120px;
+}
+
+.table-th-menuPrice-header {
+    width: 10px;
+}
+
 #table-menu-orders {
     overflow-x: hidden;
-    overflow-y: auto;
-    height: 280px;
+    overflow-y: hidden;
+}
+
+.table-menu-orders-header {
+    display: block;
+    display: inherit;
+    width: 100%;
+}
+
+.table-menu-orders-body {
+    display: block;
+    overflow-y: scroll;
+    height: 230px;
+}
+
+.tbody-menu-order-status {
+    color: indigo;
+    text-transform: uppercase;
+    font-size: 11px;
+}
+
+.img-status-change {
+    width: 20px;
+    height: 20px;
 }
 
 #canvas-detail-selector {

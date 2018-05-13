@@ -254,7 +254,7 @@ export class BackendService {
     }
 
     public logout(): void {
-        //this._userClaims.clear();
-        //this._router.navigate(['/login']);
+        this._userClaims.clear();
+        this._router.navigate(['/login']);
     }
 }

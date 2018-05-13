@@ -1,17 +1,22 @@
-import { ConsumerMenuVM, IConsumerMenu } from "./consumerMenuVM";
+import { 
+    ConsumerMenuVM,
+    ConsumerMenuOrderVM,
+    IConsumerMenu,
+    IConsumerMenuOrder 
+} from "./consumerMenuVM";
 
 export class ConsumerTableOrdersVM {
     constructor(
         public _id: string,
         public name: string,
         public waiterTable: WaiterTableVM,
-        public consumerMenus: ConsumerMenuVM[]) { }
+        public consumerMenuOrder: ConsumerMenuOrderVM[]) { }
 }
 
 export class IConsumerTableOrders {
     _id: string;
     name: string;
-    consumerMenus: IConsumerMenu[];
+    consumerMenus: IConsumerMenuOrder[];
     idWaiterUser: IWaiterTable;
 }
 

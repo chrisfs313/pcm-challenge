@@ -14,7 +14,7 @@ export class ConsumerTableOrdersMapper {
             fromObj._id,
             fromObj.name,
             ConsumerTableOrdersMapper.IWaiterTableTo(fromObj.idWaiterUser),
-            ConsumerMenuMapper.IConsumerMenuArrayTo(fromObj.consumerMenus));
+            ConsumerMenuMapper.IConsumerMenuOrderArrayTo(fromObj.consumerMenus));
 
         return result;
     }
